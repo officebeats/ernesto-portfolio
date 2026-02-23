@@ -1128,3 +1128,25 @@ body {
   }
 }
 .modal-open { overflow: hidden; }
+
+/* Footer — BCG Green */
+.footer {
+  background-color: #009270;
+  color: #fff;
+}
+
+.footer h2,
+.footer p,
+.footer a,
+.footer .footer-attribution {
+  color: #fff;
+}
+
+.footer a:hover {
+  opacity: 0.8;
+}
+
+.footer .ag-logo {
+  fill: #fff;
+}
+

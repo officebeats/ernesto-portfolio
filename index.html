@@ -414,20 +414,14 @@
         </div>
       </section>
 
-      <!-- Universal Modal Structure -->
-      <div class="modal" id="universal-modal">
-        <div class="modal-content">
-          <span class="close-button">&times;</span>
-          <h3 id="modal-title"></h3>
-          <div id="modal-image-container" style="display: none;"><img id="modal-image" src="" alt="" /></div>
-          <div id="modal-body"></div>
-          <p id="modal-link-container" style="display: none;">
-            <a id="modal-link" href="#" target="_blank" rel="noopener" class="link-arrow"></a>
-          </p>
-        </div>
+
+      <!-- Image Lightbox -->
+      <div id="img-lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Certificate" onclick="event.stopPropagation()" />
       </div>
 
-      <!-- ═══════════ Credentials ═══════════ -->
+      <!-- Credentials -->
       <section id="credentials" class="section section-dark">
         <div class="container credentials-grid">
           <div>
@@ -437,44 +431,23 @@
             </h2>
           </div>
           <div class="cred-list">
-            <div class="cred-item">
-              <a href="#" class="modal-trigger" data-modal-target="universal-modal"
-                 data-modal-title="Gen AI Product Management Specialization"
-                 data-modal-body="Earned this specialization from Microsoft in 2025. This program focused on applying generative AI to product management, covering topics like AI strategy, ethical considerations, and building AI-powered products."
-                 data-modal-link="https://www.microsoft.com/en-us/ai/ai-product-management-specialization"
-                 data-modal-link-text="Learn more about this specialization →"
-                 data-modal-image="logos/ai-pm-cert.png">
-                <h3>Gen AI Product Management Specialization</h3>
-                <p>Microsoft · 2025</p>
-              </a>
+            <div class="cred-item" onclick="openLightbox('logos/ai-pm-cert.png')" style="cursor:pointer">
+              <h3>Gen AI Product Management Specialization</h3>
+              <p>Microsoft &middot; 2025</p>
             </div>
-            <div class="cred-item">
-              <a href="#" class="modal-trigger" data-modal-target="universal-modal"
-                 data-modal-title="GV Design Sprint Certified"
-                 data-modal-body="Certified in the GV Design Sprint methodology by AJ & Smart (Jake Knapp) in 2019. This certification provided hands-on experience in running 5-day design sprints to rapidly solve big challenges and test new ideas."
-                 data-modal-link="https://www.thesprintbook.com/"
-                 data-modal-link-text="Learn more about Design Sprints →"
-                 data-modal-image="logos/design-sprint-cert.png">
-                <h3>GV Design Sprint Certified</h3>
-                <p>AJ & Smart (Jake Knapp) · 2019</p>
-              </a>
+            <div class="cred-item" onclick="openLightbox('logos/design-sprint-cert.png')" style="cursor:pointer">
+              <h3>GV Design Sprint Certified</h3>
+              <p>AJ &amp; Smart (Jake Knapp) &middot; 2019</p>
             </div>
-            <div class="cred-item">
-              <a href="#" class="modal-trigger" data-modal-target="universal-modal"
-                 data-modal-title="Certified Scrum Master"
-                 data-modal-body="Earned my Certified Scrum Master (CSM) certification from 3Back in 2015. This certification provided a deep understanding of Scrum principles and practices, enabling me to effectively facilitate Scrum teams and deliver value in agile environments. The training covered topics such as Scrum roles, events, artifacts, and scaling Scrum. It emphasized servant leadership and fostering self-organizing, cross-functional teams."
-                 data-modal-link="https://www.scrumalliance.org/certifications/practitioners/csm-certification"
-                 data-modal-link-text="Learn more about CSM →"
-                 data-modal-image="logos/csm-cert.png">
-                <h3>Certified Scrum Master</h3>
-                <p>3Back · 2015</p>
-              </a>
+            <div class="cred-item" onclick="openLightbox('logos/csm-cert.png')" style="cursor:pointer">
+              <h3>Certified Scrum Master</h3>
+              <p>3Back &middot; 2015</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ═══════════ Writing & Speaking ═══════════ -->
+      <!-- Publications -->
       <section id="writing" class="section">
         <div class="container credentials-grid">
           <div>
@@ -483,28 +456,14 @@
           </div>
           <div class="cred-list">
             <div class="cred-item">
-              <h3>
-                How to Overcome AR Challenges: A Guide for Product Managers
-              </h3>
-              <p>Product School · 2023</p>
-              <a
-                href="https://productschool.com/product-leaders/ernesto-rodriguez"
-                target="_blank"
-                rel="noopener"
-                class="link-arrow"
-                >Read on Product School →</a
-              >
+              <h3>How to Overcome AR Challenges: A Guide for Product Managers</h3>
+              <p>Product School &middot; 2023</p>
+              <a href="https://productschool.com/product-leaders/ernesto-rodriguez" target="_blank" rel="noopener" class="link-arrow">Read on Product School &rarr;</a>
             </div>
             <div class="cred-item">
               <h3>Creative Passions in the Workplace</h3>
-              <p>TEDx · 2016</p>
-              <a
-                href="https://www.youtube.com/watch?v=Sv3IN8D4AoI&t=74s"
-                target="_blank"
-                rel="noopener"
-                class="link-arrow"
-                >Watch TEDx Talk →</a
-              >
+              <p>TEDx &middot; 2016</p>
+              <a href="https://www.youtube.com/watch?v=Sv3IN8D4AoI&t=74s" target="_blank" rel="noopener" class="link-arrow">Watch TEDx Talk &rarr;</a>
             </div>
           </div>
         </div>
@@ -512,7 +471,7 @@
 
       <hr class="divider container" />
 
-      <!-- ═══════════ Side Project ═══════════ -->
+      <!-- Side Project -->
       <section class="section">
         <div class="container about-grid">
           <div class="about-left">
@@ -522,23 +481,17 @@
           <div class="about-right">
             <p>
               Outside of work, I engineer the
-              <strong>Beats PM Antigravity Brain</strong> — a local-first,
+              <strong>Beats PM Antigravity Brain</strong> &mdash; a local-first,
               agent-driven AI system that automates the operational chaos of
               product management. Strategy requires space; I build systems that
               create it.
             </p>
-            <a
-              href="https://x.com/officebeats"
-              target="_blank"
-              rel="noopener"
-              class="link-arrow"
-              >Follow the research →</a
-            >
+            <a href="https://x.com/officebeats" target="_blank" rel="noopener" class="link-arrow">Follow the research &rarr;</a>
           </div>
         </div>
       </section>
 
-      <!-- ═══════════ Chicago ═══════════ -->
+      <!-- Chicago -->
       <section class="section section-dark">
         <div class="container about-grid">
           <div class="about-left">
@@ -562,38 +515,21 @@
       <div class="container footer-inner">
         <div class="footer-brand">
           <h2>Ernesto Rodriguez</h2>
-          <p>Product Leader · AI · Digital Transformation</p>
+          <p>Product Leader &middot; AI &middot; Digital Transformation</p>
         </div>
         <div class="footer-links">
-          <a
-            href="https://www.linkedin.com/in/productmg/"
-            target="_blank"
-            rel="noopener"
-            >LinkedIn</a
-          >
-          <a href="https://x.com/officebeats" target="_blank" rel="noopener"
-            >X (Twitter)</a
-          >
+          <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/officebeats" target="_blank" rel="noopener">X (Twitter)</a>
           <a href="mailto:Ernesto@ProductMG.com">Email</a>
-          <a href="https://ernest0.com" target="_blank" rel="noopener"
-            >Ernest0.com</a
-          >
+          <a href="https://ernest0.com" target="_blank" rel="noopener">Ernest0.com</a>
         </div>
       </div>
       <div class="container footer-bottom">
-        <p>© 2026 Ernesto Rodriguez · Ernest0.com · Chicago</p>
+        <p>&copy; 2026 Ernesto Rodriguez &middot; Ernest0.com &middot; Chicago</p>
         <p class="footer-attribution">
-          Built with ❤️ by vibecoding with Google Antigravity
-          <svg
-            class="ag-logo"
-            viewBox="0 0 24 24"
-            width="16"
-            height="16"
-            fill="currentColor"
-          >
-            <path
-              d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z"
-            />
+          Built with &#10084;&#65039; by vibecoding with Google Antigravity
+          <svg class="ag-logo" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" />
           </svg>
         </p>
       </div>
@@ -601,74 +537,20 @@
 
     <script src="app.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('universal-modal');
-        const closeButton = modal.querySelector('.close-button');
-        const modalTriggers = document.querySelectorAll('.modal-trigger');
-
-        function openModal(title, body, imageUrl, linkUrl, linkText) {
-          document.getElementById('modal-title').textContent = title;
-          document.getElementById('modal-body').innerHTML = body;
-
-          const modalImageContainer = document.getElementById('modal-image-container');
-          const modalImage = document.getElementById('modal-image');
-          if (imageUrl) {
-            modalImage.src = imageUrl;
-            modalImage.alt = title;
-            modalImageContainer.style.display = 'block';
-          } else {
-            modalImageContainer.style.display = 'none';
-            modalImage.src = '';
-            modalImage.alt = '';
-          }
-
-          const modalLinkContainer = document.getElementById('modal-link-container');
-          const modalLink = document.getElementById('modal-link');
-          if (linkUrl && linkText) {
-            modalLink.href = linkUrl;
-            modalLink.textContent = linkText;
-            modalLinkContainer.style.display = 'block';
-          } else {
-            modalLinkContainer.style.display = 'none';
-            modalLink.href = '#';
-            modalLink.textContent = '';
-          }
-
-          modal.style.display = 'flex';
-          document.body.classList.add('modal-open'); // Prevent scrolling
-        }
-
-        function closeModal() {
-          modal.style.display = 'none';
-          document.body.classList.remove('modal-open'); // Re-enable scrolling
-        }
-
-        modalTriggers.forEach(trigger => {
-          trigger.addEventListener('click', function(event) {
-            event.preventDefault();
-            const title = this.dataset.modalTitle;
-            const body = this.dataset.modalBody;
-            const imageUrl = this.dataset.modalImage; // Optional
-            const linkUrl = this.dataset.modalLink; // Optional
-            const linkText = this.dataset.modalLinkText; // Optional
-            openModal(title, body, imageUrl, linkUrl, linkText);
-          });
-        });
-
-        closeButton.addEventListener('click', closeModal);
-
-        window.addEventListener('click', function(event) {
-          if (event.target == modal) {
-            closeModal();
-          }
-        });
-
-        // Optional: Close with Escape key
-        document.addEventListener('keydown', function(event) {
-          if (event.key === 'Escape' && modal.style.display === 'flex') {
-            closeModal();
-          }
-        });
+      function openLightbox(src) {
+        var lb = document.getElementById('img-lightbox');
+        var img = document.getElementById('lightbox-img');
+        img.src = src;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox() {
+        var lb = document.getElementById('img-lightbox');
+        lb.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
       });
     </script>
   </body>

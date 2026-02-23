@@ -306,11 +306,10 @@ hr.divider {
 }
 
 .hero-avatar {
-  width: 220px;
-  height: 280px;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
   border-radius: 12px;
-  object-fit: cover;
-  object-position: center 20%;
   border: 1px solid var(--border-strong);
   box-shadow:
     0 0 0 4px var(--accent-soft),
@@ -727,6 +726,16 @@ hr.divider {
   opacity: 1 !important;
   filter: grayscale(0) contrast(1);
   transform: translateY(-2px);
+}
+
+/* Ensure originally white logos invert to dark grey on light themes */
+html:not([data-theme="dark"]) .domain-logos img.invert-on-light,
+html:not([data-theme="dark"]) .logo-item img.invert-on-light {
+  filter: invert(1) grayscale(1) !important;
+}
+html:not([data-theme="dark"]) .domain-logos img.invert-on-light:hover,
+html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
+  filter: invert(1) grayscale(0) !important;
 }
 
 /* ————— Brain Section ————— */

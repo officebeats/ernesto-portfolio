@@ -287,15 +287,16 @@ hr.divider {
 
 /* ————— Hero ————— */
 .hero {
-  padding-top: calc(64px + 3rem);
-  padding-bottom: 1rem;
+  padding-top: calc(64px + 1rem); /* Tighter top padding */
+  padding-bottom: 0;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 2.5rem; /* Tighter gap */
   align-items: center;
+  margin-bottom: 1.5rem; /* Space between grid and logo track */
 }
 
 @media (min-width: 860px) {
@@ -309,6 +310,7 @@ hr.divider {
   height: 280px;
   border-radius: 12px;
   object-fit: cover;
+  object-position: center 20%;
   border: 1px solid var(--border-strong);
   box-shadow:
     0 0 0 4px var(--accent-soft),
@@ -407,8 +409,10 @@ hr.divider {
 
 /* ————— Logo Bar (Marquee) ————— */
 .logo-bar {
-  padding-block: 2.5rem;
+  padding-block: 1rem; /* Much tighter vertical space */
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  background: var(--nav-bg);
   overflow: hidden;
   width: 100%;
 }
@@ -420,7 +424,7 @@ hr.divider {
   letter-spacing: 0.14em;
   color: var(--text-secondary);
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   opacity: 0.5;
 }
 
@@ -451,7 +455,7 @@ hr.divider {
   width: max-content;
   gap: clamp(2rem, 5vw, 4rem);
   padding-left: clamp(2rem, 5vw, 4rem); /* Ensure gap loop matches */
-  animation: marquee 35s linear infinite;
+  animation: marquee 35s linear infinite !important; /* Overrides OS reduced motion */
 }
 
 .logo-track:hover {

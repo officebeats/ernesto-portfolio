@@ -1,15 +1,26 @@
-<svg viewBox="0 0 180 40" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-  <g fill="currentColor">
-    <!-- R -->
-    <path d="M 0,0 H 26 C 36,0 44,7 44,18 C 44,24 41,29 36,32 L 48,40 H 30 L 21,34 H 14 V 40 H 0 V 0 Z M 14,12 V 22 H 24 C 28,22 30,20 30,17 C 30,14 28,12 24,12 H 14 Z" />
-    <path d="M 32,17 L 38,12 V 22 Z" /> <!-- Arrow detail inside R -->
+<svg viewBox="0 0 500 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .font-logo { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 900; letter-spacing: -1px; }
+  </style>
+  
+  <g transform="translate(10, 85)">
+    <!-- R (approximating Route's distinct arrow cut) -->
+    <!-- We build the R geometrically to match the logo. -->
+    <path d="M 10,-70 H 60 C 90,-70 100,-50 100,-35 C 100,-15 85,-5 65,-5 L 50,-5 M 10,-70 V 0 H 35 V -30 H 60 C 70,-30 75,-35 75,-45 C 75,-55 70,-60 60,-60 L 35,-60 Z" fill="currentColor" />
+    <path d="M 60,-30 L 90,-5 L 60,-5 Z" fill="currentColor" />
+    <polygon points="50,-55 65,-45 50,-35" fill="var(--bg, #ffffff)" /> <!-- The arrow cut -->
+    
     <!-- O -->
-    <path d="M 52,20 C 52,8 62,0 74,0 C 86,0 96,8 96,20 C 96,32 86,40 74,40 C 62,40 52,32 52,20 Z M 66,20 C 66,26 70,28 74,28 C 78,28 82,26 82,20 C 82,14 78,12 74,12 C 70,12 66,14 66,20 Z" />
+    <path d="M 170,-70 C 210,-70 230,-50 230,-35 C 230,-20 210,0 170,0 C 130,0 110,-20 110,-35 C 110,-50 130,-70 170,-70 Z M 170,-45 C 150,-45 145,-40 145,-35 C 145,-30 150,-25 170,-25 C 190,-25 195,-30 195,-35 C 195,-40 190,-45 170,-45 Z" fill="currentColor" />
+    
     <!-- U -->
-    <path d="M 104,0 V 24 C 104,34 110,40 119,40 C 128,40 134,34 134,24 V 0 H 120 V 24 C 120,28 118,29 119,29 C 120,29 118,28 118,24 V 0 H 104 Z" />
+    <path d="M 250,-70 V -15 C 250,0 280,5 295,5 C 310,5 340,0 340,-15 V -70 H 315 V -20 C 315,-10 300,-10 295,-10 C 290,-10 275,-10 275,-20 V -70 Z" fill="currentColor" />
+    
     <!-- T -->
-    <path d="M 140,0 H 170 V 10 H 162 V 40 H 148 V 10 H 140 V 0 Z" />
+    <path d="M 360,-70 H 430 V -50 H 410 V 0 H 380 V -50 H 360 Z" fill="currentColor" />
+    <polygon points="360,-70 380,-70 380,-50" fill="var(--bg, #ffffff)" />
+    
     <!-- E -->
-    <path d="M 176,0 H 202 V 10 H 190 V 15 H 200 V 25 H 190 V 30 H 202 V 40 H 176 V 0 Z" />
+    <path d="M 450,-70 H 520 V -50 H 480 V -42 H 510 V -28 H 480 V -20 H 520 V 0 H 450 Z" fill="currentColor" />
   </g>
 </svg>

@@ -289,14 +289,14 @@ hr.divider {
 
 /* ————— Hero ————— */
 .hero {
-  padding-top: calc(64px + 0.5rem); /* Extra tight top padding */
-  padding-bottom: 0;
+  padding-top: calc(56px + 0.5rem); /* Tighter top space */
+  padding-bottom: 1.5rem; /* Compact for fold */
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem; /* Tighter gap to bring elements up */
+  gap: 1.5rem;
   align-items: center;
   margin-bottom: 0;
 }
@@ -304,6 +304,14 @@ hr.divider {
 @media (min-width: 860px) {
   .hero-grid {
     grid-template-columns: 2fr 1fr; /* 66% text | 33% portrait+metrics */
+    align-items: center; /* Initial alignment */
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    align-items: end; /* Align items to bottom edge */
+    gap: 4rem;
   }
 }
 
@@ -339,16 +347,24 @@ hr.divider {
   font-size: clamp(3rem, 5.5vw, 5rem);
   margin-bottom: 0.75rem;
   letter-spacing: -0.04em;
+  line-height: 1; /* Exact single space */
 }
 
-.hero-subtitle {
+.hero-body {
   font-size: clamp(1.125rem, 2vw, 1.25rem);
   font-weight: 400;
   color: var(--text-secondary);
   line-height: 1.6;
-  max-width: 580px;
-  margin-bottom: 3rem;
+  max-width: 100%; /* Spans full column width */
+  margin-bottom: 2rem;
   letter-spacing: -0.01em;
+}
+
+.hero-mission-line {
+  display: block;
+  color: var(--accent); /* BCG Green */
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
 .hero-title .emphasis {
@@ -359,14 +375,6 @@ hr.divider {
   margin-top: 0.25rem;
   letter-spacing: -0.02em;
   white-space: nowrap; /* Force one line as requested */
-}
-
-.hero-body {
-  font-size: 1.0625rem;
-  color: var(--text-secondary);
-  max-width: 520px;
-  margin-bottom: 1.25rem;
-  line-height: 1.6;
 }
 
 .hero-actions {

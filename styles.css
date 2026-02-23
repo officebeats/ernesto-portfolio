@@ -303,7 +303,7 @@ hr.divider {
 
 @media (min-width: 860px) {
   .hero-grid {
-    grid-template-columns: 1.8fr 1fr; /* Wider left column for headline */
+    grid-template-columns: 2fr 1fr; /* 66% text | 33% portrait+metrics */
   }
 }
 

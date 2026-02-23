@@ -12,8 +12,8 @@
   --bg-card: #f5f5f5;
   --text: #000000;
   --text-secondary: #5e5e5e;
-  --accent: #005a3c; /* BCG Green */
-  --accent-soft: rgba(0, 90, 60, 0.05);
+  --accent: #009270; /* BCG Green */
+  --accent-soft: rgba(0, 146, 112, 0.05);
   --border: rgba(0, 0, 0, 0.08);
   --border-strong: rgba(0, 0, 0, 0.15);
   --nav-bg: rgba(255, 255, 255, 0.85);
@@ -43,8 +43,8 @@
   --bg-card: #141414;
   --text: #ffffff;
   --text-secondary: #888888;
-  --accent: #1ab374;
-  --accent-soft: rgba(26, 179, 116, 0.1);
+  --accent: #00d28d;
+  --accent-soft: rgba(0, 210, 141, 0.1);
   --border: rgba(255, 255, 255, 0.1);
   --border-strong: rgba(255, 255, 255, 0.2);
   --nav-bg: rgba(0, 0, 0, 0.85);
@@ -147,11 +147,12 @@ hr.divider {
 
 .section-heading {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2.25rem, 3.5vw, 3rem);
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.05;
   margin-bottom: 1.5rem;
+  color: var(--accent);
 }
 
 /* ————— Nav ————— */
@@ -172,7 +173,7 @@ hr.divider {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 56px; /* Compressed for fold visibility */
 }
 
 .nav-logo {
@@ -233,15 +234,16 @@ hr.divider {
   font-size: 0.8125rem;
   font-weight: 600;
   padding: 0.5rem 1.25rem;
-  border: 1px solid var(--border-strong);
+  background: var(--accent);
+  color: #ffffff;
+  border: 1px solid var(--accent);
   border-radius: 8px;
   transition: all var(--transition);
 }
 
 .nav-cta:hover {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
+  background: transparent;
+  color: var(--accent);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
@@ -294,14 +296,14 @@ hr.divider {
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 1.5rem; /* Tighter gap to bring elements up */
   align-items: center;
-  margin-bottom: 0.75rem; /* Tighter space between grid and logo track */
+  margin-bottom: 0;
 }
 
 @media (min-width: 860px) {
   .hero-grid {
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.8fr 1fr; /* Wider left column for headline */
   }
 }
 
@@ -335,9 +337,7 @@ hr.divider {
 .hero-content h1 {
   font-family: var(--font-display);
   font-size: clamp(3rem, 5.5vw, 5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   letter-spacing: -0.04em;
 }
 
@@ -351,49 +351,22 @@ hr.divider {
   letter-spacing: -0.01em;
 }
 
-/* ————— Massive Typography Ribbon ————— */
-.hero-bottom-ribbon {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0 4rem 0;
-  overflow: hidden;
-  user-select: none;
-}
-
-.hero-massive-text {
-  font-size: clamp(3.5rem, 11vw, 20rem);
+.hero-title .emphasis {
+  display: block;
   font-weight: 800;
   text-transform: uppercase;
-  white-space: nowrap;
-  line-height: 0.85;
+  color: var(--accent);
+  margin-top: 0.25rem;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--accent), #10b981);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-massive-text .text-stroke {
-  -webkit-text-stroke: 2px var(--accent);
-  -webkit-text-fill-color: transparent;
-  background: none;
-  opacity: 0.8;
-  margin: 0 0.15em;
+  white-space: nowrap; /* Force one line as requested */
 }
 
 .hero-body {
   font-size: 1.0625rem;
   color: var(--text-secondary);
   max-width: 520px;
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
 }
 
 .hero-actions {
@@ -414,15 +387,14 @@ hr.divider {
 }
 
 .btn-primary {
-  background: var(--text);
-  color: var(--bg);
+  background: var(--accent);
+  color: #ffffff;
   box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-  color: var(--bg);
   opacity: 0.9;
 }
 

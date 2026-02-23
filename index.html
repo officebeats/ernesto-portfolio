@@ -573,15 +573,34 @@
     <script>
       function openLightbox(src) {
         var lb = document.getElementById('img-lightbox');
+        document.getElementById('lightbox-video').style.display = 'none';
+        document.getElementById('lightbox-video').pause();
         var img = document.getElementById('lightbox-img');
+        img.style.display = 'block';
         img.src = src;
         lb.style.display = 'flex';
         document.body.style.overflow = 'hidden';
       }
+      
+      function openVideoLightbox(src) {
+        var lb = document.getElementById('img-lightbox');
+        document.getElementById('lightbox-img').style.display = 'none';
+        var vid = document.getElementById('lightbox-video');
+        vid.style.display = 'block';
+        vid.src = src;
+        vid.play();
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
       function closeLightbox() {
         var lb = document.getElementById('img-lightbox');
         lb.style.display = 'none';
         document.body.style.overflow = '';
+        var vid = document.getElementById('lightbox-video');
+        vid.pause();
+        vid.src = '';
+        document.getElementById('lightbox-img').src = '';
       }
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeLightbox();

@@ -32,7 +32,7 @@
 
   --container: 1200px;
   --gap: 2rem;
-  --section-pad: clamp(2.5rem, 6vh, 4rem);
+  --section-pad: 3rem;
   --transition: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -311,7 +311,7 @@ hr.divider {
 @media (min-width: 1024px) {
   .hero-grid {
     align-items: end; /* Align items to bottom edge */
-    gap: 4rem;
+    gap: 2rem;
   }
 }
 
@@ -626,7 +626,7 @@ hr.divider {
 @media (min-width: 768px) {
   .about-grid {
     grid-template-columns: 4fr 8fr; /* Unified 4/8 ratio */
-    gap: 5rem;
+    gap: 2.5rem;
   }
 }
 
@@ -808,7 +808,7 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
 @media (min-width: 768px) {
   .credentials-grid {
     grid-template-columns: 4fr 8fr;
-    gap: 5rem;
+    gap: 2.5rem;
   }
 }
 
@@ -849,7 +849,7 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
 @media (min-width: 768px) {
   .experience-grid {
     grid-template-columns: 4fr 8fr;
-    gap: 5rem;
+    gap: 2.5rem;
   }
 }
 

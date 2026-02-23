@@ -588,9 +588,16 @@
         var vid = document.getElementById('lightbox-video');
         vid.style.display = 'block';
         vid.src = src;
-        vid.play();
         lb.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+        
+        // Safely play video so exceptions (e.g., Chrome autoplay blocks) don't break the UI
+        var playPromise = vid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function(error) {
+            console.log('Video autoplay blocked or delayed by browser.', error);
+          });
+        }
       }
 
       function closeLightbox() {

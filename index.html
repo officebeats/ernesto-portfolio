@@ -420,6 +420,7 @@
       <div id="img-lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" src="" alt="Certificate" onclick="event.stopPropagation()" />
+        <video id="lightbox-video" src="" controls style="display:none; max-height:90vh; max-width:90vw; border-radius:12px; z-index:1001; position:relative;" onclick="event.stopPropagation()"></video>
       </div>
 
       <!-- Credentials -->
@@ -571,6 +572,35 @@
 
     <script src="app.js"></script>
     <script>
+      function openLightbox(src) {
+        var lb = document.getElementById('img-lightbox');
+        document.getElementById('lightbox-video').style.display = 'none';
+        document.getElementById('lightbox-video').pause();
+        var img = document.getElementById('lightbox-img');
+        img.style.display = 'block';
+        img.src = src;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function openVideoLightbox(src) {
+        var lb = document.getElementById('img-lightbox');
+        document.getElementById('lightbox-img').style.display = 'none';
+        var vid = document.getElementById('lightbox-video');
+        vid.style.display = 'block';
+        vid.src = src;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // Safely play video so exceptions (e.g., Chrome autoplay blocks) don't break the UI
+        var playPromise = vid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function(error) {
+            console.log('Video autoplay blocked or delayed by browser.', error);
+          });
+        }
+      }
+
       function openLightbox(src) {
         var lb = document.getElementById('img-lightbox');
         document.getElementById('lightbox-video').style.display = 'none';

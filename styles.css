@@ -31,8 +31,8 @@
     Arial, sans-serif;
 
   --container: 1200px;
-  --gap: 2rem;
-  --section-pad: 3rem;
+  --gap: 1.5rem;
+  --section-pad: 1.75rem;
   --transition: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -142,7 +142,7 @@ hr.divider {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--accent);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .section-heading {
@@ -151,7 +151,7 @@ hr.divider {
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.05;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   color: var(--accent);
 }
 
@@ -290,7 +290,7 @@ hr.divider {
 /* ————— Hero ————— */
 .hero {
   padding-top: calc(56px + 0.5rem); /* Tighter top space */
-  padding-bottom: 1.5rem; /* Compact for fold */
+  padding-bottom: 0.5rem; /* Compact for fold */
 }
 
 .hero-grid {
@@ -356,7 +356,7 @@ hr.divider {
   color: var(--text-secondary);
   line-height: 1.6;
   max-width: 100%; /* Spans full column width */
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   letter-spacing: -0.01em;
 }
 
@@ -364,7 +364,7 @@ hr.divider {
   display: block;
   color: var(--accent); /* BCG Green */
   font-weight: 600;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .hero-title .emphasis {
@@ -591,7 +591,7 @@ hr.divider {
 
 .metric {
   background: var(--bg-card);
-  padding: 1.75rem 1.5rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -658,7 +658,7 @@ hr.divider {
 
 .domain-card {
   background: var(--bg);
-  padding: 1.75rem; /* Compact for density */
+  padding: 1.25rem; /* Compact for density */
   transition: all var(--transition);
   position: relative;
   display: flex;
@@ -710,7 +710,7 @@ hr.divider {
   font-size: 0.9375rem;
   color: var(--text-secondary);
   line-height: 1.65;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   flex-grow: 1;
 }
 
@@ -722,7 +722,7 @@ hr.divider {
   gap: 1.25rem 2rem; /* Vertical 1.25rem, Horizontal 2rem gap */
   margin-top: auto;
   border-top: 1px solid var(--border);
-  padding-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 .domain-logo-item {
@@ -818,7 +818,7 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
 }
 
 .cred-item {
-  padding-block: 1rem; /* Compact */
+  padding-block: 0.5rem; /* Compact */
   border-top: 1px solid var(--border);
   transition: all var(--transition);
 }
@@ -857,7 +857,7 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 1.5rem;
-  padding-block: 1rem;
+  padding-block: 0.65rem;
   border-top: 1px solid var(--border);
   transition: all var(--transition);
 }

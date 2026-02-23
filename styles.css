@@ -30,9 +30,9 @@
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
 
-  --container: 1080px;
+  --container: 1200px;
   --gap: 2rem;
-  --section-pad: clamp(5rem, 10vh, 8rem);
+  --section-pad: clamp(4rem, 8vh, 6rem);
   --transition: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -287,21 +287,21 @@ hr.divider {
 
 /* ————— Hero ————— */
 .hero {
-  padding-top: calc(64px + 1rem); /* Tighter top padding */
+  padding-top: calc(64px + 0.5rem); /* Extra tight top padding */
   padding-bottom: 0;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem; /* Tighter gap */
+  gap: 2.5rem;
   align-items: center;
-  margin-bottom: 1.5rem; /* Space between grid and logo track */
+  margin-bottom: 0.75rem; /* Tighter space between grid and logo track */
 }
 
 @media (min-width: 860px) {
   .hero-grid {
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.5fr 1fr;
   }
 }
 
@@ -409,7 +409,7 @@ hr.divider {
 
 /* ————— Logo Bar (Marquee) ————— */
 .logo-bar {
-  padding-block: 1rem; /* Much tighter vertical space */
+  padding-block: 0.75rem; /* Extra tight vertical space */
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--nav-bg);

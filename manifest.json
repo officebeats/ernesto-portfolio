@@ -1,0 +1,17 @@
+{
+  "name": "Ernesto Rodriguez | Product Leader",
+  "short_name": "ErnestoR",
+  "description": "Product Leader &middot; AI &middot; Digital Transformation",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#009270",
+  "icons": [
+    {
+      "src": "./logos/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

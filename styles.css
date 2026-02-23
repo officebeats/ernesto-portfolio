@@ -81,6 +81,7 @@ body {
   transition:
     background var(--transition),
     color var(--transition);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 img {
@@ -391,6 +392,7 @@ hr.divider {
   font-weight: 600;
   padding: 0.75rem 1.5rem;
   border-radius: 10px;
+  min-height: 44px; /* WCAG AAA Touch Target */
   transition: all var(--transition);
 }
 

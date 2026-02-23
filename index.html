@@ -2,14 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Ernesto Rodriguez — Product Leader, AI & Digital Transformation
-    </title>
-    <meta
-      name="description"
-      content="Ernesto Rodriguez is a Chicago-based product leader and former BCG consultant with 10+ years launching products across healthcare, fintech, retail, and SaaS."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <title>Ernesto Rodriguez — Product Leader, AI & Digital Transformation</title>
+    <!-- PWA Setup -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#009270" />
+    <link rel="apple-touch-icon" href="logos/pwa-icon-512.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description" content="Ernesto Rodriguez — Product Leader, AI & Digital Transformation. Exploring sound design, AI PM, and Spatial Computing." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -642,6 +643,15 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeLightbox();
       });
+
+      // PWA Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registered.', reg))
+            .catch(err => console.log('Service Worker registration failed.', err));
+        });
+      }
     </script>
   </body>
 </html>

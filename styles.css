@@ -1076,6 +1076,26 @@ body {
 
 .lightbox-close:hover { opacity: 0.7; }
 
+
+
+/* Certificate view icon */
+.cred-item[onclick] {
+  position: relative;
+}
+
+.cert-icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.cred-item[onclick]:hover .cert-icon {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
 /* ═══════════ Footer — BCG Green ═══════════ */
 .footer {
   background-color: #009270;
@@ -1095,4 +1115,47 @@ body {
 
 .footer .ag-logo {
   fill: #fff;
+}
+
+.footer {
+  padding: 1.5rem 0 1rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-brand h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.footer-brand p {
+  font-size: 0.8rem;
+  margin: 0.15rem 0 0;
+  opacity: 0.8;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.8rem;
+}
+
+.footer-bottom {
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.footer-bottom p {
+  margin: 0;
 }

@@ -145,9 +145,7 @@
               >
             </div>
             <div class="logo-item">
-              <img src="logos/levelex-new.svg" alt="Level Ex" /><span
-                >Level Ex</span
-              >
+              <img src="logos/levelex-new.svg" alt="LevelEx Games" /><span>LevelEx Games</span>
             </div>
             <div class="logo-item">
               <img src="logos/allscripts.png" alt="Allscripts" /><span
@@ -193,9 +191,7 @@
               >
             </div>
             <div class="logo-item">
-              <img src="logos/levelex-new.svg" alt="Level Ex" /><span
-                >Level Ex</span
-              >
+              <img src="logos/levelex-new.svg" alt="LevelEx Games" /><span>LevelEx Games</span>
             </div>
             <div class="logo-item">
               <img src="logos/allscripts.png" alt="Allscripts" /><span
@@ -324,26 +320,18 @@
                 compliant data systems.
               </p>
               <div class="domain-logos">
-                <img
-                  src="logos/ascension.png"
-                  alt="Ascension"
-                  title="Ascension"
-                />
-                <img
-                  src="logos/patientpoint.png"
-                  alt="PatientPoint"
-                  title="PatientPoint"
-                />
-                <img
-                  src="logos/levelex-games.svg"
-                  alt="Level Ex Games"
-                  title="Level Ex Games"
-                />
-                <img
-                  src="logos/allscripts.png"
-                  alt="Allscripts"
-                  title="Allscripts"
-                />
+                <div class="domain-logo-item">
+                  <img src="logos/ascension.png" alt="Ascension" /><span>Ascension</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/patientpoint.png" alt="PatientPoint" /><span>PatientPoint</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/levelex-games.svg" alt="LevelEx Games" /><span>LevelEx Games</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/allscripts.png" alt="Allscripts" /><span>Allscripts</span>
+                </div>
               </div>
             </article>
             <article class="domain-card">
@@ -354,8 +342,12 @@
                 architectures, and AI-powered workflow automation.
               </p>
               <div class="domain-logos">
-                <img src="logos/bcg.png" alt="BCG" title="BCG" />
-                <img src="logos/route.png" alt="Route" title="Route" />
+                <div class="domain-logo-item">
+                  <img src="logos/bcg.png" alt="BCG" /><span>BCG</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/route.png" alt="Route" /><span>Route</span>
+                </div>
               </div>
             </article>
             <article class="domain-card">
@@ -367,20 +359,18 @@
                 locations.
               </p>
               <div class="domain-logos">
-                <img
-                  src="logos/fetchrewards.png"
-                  alt="Fetch Rewards"
-                  title="Fetch Rewards"
-                  class="invert-on-light"
-                />
-                <img
-                  src="logos/coolerscreens.png"
-                  alt="Cooler Screens"
-                  title="Cooler Screens"
-                  class="invert-on-light"
-                />
-                <img src="logos/redbox.png" alt="Redbox" title="Redbox" />
-                <img src="logos/groupon.png" alt="Groupon" title="Groupon" />
+                <div class="domain-logo-item">
+                  <img src="logos/fetchrewards.png" alt="Fetch Rewards" class="invert-on-light" /><span>Fetch Rewards</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/coolerscreens.png" alt="Cooler Screens" class="invert-on-light" /><span>Cooler Screens</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/redbox.png" alt="Redbox" /><span>Redbox</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/groupon.png" alt="Groupon" /><span>Groupon</span>
+                </div>
               </div>
             </article>
             <article class="domain-card">
@@ -391,22 +381,36 @@
                 social features, and user retention optimization.
               </p>
               <div class="domain-logos">
-                <img
-                  src="logos/fetchrewards.png"
-                  alt="Fetch Rewards"
-                  title="Fetch Rewards"
-                  class="invert-on-light"
-                />
-                <img
-                  src="logos/levelex-games.svg"
-                  alt="Level Ex Games"
-                  title="Level Ex Games"
-                />
+                <div class="domain-logo-item">
+                  <img src="logos/levelex-games.svg" alt="LevelEx Games" /><span>LevelEx Games</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/patientpoint.png" alt="PatientPoint" /><span>PatientPoint</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/fetchrewards.png" alt="Fetch Rewards" class="invert-on-light" /><span>Fetch Rewards</span>
+                </div>
+                <div class="domain-logo-item">
+                  <img src="logos/coolerscreens.png" alt="Cooler Screens" class="invert-on-light" /><span>Cooler Screens</span>
+                </div>
               </div>
             </article>
           </div>
         </div>
       </section>
+
+      <!-- Universal Modal Structure -->
+      <div class="modal" id="universal-modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h3 id="modal-title"></h3>
+          <div id="modal-image-container" style="display: none;"><img id="modal-image" src="" alt="" /></div>
+          <div id="modal-body"></div>
+          <p id="modal-link-container" style="display: none;">
+            <a id="modal-link" href="#" target="_blank" rel="noopener" class="link-arrow"></a>
+          </p>
+        </div>
+      </div>
 
       <!-- ═══════════ Credentials ═══════════ -->
       <section id="credentials" class="section section-dark">
@@ -419,16 +423,37 @@
           </div>
           <div class="cred-list">
             <div class="cred-item">
-              <h3>Gen AI Product Management Specialization</h3>
-              <p>Microsoft · 2025</p>
+              <a href="#" class="modal-trigger" data-modal-target="universal-modal"
+                 data-modal-title="Gen AI Product Management Specialization"
+                 data-modal-body="Earned this specialization from Microsoft in 2025. This program focused on applying generative AI to product management, covering topics like AI strategy, ethical considerations, and building AI-powered products."
+                 data-modal-link="https://www.microsoft.com/en-us/ai/ai-product-management-specialization"
+                 data-modal-link-text="Learn more about this specialization →"
+                 data-modal-image="logos/ai-pm-cert.png">
+                <h3>Gen AI Product Management Specialization</h3>
+                <p>Microsoft · 2025</p>
+              </a>
             </div>
             <div class="cred-item">
-              <h3>GV Design Sprint Certified</h3>
-              <p>AJ & Smart (Jake Knapp) · 2019</p>
+              <a href="#" class="modal-trigger" data-modal-target="universal-modal"
+                 data-modal-title="GV Design Sprint Certified"
+                 data-modal-body="Certified in the GV Design Sprint methodology by AJ & Smart (Jake Knapp) in 2019. This certification provided hands-on experience in running 5-day design sprints to rapidly solve big challenges and test new ideas."
+                 data-modal-link="https://www.thesprintbook.com/"
+                 data-modal-link-text="Learn more about Design Sprints →"
+                 data-modal-image="logos/design-sprint-cert.png">
+                <h3>GV Design Sprint Certified</h3>
+                <p>AJ & Smart (Jake Knapp) · 2019</p>
+              </a>
             </div>
             <div class="cred-item">
-              <h3>Certified Scrum Master</h3>
-              <p>3Back · 2015</p>
+              <a href="#" class="modal-trigger" data-modal-target="universal-modal"
+                 data-modal-title="Certified Scrum Master"
+                 data-modal-body="Earned my Certified Scrum Master (CSM) certification from 3Back in 2015. This certification provided a deep understanding of Scrum principles and practices, enabling me to effectively facilitate Scrum teams and deliver value in agile environments. The training covered topics such as Scrum roles, events, artifacts, and scaling Scrum. It emphasized servant leadership and fostering self-organizing, cross-functional teams."
+                 data-modal-link="https://www.scrumalliance.org/certifications/practitioners/csm-certification"
+                 data-modal-link-text="Learn more about CSM →"
+                 data-modal-image="logos/csm-cert.png">
+                <h3>Certified Scrum Master</h3>
+                <p>3Back · 2015</p>
+              </a>
             </div>
           </div>
         </div>
@@ -560,5 +585,76 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('universal-modal');
+        const closeButton = modal.querySelector('.close-button');
+        const modalTriggers = document.querySelectorAll('.modal-trigger');
+
+        function openModal(title, body, imageUrl, linkUrl, linkText) {
+          document.getElementById('modal-title').textContent = title;
+          document.getElementById('modal-body').innerHTML = body;
+
+          const modalImageContainer = document.getElementById('modal-image-container');
+          const modalImage = document.getElementById('modal-image');
+          if (imageUrl) {
+            modalImage.src = imageUrl;
+            modalImage.alt = title;
+            modalImageContainer.style.display = 'block';
+          } else {
+            modalImageContainer.style.display = 'none';
+            modalImage.src = '';
+            modalImage.alt = '';
+          }
+
+          const modalLinkContainer = document.getElementById('modal-link-container');
+          const modalLink = document.getElementById('modal-link');
+          if (linkUrl && linkText) {
+            modalLink.href = linkUrl;
+            modalLink.textContent = linkText;
+            modalLinkContainer.style.display = 'block';
+          } else {
+            modalLinkContainer.style.display = 'none';
+            modalLink.href = '#';
+            modalLink.textContent = '';
+          }
+
+          modal.style.display = 'flex';
+          document.body.classList.add('modal-open'); // Prevent scrolling
+        }
+
+        function closeModal() {
+          modal.style.display = 'none';
+          document.body.classList.remove('modal-open'); // Re-enable scrolling
+        }
+
+        modalTriggers.forEach(trigger => {
+          trigger.addEventListener('click', function(event) {
+            event.preventDefault();
+            const title = this.dataset.modalTitle;
+            const body = this.dataset.modalBody;
+            const imageUrl = this.dataset.modalImage; // Optional
+            const linkUrl = this.dataset.modalLink; // Optional
+            const linkText = this.dataset.modalLinkText; // Optional
+            openModal(title, body, imageUrl, linkUrl, linkText);
+          });
+        });
+
+        closeButton.addEventListener('click', closeModal);
+
+        window.addEventListener('click', function(event) {
+          if (event.target == modal) {
+            closeModal();
+          }
+        });
+
+        // Optional: Close with Escape key
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && modal.style.display === 'flex') {
+            closeModal();
+          }
+        });
+      });
+    </script>
   </body>
 </html>

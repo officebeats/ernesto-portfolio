@@ -12,12 +12,21 @@ test.describe("Portfolio Hero Layout", () => {
     const emphasis = page.locator(".hero-title .emphasis");
     const box = await emphasis.boundingBox();
 
-    // Check height to ensure it's roughly one line (allowing for padding/line-height)
-    // A single line of text in this font-size is usually ~80-120px depending on scale
-    // If it wraps, height will roughly double.
+    // Check height to ensure it's roughly one line
     if (box) {
       expect(box.height).toBeLessThan(140);
     }
+
+    // Check line-height
+    const lineHeight = await emphasis.evaluate(
+      (el) => getComputedStyle(el).lineHeight,
+    );
+    const fontSize = await emphasis.evaluate((el) =>
+      parseFloat(getComputedStyle(el).fontSize),
+    );
+    const lhValue = parseFloat(lineHeight);
+    // User requested "single space". 1.1 or less is a safe check for CSS line-height: 1.0;
+    expect(lhValue / fontSize).toBeLessThanOrEqual(1.1);
   });
 
   test("logo bar is visible above the fold (768px)", async ({ page }) => {
@@ -63,6 +72,19 @@ test.describe("Portfolio Hero Layout", () => {
     // 2 / 1 = 2.0.
     expect(ratio).toBeGreaterThan(1.8);
     expect(ratio).toBeLessThan(2.2);
+  });
+
+  test("hero body width matches headline width", async ({ page }) => {
+    const title = page.locator(".hero-title");
+    const body = page.locator(".hero-body");
+
+    const titleBox = await title.boundingBox();
+    const bodyBox = await body.boundingBox();
+
+    if (titleBox && bodyBox) {
+      // Body should fill the column, so it should be at least as wide as the title
+      expect(bodyBox.width).toBeGreaterThanOrEqual(titleBox.width - 10);
+    }
   });
 
   test("hero actions bottom-edge aligns with metrics grid bottom-edge", async ({

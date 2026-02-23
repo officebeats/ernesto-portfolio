@@ -1,0 +1,21 @@
+<svg viewBox="0 0 160 30" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(5, 4)">
+    <!-- L -->
+    <path d="M 0 0 L 0 22 L 13 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+    <!-- E 1 -->
+    <path d="M 28 2 L 41 2 M 28 11 L 41 11 M 28 20 L 41 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+    <!-- V -->
+    <path d="M 54 0 L 62 22 L 70 0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter" />
+    <!-- E 2 -->
+    <path d="M 85 2 L 98 2 M 85 11 L 98 11 M 85 20 L 98 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+    <!-- L 2 -->
+    <path d="M 115 0 L 115 22 L 128 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+  </g>
+
+  <g transform="translate(142, 4)">
+    <!-- E 3 -->
+    <path d="M 0 2 L 13 2 M 0 11 L 13 11 M 0 20 L 13 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+    <!-- X -->
+    <path d="M 31 0 L 46 22 M 46 0 L 31 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+  </g>
+</svg>

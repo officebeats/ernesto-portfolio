@@ -1099,18 +1099,18 @@ body {
 /* ═══════════ Footer — BCG Green ═══════════ */
 .footer {
   background-color: #009270;
-  color: #fff;
+  color: #000;
 }
 
 .footer h2,
 .footer p,
 .footer a,
 .footer .footer-attribution {
-  color: #fff;
+  color: #000;
 }
 
 .footer a:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .footer .ag-logo {
@@ -1118,7 +1118,7 @@ body {
 }
 
 .footer {
-  padding: 1.5rem 0 1rem;
+  padding: 0.75rem 0 0.5rem;
 }
 
 .footer-inner {
@@ -1146,9 +1146,9 @@ body {
 }
 
 .footer-bottom {
-  padding-top: 0.75rem;
-  margin-top: 0.75rem;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 0.4rem;
+  margin-top: 0.4rem;
+  border-top: 1px solid rgba(0,0,0,0.15);
   display: flex;
   justify-content: space-between;
   align-items: center;

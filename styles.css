@@ -525,14 +525,14 @@ hr.divider {
 .foundation-content p {
   color: var(--text-secondary);
   font-size: 1.0625rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   max-width: 560px;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 .foundation-quote {
-  margin: 1.25rem 0;
-  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
   border-left: 3px solid var(--accent);
   background: var(--quote-bg);
   border-radius: 0 12px 12px 0;
@@ -820,7 +820,7 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
 }
 
 .cred-item {
-  padding-block: 0.5rem; /* Compact */
+  padding-block: 0.4rem; /* Surgical compact */
   border-top: 1px solid var(--border);
   transition: all var(--transition);
 }
@@ -845,7 +845,7 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
 .experience-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -859,7 +859,7 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 1.5rem;
-  padding-block: 0.65rem;
+  padding-block: 0.45rem;
   border-top: 1px solid var(--border);
   transition: all var(--transition);
 }
@@ -881,13 +881,13 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
 .exp-item h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .exp-item p {
   font-size: 0.9375rem;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.55;
 }
 
 /* ————— Footer ————— */
@@ -1102,66 +1102,87 @@ body {
   transform: scale(1.15);
 }
 
-/* ═══════════ Footer — BCG Green ═══════════ */
+/* ═══════════ Footer — BCG Green Polish ═══════════ */
 .footer {
   background-color: #009270;
-  color: #000;
+  color: #fff; /* White for legibility */
+  padding: 0.65rem 0; /* Ultra compact */
+  border-top: none;
 }
 
 .footer h2,
 .footer p,
 .footer a,
 .footer .footer-attribution {
-  color: #000;
+  color: #fff; /* White for legibility */
 }
 
 .footer a:hover {
-  opacity: 0.6;
+  opacity: 0.7;
+  color: #fff;
 }
 
 .footer .ag-logo {
   fill: #fff;
-}
-
-.footer {
-  padding: 0.5rem 0 0.35rem;
+  opacity: 0.9;
 }
 
 .footer-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .footer-brand h2 {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   margin: 0;
+  line-height: 1;
 }
 
 .footer-brand p {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   margin: 0.15rem 0 0;
   opacity: 0.8;
 }
 
-.footer-links {
+.footer-meta {
   display: flex;
-  gap: 1.25rem;
-  font-size: 0.8rem;
-}
-
-.footer-bottom {
-  padding-top: 0;
-  margin-top: 0;
-  border-top: none;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 1.5rem;
   font-size: 0.75rem;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-.footer-bottom p {
-  margin: 0;
+.footer-attribution {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer-socials svg {
+  transition: transform 0.2s ease;
+}
+
+.footer-socials a:hover svg {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  .footer-meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 }

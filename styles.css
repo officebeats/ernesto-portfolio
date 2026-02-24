@@ -659,7 +659,7 @@ hr.divider {
 }
 
 @media (min-width: 960px) {
-  .domain-grid {
+  #hobbies .domain-grid {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }

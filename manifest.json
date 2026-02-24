@@ -13,5 +13,19 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Career Experience",
+      "short_name": "Experience",
+      "description": "Jump directly to my career history and achievements.",
+      "url": "./index.html#experience"
+    },
+    {
+      "name": "View Credentials",
+      "short_name": "Credentials",
+      "description": "See my certifications and formal training.",
+      "url": "./index.html#credentials"
+    }
   ]
 }

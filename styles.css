@@ -81,7 +81,21 @@ body {
   transition:
     background var(--transition),
     color var(--transition);
+
+  /* Ensure content doesn't bleed under OS bottom bars */
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* FAANG Tactile Active States (Haptics) */
+a:active,
+button:active,
+.btn:active,
+.domain-card:active {
+  transform: scale(0.97) !important;
+  opacity: 0.9 !important;
+  transition:
+    transform 0.05s ease-out,
+    opacity 0.05s ease-out;
 }
 
 img {
@@ -168,6 +182,9 @@ hr.divider {
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
   border-bottom: 1px solid var(--border);
   transition: background var(--transition);
+  /* Safe Area compliance for iPhone Notches in Landscape */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .nav-inner {
@@ -175,6 +192,7 @@ hr.divider {
   align-items: center;
   justify-content: space-between;
   height: 56px; /* Compressed for fold visibility */
+  gap: 0.75rem; /* Gap for tight mobile grouping */
 }
 
 .nav-logo {
@@ -249,6 +267,117 @@ hr.divider {
   box-shadow: var(--shadow-md);
 }
 
+/* ————— Mobile Menu Overlay (FAANG Grade) ————— */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .nav-cta {
+    display: none;
+  }
+}
+
+.mobile-cta {
+  color: var(--accent) !important;
+  margin-top: 0.5rem;
+}
+
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  color: var(--text);
+  cursor: pointer;
+  z-index: 2001; /* Above the overlay */
+  min-width: 44px; /* WCAG AAA Touch Target */
+  min-height: 44px; /* WCAG AAA Touch Target */
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1500;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4rem);
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+  padding-top: calc(56px + env(safe-area-inset-top)); /* Clear nav bar */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Fallback blur for transparent backgrounds if desired, but solid bg is safer */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+.mobile-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-link {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Staggered Entrance Animation */
+.mobile-overlay.is-active .mobile-link,
+.mobile-overlay.is-active .mobile-overlay-footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(0.05s * var(--i));
+}
+
+.mobile-overlay-footer {
+  margin-top: auto;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* ————— Theme Toggle ————— */
 .theme-toggle {
   background: none;
@@ -265,6 +394,8 @@ hr.divider {
   flex-shrink: 0;
   font-size: 1rem;
   line-height: 1;
+  min-width: 44px; /* WCAG AAA Touch Target */
+  min-height: 44px; /* WCAG AAA Touch Target */
 }
 
 .theme-toggle:hover {
@@ -345,7 +476,7 @@ hr.divider {
 
 .hero-content h1 {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
   margin-bottom: 0.75rem;
   letter-spacing: -0.04em;
   line-height: 1; /* Exact single space */
@@ -375,7 +506,13 @@ hr.divider {
   color: var(--accent);
   margin-top: 0.25rem;
   letter-spacing: -0.02em;
-  white-space: nowrap; /* Force one line as requested */
+  white-space: nowrap; /* Desktop: Force one line */
+}
+
+@media (max-width: 480px) {
+  .hero-title .emphasis {
+    white-space: normal; /* iPhone: Allow wrap to prevent viewport blowout */
+  }
 }
 
 .hero-actions {
@@ -424,12 +561,7 @@ hr.divider {
   border-bottom: 1px solid var(--border);
   background: var(--nav-bg);
   overflow: hidden;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
 }
 
 .logo-bar-label {
@@ -598,6 +730,9 @@ hr.divider {
   flex-direction: column;
   gap: 0.35rem;
   transition: background var(--transition);
+  min-width: 0; /* Prevent flex blowout */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .metric:hover {

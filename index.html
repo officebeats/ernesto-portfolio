@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ULTRATHINK Canonical Edge Routing Enforcer -->
+    <script>
+      (function() {
+        var host = window.location.hostname;
+        var isLocal = host === 'localhost' || host === '127.0.0.1' || host.includes('github.io');
+        if (!isLocal) {
+          var targetProtocol = 'https:';
+          var targetHost = 'ernest0.com';
+          if (window.location.protocol !== targetProtocol || host !== targetHost) {
+            window.location.replace(targetProtocol + '//' + targetHost + window.location.pathname + window.location.search + window.location.hash);
+          }
+        }
+      })();
+    </script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <link rel="canonical" href="https://ernest0.com/" />
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <title>Ernesto Rodriguez — Product Leader, AI & Digital Transformation</title>
@@ -33,24 +50,43 @@
           <a href="#writing">Publications</a>
           <a href="#hobbies">Pursuits</a>
         </nav>
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <span class="icon-moon" aria-hidden="true">☾</span>
-          <span class="icon-sun" aria-hidden="true">☼</span>
-        </button>
-        <a
-          href="Ernesto_Rodriguez_Resume.pdf"
-          target="_blank"
-          rel="noopener"
-          class="nav-cta"
-          >Resume
-          <span style="font-size: 1.1em; vertical-align: -1px; margin-left: 2px"
-            >↓</span
-          ></a
-        >
+        <div class="nav-actions">
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <span class="icon-moon" aria-hidden="true">☾</span>
+            <span class="icon-sun" aria-hidden="true">☼</span>
+          </button>
+          <a
+            href="Ernesto_Rodriguez_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="nav-cta"
+            >Resume
+            <span style="font-size: 1.1em; vertical-align: -1px; margin-left: 2px"
+              >↓</span
+            ></a
+          >
+          <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
       </div>
     </header>
 
-    <main>
+    <!-- Mobile Overlay Menu -->
+    <div id="mobile-menu" class="mobile-overlay" aria-hidden="true">
+      <nav class="mobile-nav-links">
+        <a href="#experience" class="mobile-link" style="--i:0;">Experience</a>
+        <a href="#domains" class="mobile-link" style="--i:1;">Domains</a>
+        <a href="#credentials" class="mobile-link" style="--i:2;">Credentials</a>
+        <a href="#writing" class="mobile-link" style="--i:3;">Publications</a>
+        <a href="#hobbies" class="mobile-link" style="--i:4;">Pursuits</a>
+        <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="mobile-link mobile-cta" style="--i:5;">Resume <span style="font-size: 1.1em; vertical-align: -2px; margin-left: 2px">↓</span></a>
+      </nav>
+      <div class="mobile-overlay-footer" style="--i:6;">
+        <p>Ernesto Rodriguez &middot; Product Leader</p>
+      </div>
+    </div>    <main>
       <!-- ═══════════ Hero ═══════════ -->
       <section class="hero">
         <div class="container hero-grid">

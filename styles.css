@@ -658,6 +658,12 @@ hr.divider {
   }
 }
 
+@media (min-width: 1024px) {
+  .domain-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .domain-card {
   background: var(--bg);
   padding: 1.25rem; /* Compact for density */

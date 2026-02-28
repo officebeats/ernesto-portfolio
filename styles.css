@@ -13,7 +13,7 @@
   --text: #000000;
   --text-secondary: #5e5e5e;
   --accent: #009270; /* BCG Green */
-  --accent-soft: rgba(0, 146, 112, 0.05);
+  --accent-soft: rgba(0, 146, 112, 0.25);
   --border: rgba(0, 0, 0, 0.08);
   --border-strong: rgba(0, 0, 0, 0.15);
   --nav-bg: rgba(255, 255, 255, 0.85);
@@ -32,7 +32,7 @@
 
   --container: 1200px;
   --gap: 1.5rem;
-  --section-pad: 1.75rem;
+  --section-pad: clamp(2.5rem, 5vh, 4rem);
   --transition: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -150,6 +150,92 @@ hr.divider {
   background: var(--border);
 }
 
+/* ————— Section Divider (Accent Ornament) ————— */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+  background: var(--bg-raised);
+}
+
+.divider-line {
+  height: 1px;
+  width: 80px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+.divider-icon {
+  font-size: 0.875rem;
+  color: var(--accent);
+  opacity: 0.5;
+  letter-spacing: 0.1em;
+}
+
+/* ————— Availability Badge ————— */
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.availability-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ————— Pre-Footer CTA Section ————— */
+.cta-section {
+  padding: clamp(3rem, 8vh, 6rem) 0;
+  text-align: center;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.cta-section .section-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.75rem;
+}
+
+.cta-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-inline: auto;
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 /* ————— Typography ————— */
 .section-label {
   font-size: 0.6875rem;
@@ -157,7 +243,7 @@ hr.divider {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--accent);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .section-heading {
@@ -166,7 +252,7 @@ hr.divider {
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.05;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
   color: var(--accent);
 }
 
@@ -657,13 +743,13 @@ hr.divider {
 .foundation-content p {
   color: var(--text-secondary);
   font-size: 1.0625rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   max-width: 560px;
   line-height: 1.65;
 }
 
 .foundation-quote {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   padding: 1rem 1.25rem;
   border-left: 3px solid var(--accent);
   background: var(--quote-bg);
@@ -757,22 +843,22 @@ hr.divider {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 @media (min-width: 768px) {
   .about-grid {
     grid-template-columns: 4fr 8fr; /* Unified 4/8 ratio */
-    gap: 2.5rem;
+    gap: 1rem;
   }
 }
 
 .about-right p {
   color: var(--text-secondary);
   font-size: 1.0625rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.5rem;
   max-width: 560px;
-  line-height: 1.7;
+  line-height: 1.55;
 }
 
 /* ————— Domain Grid ————— */
@@ -945,13 +1031,13 @@ html:not([data-theme="dark"]) .logo-item img.invert-on-light:hover {
 .credentials-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 @media (min-width: 768px) {
   .credentials-grid {
     grid-template-columns: 4fr 8fr;
-    gap: 2.5rem;
+    gap: 1rem;
   }
 }
 
@@ -1243,4 +1329,127 @@ body {
     flex-direction: column;
     gap: 0.25rem;
   }
+}
+
+/* ————— Modern Scroll Animations (IntersectionObserver) ————— */
+/* Base Reveal Classes */
+.reveal,
+.reveal-blur,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter; /* Hardware accel */
+}
+
+/* Specific Transforms */
+.reveal {
+  transform: translateY(80px);
+}
+
+.reveal-blur {
+  transform: translateY(60px) scale(0.96);
+  filter: blur(12px);
+}
+
+.reveal-left {
+  transform: translateX(-100px);
+}
+
+.reveal-right {
+  transform: translateX(100px);
+}
+
+/* Active State Triggered by Observer */
+.reveal.is-visible,
+.reveal-blur.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0) scale(1);
+  filter: blur(0);
+}
+
+/* Stagger Effects for Children (e.g. Bento Grids, Experience Lists) */
+.stagger-parent .stagger-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.stagger-parent.is-visible .stagger-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Automate stagger timing delays for up to 10 items */
+.stagger-parent.is-visible .stagger-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.stagger-parent.is-visible .stagger-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.stagger-parent.is-visible .stagger-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.stagger-parent.is-visible .stagger-item:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.stagger-parent.is-visible .stagger-item:nth-child(5) {
+  transition-delay: 0.5s;
+}
+.stagger-parent.is-visible .stagger-item:nth-child(6) {
+  transition-delay: 0.6s;
+}
+.stagger-parent.is-visible .stagger-item:nth-child(n + 7) {
+  transition-delay: 0.7s;
+}
+
+/* ————— Abstract Mesh Gradients (BCG Green Themed) ————— */
+
+/* Premium Dark Mesh */
+.bg-mesh-dark {
+  background-color: var(--bg-raised);
+  background-image:
+    radial-gradient(at 10% 20%, rgba(0, 146, 112, 0.25) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, rgba(0, 146, 112, 0.25) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(26, 179, 116, 0.03) 0px, transparent 60%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Premium Light Mesh (Subtle Aurora) */
+
+.bg-mesh-dark-inverse {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(at 100% 100%, rgba(0, 146, 112, 0.25) 0px, transparent 40%),
+    radial-gradient(at 0% 0%, rgba(0, 146, 112, 0.25) 0px, transparent 60%);
+}
+.bg-mesh-light-inverse {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(at 100% 100%, rgba(0, 146, 112, 0.2) 0px, transparent 40%),
+    radial-gradient(at 0% 0%, rgba(0, 146, 112, 0.35) 0px, transparent 60%);
+}
+
+.bg-mesh-light {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(0, 146, 112, 0.04) 0px, transparent 60%),
+    radial-gradient(at 100% 100%, rgba(0, 146, 112, 0.2) 0px, transparent 60%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Clean Linear Gradient for Footer or CTA zones */
+.bg-gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    var(--bg) 0%,
+    rgba(0, 146, 112, 0.06) 100%
+  );
 }

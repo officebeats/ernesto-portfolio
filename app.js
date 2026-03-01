@@ -1,32 +1,29 @@
 // app.js — Minimal, purposeful interactions
-
 document.addEventListener("DOMContentLoaded", () => {
-  const reveals = document.querySelectorAll(
-    ".hero-content, .hero-aside, .about-left, .about-right, " +
-      ".domain-card, .brain-content, .experience-left, .exp-item, " +
-      ".foundation-content, .foundation-quote",
+  // FAANG-Grade Intersection Observer (Consolidated)
+  const revealOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -10% 0px",
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, revealOptions);
+
+  const targets = document.querySelectorAll(
+    ".reveal, .reveal-blur, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate, .stagger-parent",
   );
+  targets.forEach((target) => revealObserver.observe(target));
 
-  reveals.forEach((el) => el.classList.add("reveal"));
-
-  // Stagger logo items for cascade reveal
-  document.querySelectorAll(".logo-item").forEach((el, i) => {
-    el.style.setProperty("--i", i);
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
-  );
-
-  reveals.forEach((el) => observer.observe(el));
+  // Force reveal for items already in viewport or critical sections
+  document
+    .querySelectorAll("#top .reveal, #top .reveal-blur, #chicago .reveal-left")
+    .forEach((el) => el.classList.add("is-visible"));
 
   // Theme Toggle Logic
   const toggleBtn = document.querySelector(".theme-toggle");
@@ -35,16 +32,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // Check saved theme explicitly
   const savedTheme = localStorage.getItem("theme");
 
-  // Default to light mode heavily, unless user previously set 'dark'
-  if (savedTheme === "dark") {
+  // Default to dark mode if no preference is saved
+  if (!savedTheme || savedTheme === "dark") {
     htmlEl.setAttribute("data-theme", "dark");
   } else {
     htmlEl.removeAttribute("data-theme");
   }
 
+  // Real light switch sound from audio file
+  const switchAudio = new Audio("switch.mp3");
+  switchAudio.volume = 0.6;
+  const playSwitchSound = () => {
+    switchAudio.currentTime = 0;
+    switchAudio.play().catch(() => {});
+  };
+
   // Toggle handler
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
+      playSwitchSound(); // Play the mechanical switch click
+
       const currentTheme = htmlEl.getAttribute("data-theme");
       if (currentTheme === "dark") {
         htmlEl.removeAttribute("data-theme");
@@ -105,13 +112,22 @@ document.addEventListener("DOMContentLoaded", () => {
       parentWidth = track.parentElement.clientWidth;
     }
 
-    // Quick measure on load & resize
-    window.addEventListener("load", measure);
+    // Reliable measure on load & resize
+    if (document.readyState === "complete") {
+      measure();
+    } else {
+      window.addEventListener("load", measure);
+    }
     window.addEventListener("resize", measure);
+
     // Initial measurement
     measure();
-    // Re-measure after fonts and layout settle
-    setTimeout(measure, 500);
+    // Continuous re-measurement during initial load to catch images
+    let measureCount = 0;
+    const measureInterval = setInterval(() => {
+      measure();
+      if (++measureCount > 10) clearInterval(measureInterval);
+    }, 500);
 
     function animate() {
       if (!isDragging) {
@@ -119,16 +135,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (trackWidth > 0 && parentWidth > 0) {
-        // Ping-Pong bounce logic (edges reach middle of screen exactly as requested)
-        const leftBound = parentWidth / 2 - trackWidth;
-        const rightBound = parentWidth / 2;
+        // Ping-Pong bounce logic (ensure full visibility range)
+        // Fix for zoom out: if parentWidth > trackWidth, don't create inverted boundaries
+        const maxScroll = Math.max(0, trackWidth - parentWidth + 100);
+        const leftBound = -maxScroll;
+        const rightBound = 50; // allow a little wiggle room on the right
 
         if (currentX <= leftBound) {
           currentX = leftBound;
-          direction = 1; // reverse to right
+          direction = 1;
         } else if (currentX >= rightBound) {
           currentX = rightBound;
-          direction = -1; // reverse to left
+          direction = -1;
         }
       }
 

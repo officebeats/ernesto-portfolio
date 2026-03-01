@@ -9,8 +9,12 @@
 :root {
   --bg: #ffffff;
   --bg-raised: #f9f9f9;
-  --bg-card: rgba(255, 255, 255, 0.45);
-  --glass-border: rgba(0, 0, 0, 0.08);
+  --bg-card: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --glass-shadow-hover:
+    0 16px 48px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --glass-shimmer: inset 0 1px 1px rgba(255, 255, 255, 0.6);
   --text: #000000;
   --text-secondary: #5e5e5e;
   --accent: #009270; /* BCG Green */
@@ -18,11 +22,11 @@
   --accent-glow: rgba(0, 146, 112, 0.3);
   --border: rgba(0, 0, 0, 0.06);
   --border-strong: rgba(0, 0, 0, 0.12);
-  --nav-bg: rgba(255, 255, 255, 0.82);
+  --nav-bg: rgba(255, 255, 255, 0.6);
   --metric-value-color: #000000;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
   --quote-bg: rgba(0, 90, 60, 0.02);
 
   --font-display:
@@ -40,8 +44,12 @@
 [data-theme="dark"] {
   --bg: #050505;
   --bg-raised: #0a0a0a;
-  --bg-card: rgba(30, 30, 32, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --bg-card: rgba(30, 30, 32, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --glass-shadow-hover:
+    0 20px 48px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --glass-shimmer: inset 0 1px 1px rgba(255, 255, 255, 0.15);
   --text: #ffffff;
   --text-secondary: #a0a0a0;
   --accent: #00d28d;
@@ -49,11 +57,11 @@
   --accent-glow: rgba(0, 210, 141, 0.2);
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.15);
-  --nav-bg: rgba(5, 5, 5, 0.82);
+  --nav-bg: rgba(10, 10, 12, 0.65);
   --metric-value-color: #ffffff;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 32px 64px rgba(0, 0, 0, 0.8), 0 8px 16px rgba(0, 0, 0, 0.5);
   --quote-bg: rgba(26, 179, 116, 0.03);
 }
 
@@ -80,15 +88,15 @@ html {
   background-image:
     radial-gradient(
       circle at 10% 20%,
-      rgba(0, 146, 112, 0.05),
+      rgba(0, 146, 112, 0.12),
       transparent 45%
     ),
     radial-gradient(
       circle at 90% 80%,
-      rgba(0, 146, 112, 0.05),
+      rgba(0, 146, 112, 0.12),
       transparent 45%
     ),
-    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.02), transparent 60%);
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.04), transparent 60%);
   background-attachment: fixed;
   color: var(--text);
 }
@@ -333,12 +341,12 @@ hr.divider {
   right: 0;
   z-index: 1000;
   background: var(--nav-bg);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
   border-bottom: 1px solid var(--border);
   box-shadow:
     0 1px 0 var(--border),
-    0 8px 32px rgba(0, 0, 0, 0.04);
+    var(--glass-shadow);
   transition:
     background 0.3s ease,
     backdrop-filter 0.3s ease,
@@ -801,9 +809,10 @@ hr.divider {
   opacity: 0.8; /* Full color, slightly lower opacity until hovered */
   padding: 1rem;
   background: var(--bg-card);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
   border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-shimmer);
   border-radius: 16px;
   user-select: none;
   -webkit-user-select: none;
@@ -813,7 +822,7 @@ hr.divider {
 .logo-item:hover {
   opacity: 1;
   transform: translateY(-3px);
-  filter: drop-shadow(var(--shadow-md));
+  box-shadow: var(--glass-shadow-hover), var(--glass-shimmer);
 }
 
 .logo-item img {
@@ -910,11 +919,12 @@ hr.divider {
 
 .metric {
   background: var(--bg-card);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
   border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-shimmer);
   border-radius: 16px;
-  padding: 1.25rem 1.5rem;
+  padding: clamp(1rem, 3vw, 1.25rem) clamp(1rem, 4vw, 1.5rem);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -926,6 +936,7 @@ hr.divider {
 
 .metric:hover {
   background: var(--glass-border);
+  box-shadow: var(--glass-shadow-hover), var(--glass-shimmer);
 }
 
 .metric-value {
@@ -1016,21 +1027,21 @@ hr.divider {
 
 .domain-card {
   background: var(--bg-card);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: 2.5rem;
+  padding: clamp(1.5rem, 5vw, 2.5rem); /* Mobile friendly padding */
   transition: all var(--transition);
   position: relative;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--glass-shadow), var(--glass-shimmer);
 }
 
 .domain-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--glass-shadow-hover), var(--glass-shimmer);
 }
 
 .domain-card > * {
@@ -1077,15 +1088,8 @@ hr.divider {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   gap: 0.5rem;
-  padding: 1rem;
-  background: var(--bg-card);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
 }
 
 .domain-logo-item img {
@@ -1606,11 +1610,8 @@ body {
   font-weight: 600;
   color: #006850; /* Deep readable green */
   background: var(--accent-soft);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 146, 112, 0.15);
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   transition: all var(--transition);

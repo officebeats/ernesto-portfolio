@@ -780,6 +780,7 @@ hr.divider {
 
 .hero-title .emphasis {
   display: block;
+  width: fit-content;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--accent);

@@ -3,34 +3,68 @@
   <head>
     <!-- ULTRATHINK Canonical Edge Routing Enforcer -->
     <script>
-      (function() {
+      (function () {
         var host = window.location.hostname;
-        var isLocal = host === 'localhost' || host === '127.0.0.1' || host.includes('github.io');
+        var isLocal =
+          host === "localhost" ||
+          host === "127.0.0.1" ||
+          host.includes("github.io");
         if (!isLocal) {
-          var targetProtocol = 'https:';
-          var targetHost = 'ernest0.com';
-          if (window.location.protocol !== targetProtocol || host !== targetHost) {
-            window.location.replace(targetProtocol + '//' + targetHost + window.location.pathname + window.location.search + window.location.hash);
+          var targetProtocol = "https:";
+          var targetHost = "ernest0.com";
+          if (
+            window.location.protocol !== targetProtocol ||
+            host !== targetHost
+          ) {
+            window.location.replace(
+              targetProtocol +
+                "//" +
+                targetHost +
+                window.location.pathname +
+                window.location.search +
+                window.location.hash,
+            );
           }
         }
       })();
     </script>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
     <link rel="canonical" href="https://ernest0.com/" />
-    
+
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-    <title>Ernesto Rodriguez — Product Leader, AI & Digital Transformation</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
+    />
+    <title>
+      Ernesto Rodriguez — Product Leader, AI & Digital Transformation
+    </title>
     <!-- PWA Setup -->
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#009270" />
     <link rel="apple-touch-icon" href="logos/pwa-icon-512.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="description" content="Ernesto Rodriguez — Product Leader, AI & Digital Transformation. Exploring sound design, AI PM, and Spatial Computing." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta
+      name="description"
+      content="Ernesto Rodriguez — Product Leader, AI & Digital Transformation. Exploring sound design, AI PM, and Spatial Computing."
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload critical fonts for FAANG-grade LCP -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap"
+      as="style"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap"
       rel="stylesheet"
@@ -61,13 +95,43 @@
             rel="noopener"
             class="nav-cta"
             >Resume
-            <span style="font-size: 1.1em; vertical-align: -1px; margin-left: 2px"
+            <span
+              style="font-size: 1.1em; vertical-align: -1px; margin-left: 2px"
               >↓</span
             ></a
           >
-          <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-            <svg class="hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <button
+            class="mobile-menu-btn"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              class="hamburger"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg
+              class="close-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="display: none"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
           </button>
         </div>
       </div>
@@ -76,32 +140,47 @@
     <!-- Mobile Overlay Menu -->
     <div id="mobile-menu" class="mobile-overlay" aria-hidden="true">
       <nav class="mobile-nav-links">
-        <a href="#experience" class="mobile-link" style="--i:0;">Experience</a>
-        <a href="#domains" class="mobile-link" style="--i:1;">Domains</a>
-        <a href="#credentials" class="mobile-link" style="--i:2;">Credentials</a>
-        <a href="#writing" class="mobile-link" style="--i:3;">Publications</a>
-        <a href="#hobbies" class="mobile-link" style="--i:4;">Pursuits</a>
-        <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="mobile-link mobile-cta" style="--i:5;">Resume <span style="font-size: 1.1em; vertical-align: -2px; margin-left: 2px">↓</span></a>
+        <a href="#experience" class="mobile-link" style="--i: 0">Experience</a>
+        <a href="#domains" class="mobile-link" style="--i: 1">Domains</a>
+        <a href="#credentials" class="mobile-link" style="--i: 2"
+          >Credentials</a
+        >
+        <a href="#writing" class="mobile-link" style="--i: 3">Publications</a>
+        <a href="#hobbies" class="mobile-link" style="--i: 4">Pursuits</a>
+        <a
+          href="Ernesto_Rodriguez_Resume.pdf"
+          target="_blank"
+          rel="noopener"
+          class="mobile-link mobile-cta"
+          style="--i: 5"
+          >Resume
+          <span style="font-size: 1.1em; vertical-align: -2px; margin-left: 2px"
+            >↓</span
+          ></a
+        >
       </nav>
-      <div class="mobile-overlay-footer" style="--i:6;">
+      <div class="mobile-overlay-footer" style="--i: 6">
         <p>Ernesto Rodriguez &middot; Product Leader</p>
       </div>
-    </div>    <main>
+    </div>
+    <main>
       <!-- ═══════════ Hero ═══════════ -->
       <section class="hero bg-mesh-light" id="top">
         <div class="container hero-grid">
           <div class="hero-content reveal-blur stagger-parent">
-            <p class="eyebrow stagger-item">Chicago · Ex-BCG · 10+ Years in Product</p>
-            <h1 class="hero-title stagger-item">
-              I launch products and manage teams that<br />
-              <span class="emphasis">MOVE THE BUSINESS.</span>
+            <h1 class="hero-title reveal" style="margin-top: 0">
+              I launch products and manage teams that
+              <span style="color: var(--accent)">MOVE THE BUSINESS.</span>
             </h1>
             <p class="hero-body stagger-item">
               Product management leader with over a decade of experience
               delivering AI-powered platforms, digital health systems, and
               consumer products across healthcare, fintech, retail, and B2B
               SaaS. Former BCG consultant.
-              <span class="hero-mission-line">From zero-to-one AI products to scaling platforms across healthcare, retail, and fintech.</span>
+              <span class="hero-mission-line"
+                >From zero-to-one AI products to scaling platforms across
+                healthcare, retail, and fintech.</span
+              >
             </p>
             <div class="hero-actions stagger-item">
               <a
@@ -116,11 +195,13 @@
               >
             </div>
           </div>
-          <div class="hero-aside reveal-right">
+          <div class="hero-aside reveal-scale">
             <img
               src="profile-full.jpg"
               alt="Ernesto Rodriguez"
               class="hero-avatar"
+              fetchpriority="high"
+              decoding="async"
             />
             <div class="metric-stack stagger-parent">
               <div class="metric stagger-item">
@@ -139,117 +220,100 @@
                 <span class="metric-value">$15M</span>
                 <span class="metric-label">Revenue Growth Driven</span>
               </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ═══════════ Logo Bar (Above Fold) ═══════════ -->
-      <div class="logo-bar reveal" aria-label="Companies I've worked with">
+      <div class="logo-bar" aria-label="Companies I've worked with">
         <p class="logo-bar-label">Companies I've contributed to</p>
         <div class="marquee-wrapper">
           <div class="logo-track">
             <!-- Group 1 -->
             <div class="logo-item">
-              <img src="logos/bcg.png" alt="BCG" /><span>BCG</span>
+              <img
+                src="logos/bcg.png"
+                alt="BCG"
+                loading="lazy"
+                decoding="async"
+              /><span>BCG</span>
             </div>
             <div class="logo-item">
               <img
                 src="logos/coolerscreens.png"
                 alt="Cooler Screens"
                 class="invert-on-light"
+                loading="lazy"
+                decoding="async"
               /><span>Cooler Screens</span>
             </div>
             <div class="logo-item">
-              <img src="logos/groupon.png" alt="Groupon" /><span>Groupon</span>
+              <img
+                src="logos/groupon.png"
+                alt="Groupon"
+                loading="lazy"
+                decoding="async"
+              /><span>Groupon</span>
             </div>
             <div class="logo-item">
               <img
                 src="logos/fetchrewards.png"
                 alt="Fetch Rewards"
                 class="invert-on-light"
+                loading="lazy"
+                decoding="async"
               /><span>Fetch Rewards</span>
             </div>
             <div class="logo-item">
-              <img src="logos/redbox.png" alt="Redbox" /><span>Redbox</span>
+              <img
+                src="logos/redbox.png"
+                alt="Redbox"
+                loading="lazy"
+                decoding="async"
+              /><span>Redbox</span>
             </div>
             <div class="logo-item">
-              <img src="logos/ascension.png" alt="Ascension" /><span
-                >Ascension</span
-              >
+              <img
+                src="logos/ascension.png"
+                alt="Ascension"
+                loading="lazy"
+                decoding="async"
+              /><span>Ascension</span>
             </div>
             <div class="logo-item">
-              <img src="logos/patientpoint.png" alt="PatientPoint" /><span
-                >PatientPoint</span
-              >
+              <img
+                src="logos/patientpoint.png"
+                alt="PatientPoint"
+                loading="lazy"
+                decoding="async"
+              /><span>PatientPoint</span>
             </div>
             <div class="logo-item">
-              <img src="logos/levelex-new.svg" alt="LevelEx Games" /><span>LevelEx Games</span>
+              <img
+                src="logos/levelex-new.svg"
+                alt="LevelEx Games"
+                loading="lazy"
+                decoding="async"
+              /><span>LevelEx Games</span>
             </div>
             <div class="logo-item">
-              <img src="logos/allscripts.png" alt="Allscripts" /><span
-                >Allscripts</span
-              >
-            </div>
-            <div class="logo-item">
-              <img src="logos/comed.png" alt="ComEd" /><span>ComEd</span>
-            </div>
-            <div class="logo-item">
-              <img src="logos/route.png" alt="Route" /><span>Route</span>
-            </div>
-            <div class="logo-item">
-              <img src="logos/centerpoint-energy.png" alt="CenterPoint Energy" /><span>CenterPoint Energy</span>
+              <img
+                src="logos/allscripts.png"
+                alt="Allscripts"
+                loading="lazy"
+                decoding="async"
+              /><span>Allscripts</span>
             </div>
 
-            <!-- Group 2 (Duplicate for smooth infinite scroll) -->
-            <div class="logo-item">
-              <img src="logos/bcg.png" alt="BCG" /><span>BCG</span>
-            </div>
             <div class="logo-item">
               <img
-                src="logos/coolerscreens.png"
-                alt="Cooler Screens"
-                class="invert-on-light"
-              /><span>Cooler Screens</span>
-            </div>
-            <div class="logo-item">
-              <img src="logos/groupon.png" alt="Groupon" /><span>Groupon</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/fetchrewards.png"
-                alt="Fetch Rewards"
-                class="invert-on-light"
-              /><span>Fetch Rewards</span>
-            </div>
-            <div class="logo-item">
-              <img src="logos/redbox.png" alt="Redbox" /><span>Redbox</span>
-            </div>
-            <div class="logo-item">
-              <img src="logos/ascension.png" alt="Ascension" /><span
-                >Ascension</span
-              >
-            </div>
-            <div class="logo-item">
-              <img src="logos/patientpoint.png" alt="PatientPoint" /><span
-                >PatientPoint</span
-              >
-            </div>
-            <div class="logo-item">
-              <img src="logos/levelex-new.svg" alt="LevelEx Games" /><span>LevelEx Games</span>
-            </div>
-            <div class="logo-item">
-              <img src="logos/allscripts.png" alt="Allscripts" /><span
-                >Allscripts</span
-              >
-            </div>
-            <div class="logo-item">
-              <img src="logos/comed.png" alt="ComEd" /><span>ComEd</span>
-            </div>
-            <div class="logo-item">
-              <img src="logos/route.png" alt="Route" /><span>Route</span>
-            </div>
-            <div class="logo-item">
-              <img src="logos/centerpoint-energy.png" alt="CenterPoint Energy" /><span>CenterPoint Energy</span>
+                src="logos/route.png"
+                alt="Route"
+                class="invert-on-dark"
+                loading="lazy"
+                decoding="async"
+              /><span>Route</span>
             </div>
           </div>
         </div>
@@ -257,24 +321,28 @@
 
       <!-- ═══════════ Experience ═══════════ -->
       <section id="experience" class="section">
-        <div class="container experience-grid">
-          <div class="experience-left">
+        <div class="container Experience-grid">
+          <div class="experience-left reveal-rotate">
             <p class="section-label">Career</p>
             <h2 class="section-heading">
               Where I've<br /><em>driven impact.</em>
             </h2>
           </div>
-          <div class="experience-right">
+          <div class="experience-right stagger-parent">
             <div class="exp-item stagger-item">
               <span class="exp-time">Current</span>
               <div>
-                <h3>Senior Product Manager — Healthcare & AI</h3>
+                <h3>Senior Product Manager — Healthcare & IP</h3>
                 <p>
                   Leading discovery and delivery of AI-powered healthcare
                   products. Scaled a touchscreen patient & provider platform and
-                  improved data interoperability by 40% using GCP and HL7 FHIR
-                  standards. Shifted engineering in-house, improving product
-                  quality by 25% and team collaboration by 30%.
+                  <span class="impact-text"
+                    >improved data interoperability by 40%</span
+                  >
+                  using GCP and HL7 FHIR standards. Shifted engineering
+                  in-house, improving product quality by
+                  <span class="impact-text">25%</span> and team collaboration by
+                  <span class="impact-text">30%</span>.
                 </p>
               </div>
             </div>
@@ -285,10 +353,11 @@
                 <p>
                   Led gamification strategy at Fetch Rewards, driving user
                   acquisition and retention mechanics that contributed to the
-                  company's trajectory toward unicorn status and subsequent
-                  SoftBank investment. Scaled a retail healthcare pilot from 75
-                  to 2,500 stores ahead of schedule, driving revenue, retention,
-                  and growth.
+                  company's trajectory toward
+                  <span class="impact-text">unicorn status</span> and SoftBank
+                  investment. Scaled a retail healthcare pilot from 75 to
+                  <span class="impact-text">2,500 stores</span> ahead of
+                  schedule, driving significant revenue growth.
                 </p>
               </div>
             </div>
@@ -310,8 +379,95 @@
                 <p>
                   Delivered digital transformation strategy for Fortune 500
                   enterprise clients. Built the strategic thinking and
-                  analytical rigor that underpins everything I do in product.
+                  analytical rigor that underpins my leadership philosophy.
                 </p>
+              </div>
+            </div>
+
+            <!-- Leadership Principles -->
+            <div
+              class="leadership-block stagger-item"
+              style="
+                margin-top: 3rem;
+                padding: 2rem;
+                background: var(--bg-card);
+                border-radius: 16px;
+                border: 1px solid var(--border);
+              "
+            >
+              <p class="section-label" style="margin-bottom: 1rem">
+                Leadership Principles
+              </p>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                  gap: 2rem;
+                "
+              >
+                <div>
+                  <h4
+                    style="
+                      font-size: 1rem;
+                      margin-bottom: 0.5rem;
+                      color: var(--accent);
+                    "
+                  >
+                    From Strategy to Discovery to Delivery
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.875rem;
+                      color: var(--text-secondary);
+                      line-height: 1.5;
+                    "
+                  >
+                    Total accountability for the outcome, from the first line of
+                    the roadmap to the final pixel.
+                  </p>
+                </div>
+                <div>
+                  <h4
+                    style="
+                      font-size: 1rem;
+                      margin-bottom: 0.5rem;
+                      color: var(--accent);
+                    "
+                  >
+                    User-Obsessed Design
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.875rem;
+                      color: var(--text-secondary);
+                      line-height: 1.5;
+                    "
+                  >
+                    Listening to the 'unspoken' pain points. Intuition built on
+                    thousands of hours of user feedback.
+                  </p>
+                </div>
+                <div>
+                  <h4
+                    style="
+                      font-size: 1rem;
+                      margin-bottom: 0.5rem;
+                      color: var(--accent);
+                    "
+                  >
+                    Strategic Velocity
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.875rem;
+                      color: var(--text-secondary);
+                      line-height: 1.5;
+                    "
+                  >
+                    Moving fast with intent. Balancing long-term architecture
+                    with immediate business impact.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -325,7 +481,9 @@
             <p class="section-label">Origin</p>
             <h2 class="section-heading">The<br /><em>foundation.</em></h2>
           </div>
-          <div class="about-right foundation-content reveal-blur stagger-parent">
+          <div
+            class="about-right foundation-content reveal-blur stagger-parent"
+          >
             <p>
               Before roadmaps and sprint planning, I spent years as a
               <strong>customer service representative</strong> and
@@ -360,7 +518,7 @@
         <div class="container">
           <p class="section-label">Expertise</p>
           <h2 class="section-heading">Industries I know deeply.</h2>
-          <div class="domain-grid stagger-parent">
+          <div class="domain-grid stagger-parent reveal-rotate">
             <article class="domain-card">
               <span class="domain-num">01</span>
               <h3>Healthcare</h3>
@@ -371,16 +529,24 @@
               </p>
               <div class="domain-logos">
                 <div class="domain-logo-item">
-                  <img src="logos/ascension.png" alt="Ascension" /><span>Ascension</span>
+                  <img src="logos/ascension.png" alt="Ascension" /><span
+                    >Ascension</span
+                  >
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/patientpoint.png" alt="PatientPoint" /><span>PatientPoint</span>
+                  <img src="logos/patientpoint.png" alt="PatientPoint" /><span
+                    >PatientPoint</span
+                  >
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/levelex-games.svg" alt="LevelEx Games" /><span>LevelEx Games</span>
+                  <img src="logos/levelex-games.svg" alt="LevelEx Games" /><span
+                    >LevelEx Games</span
+                  >
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/allscripts.png" alt="Allscripts" /><span>Allscripts</span>
+                  <img src="logos/allscripts.png" alt="Allscripts" /><span
+                    >Allscripts</span
+                  >
                 </div>
               </div>
             </article>
@@ -399,7 +565,10 @@
                   <img src="logos/route.png" alt="Route" /><span>Route</span>
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/centerpoint-energy.png" alt="CenterPoint Energy" /><span>CenterPoint Energy</span>
+                  <img
+                    src="logos/centerpoint-energy.png"
+                    alt="CenterPoint Energy"
+                  /><span>CenterPoint Energy</span>
                 </div>
               </div>
             </article>
@@ -413,16 +582,38 @@
               </p>
               <div class="domain-logos">
                 <div class="domain-logo-item">
-                  <img src="logos/fetchrewards.png" alt="Fetch Rewards" class="invert-on-light" /><span>Fetch Rewards</span>
+                  <img
+                    src="logos/fetchrewards.png"
+                    alt="Fetch Rewards"
+                    class="invert-on-light"
+                    loading="lazy"
+                    decoding="async"
+                  /><span>Fetch Rewards</span>
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/coolerscreens.png" alt="Cooler Screens" class="invert-on-light" /><span>Cooler Screens</span>
+                  <img
+                    src="logos/coolerscreens.png"
+                    alt="Cooler Screens"
+                    class="invert-on-light"
+                    loading="lazy"
+                    decoding="async"
+                  /><span>Cooler Screens</span>
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/redbox.png" alt="Redbox" /><span>Redbox</span>
+                  <img
+                    src="logos/redbox.png"
+                    alt="Redbox"
+                    loading="lazy"
+                    decoding="async"
+                  /><span>Redbox</span>
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/groupon.png" alt="Groupon" /><span>Groupon</span>
+                  <img
+                    src="logos/groupon.png"
+                    alt="Groupon"
+                    loading="lazy"
+                    decoding="async"
+                  /><span>Groupon</span>
                 </div>
               </div>
             </article>
@@ -435,16 +626,38 @@
               </p>
               <div class="domain-logos">
                 <div class="domain-logo-item">
-                  <img src="logos/levelex-games.svg" alt="LevelEx Games" /><span>LevelEx Games</span>
+                  <img
+                    src="logos/levelex-games.svg"
+                    alt="LevelEx Games"
+                    loading="lazy"
+                    decoding="async"
+                  /><span>LevelEx Games</span>
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/patientpoint.png" alt="PatientPoint" /><span>PatientPoint</span>
+                  <img
+                    src="logos/patientpoint.png"
+                    alt="PatientPoint"
+                    loading="lazy"
+                    decoding="async"
+                  /><span>PatientPoint</span>
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/fetchrewards.png" alt="Fetch Rewards" class="invert-on-light" /><span>Fetch Rewards</span>
+                  <img
+                    src="logos/fetchrewards.png"
+                    alt="Fetch Rewards"
+                    class="invert-on-light"
+                    loading="lazy"
+                    decoding="async"
+                  /><span>Fetch Rewards</span>
                 </div>
                 <div class="domain-logo-item">
-                  <img src="logos/coolerscreens.png" alt="Cooler Screens" class="invert-on-light" /><span>Cooler Screens</span>
+                  <img
+                    src="logos/coolerscreens.png"
+                    alt="Cooler Screens"
+                    class="invert-on-light"
+                    loading="lazy"
+                    decoding="async"
+                  /><span>Cooler Screens</span>
                 </div>
               </div>
             </article>
@@ -452,12 +665,29 @@
         </div>
       </section>
 
-
       <!-- Image Lightbox -->
       <div id="img-lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="" alt="Certificate" onclick="event.stopPropagation()" />
-        <video id="lightbox-video" src="" controls style="display:none; max-height:90vh; max-width:90vw; border-radius:12px; z-index:1001; position:relative;" onclick="event.stopPropagation()"></video>
+        <img
+          id="lightbox-img"
+          src=""
+          alt="Certificate"
+          onclick="event.stopPropagation()"
+        />
+        <video
+          id="lightbox-video"
+          src=""
+          controls
+          style="
+            display: none;
+            max-height: 90vh;
+            max-width: 90vw;
+            border-radius: 12px;
+            z-index: 1001;
+            position: relative;
+          "
+          onclick="event.stopPropagation()"
+        ></video>
       </div>
 
       <!-- Credentials -->
@@ -470,18 +700,69 @@
             </h2>
           </div>
           <div class="cred-list">
-            <div class="cred-item" onclick="openLightbox('logos/ai-pm-cert.png')" style="cursor:pointer">
-              <span class="cert-icon" title="View Certificate"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#009270" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+            <div
+              class="cred-item"
+              onclick="openLightbox('logos/ai-pm-cert.png')"
+              style="cursor: pointer"
+            >
+              <span class="cert-icon" title="View Certificate"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#009270"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg
+              ></span>
               <h3>Gen AI Product Management Specialization</h3>
               <p>Microsoft &middot; 2025</p>
             </div>
-            <div class="cred-item" onclick="openLightbox('logos/design-sprint-cert.png')" style="cursor:pointer">
-              <span class="cert-icon" title="View Certificate"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#009270" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+            <div
+              class="cred-item"
+              onclick="openLightbox('logos/design-sprint-cert.png')"
+              style="cursor: pointer"
+            >
+              <span class="cert-icon" title="View Certificate"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#009270"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg
+              ></span>
               <h3>GV Design Sprint Certified</h3>
               <p>AJ &amp; Smart (Jake Knapp) &middot; 2019</p>
             </div>
-            <div class="cred-item" onclick="openLightbox('logos/csm-cert.png')" style="cursor:pointer">
-              <span class="cert-icon" title="View Certificate"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#009270" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+            <div
+              class="cred-item"
+              onclick="openLightbox('logos/csm-cert.png')"
+              style="cursor: pointer"
+            >
+              <span class="cert-icon" title="View Certificate"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#009270"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg
+              ></span>
               <h3>Certified Scrum Master</h3>
               <p>3Back &middot; 2015</p>
             </div>
@@ -496,16 +777,30 @@
             <p class="section-label">Thought Leadership</p>
             <h2 class="section-heading">Publications</h2>
           </div>
-          <div class="cred-list">
+          <div class="cred-list stagger-parent">
             <div class="cred-item stagger-item">
-              <h3>How to Overcome AR Challenges: A Guide for Product Managers</h3>
+              <h3>
+                How to Overcome AR Challenges: A Guide for Product Managers
+              </h3>
               <p>Product School &middot; 2023</p>
-              <a href="https://productschool.com/product-leaders/ernesto-rodriguez" target="_blank" rel="noopener" class="link-arrow">Read on Product School &rarr;</a>
+              <a
+                href="https://productschool.com/product-leaders/ernesto-rodriguez"
+                target="_blank"
+                rel="noopener"
+                class="link-arrow"
+                >Read on Product School &rarr;</a
+              >
             </div>
             <div class="cred-item stagger-item">
               <h3>Creative Passions in the Workplace</h3>
               <p>TEDx &middot; 2016</p>
-              <a href="https://www.youtube.com/watch?v=Sv3IN8D4AoI&t=74s" target="_blank" rel="noopener" class="link-arrow">Watch TEDx Talk &rarr;</a>
+              <a
+                href="https://www.youtube.com/watch?v=Sv3IN8D4AoI&t=74s"
+                target="_blank"
+                rel="noopener"
+                class="link-arrow"
+                >Watch TEDx Talk &rarr;</a
+              >
             </div>
           </div>
         </div>
@@ -528,7 +823,14 @@
               product management. Strategy requires space; I build systems that
               create it.
             </p>
-            <a href="https://github.com/officebeats/beats-pm-antigravity-brain" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:0.75rem;">Try It Yourself, it's Open Source</a>
+            <a
+              href="https://github.com/officebeats/beats-pm-antigravity-brain"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary"
+              style="margin-top: 0.75rem"
+              >Try It Yourself, it's Open Source</a
+            >
           </div>
         </div>
       </section>
@@ -552,37 +854,105 @@
       </section>
     </main>
 
-    <!-- Aesthetic Section Divider -->
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-line"></div>
-      <span class="divider-icon">✦</span>
-      <div class="divider-line"></div>
-    </div>
-
     <!-- Hobbies Section -->
     <section id="hobbies" class="section section-dark">
       <div class="container">
         <p class="section-label">Beyond the Screen</p>
         <h2 class="section-heading">Personal Pursuits</h2>
         <div class="domain-grid stagger-parent">
-          
-          <div class="domain-card" style="text-decoration:none; color:inherit; position:relative; padding-bottom: 0;">
-            <div class="domain-icon" aria-hidden="true" style="color:var(--accent);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+          <div
+            class="domain-card"
+            style="
+              text-decoration: none;
+              color: inherit;
+              position: relative;
+              padding-bottom: 0;
+            "
+          >
+            <div
+              class="domain-icon"
+              aria-hidden="true"
+              style="color: var(--accent)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
             </div>
             <h3 class="domain-title">
-              <a href="https://audius.co/officebeats_" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">Audio Production & DJing <span style="opacity:0.6; font-size:0.8em; margin-left:4px;">↗</span></a>
+              <a
+                href="https://audius.co/officebeats_"
+                target="_blank"
+                rel="noopener"
+                style="text-decoration: none; color: inherit"
+                >DJing & Audio Production
+                <span style="opacity: 0.6; font-size: 0.8em; margin-left: 4px"
+                  >↗</span
+                ></a
+              >
             </h3>
-            <p class="domain-desc" style="margin-bottom: 2rem;">Exploring sound design, producing hip hop beats, and mixing EDM.</p>
-            <div style="margin-top: auto; width: 100%;">
-              <iframe src="https://audius.co/embed/track/officebeats_/officebeats-the-launch-fall-2021-mix?flavor=compact" width="100%" height="120" allow="encrypted-media" style="border: none; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.06);"></iframe>
+            <p class="domain-desc" style="margin-bottom: 2rem">
+              Exploring sound design, producing hip hop beats, and mixing EDM.
+            </p>
+            <div
+              style="
+                margin-top: auto;
+                width: 100%;
+                height: 160px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+              "
+            >
+              <iframe
+                src="https://audius.co/embed/track/officebeats_/officebeats-the-launch-fall-2021-mix?flavor=compact"
+                width="100%"
+                height="136"
+                scrolling="no"
+                allow="encrypted-media"
+                style="
+                  border: none;
+                  border-radius: 8px;
+                  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                  overflow: hidden;
+                "
+              ></iframe>
             </div>
           </div>
 
-          <div class="domain-card" style="position:relative; padding-bottom: 0;">
-            <div class="domain-icon" aria-hidden="true" style="color:var(--accent);">
+          <div
+            class="domain-card"
+            style="position: relative; padding-bottom: 0"
+          >
+            <div
+              class="domain-icon"
+              aria-hidden="true"
+              style="color: var(--accent)"
+            >
               <!-- VR Headset Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <path d="M4 10h16v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6Z" />
                 <path d="M10 14h4" />
                 <path d="M7 10v-2a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v2" />
@@ -591,43 +961,187 @@
               </svg>
             </div>
             <h3 class="domain-title">
-              Spatial Computing <span style="opacity:0.6; font-size:0.8em; margin-left:4px; visibility:hidden;">↗</span>
+              Spatial Computing
+              <span
+                style="
+                  opacity: 0.6;
+                  font-size: 0.8em;
+                  margin-left: 4px;
+                  visibility: hidden;
+                "
+                >↗</span
+              >
             </h3>
-            <p class="domain-desc" style="margin-bottom: 2rem;">Exploring the future of productivity through VR workspaces and immersive design.</p>
-            <div style="margin-top: auto; width: 100%;">
-              <video src="logos/vr_productivity.mp4" controls playsinline style="width: 100%; border-radius: 8px; background: #000; outline: none; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 8px 24px rgba(0,0,0,0.12); display: block;"></video>
+            <p class="domain-desc" style="margin-bottom: 2rem">
+              Exploring the future of productivity through VR workspaces and
+              immersive design.
+            </p>
+            <div
+              style="
+                margin-top: auto;
+                width: 100%;
+                height: 160px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <video
+                src="logos/vr_productivity.mp4"
+                controls
+                playsinline
+                style="
+                  width: 100%;
+                  max-height: 160px;
+                  border-radius: 8px;
+                  background: #000;
+                  outline: none;
+                  border: 1px solid rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+                  display: block;
+                "
+              ></video>
             </div>
           </div>
 
-          <div class="domain-card" style="text-decoration:none; color:inherit; position:relative; padding-bottom: 0;">
-            <div class="domain-icon" aria-hidden="true" style="color:var(--accent);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+          <div
+            class="domain-card"
+            style="
+              text-decoration: none;
+              color: inherit;
+              position: relative;
+              padding-bottom: 0;
+            "
+          >
+            <div
+              class="domain-icon"
+              aria-hidden="true"
+              style="color: var(--accent)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m18 16 4-4-4-4"></path>
+                <path d="m6 8-4 4 4 4"></path>
+                <path d="m14.5 4-5 16"></path>
+              </svg>
             </div>
             <h3 class="domain-title">
-              <a href="https://github.com/officebeats?tab=repositories" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">VibeCoding <span style="opacity:0.6; font-size:0.8em; margin-left:4px;">↗</span></a>
+              <a
+                href="https://github.com/officebeats?tab=repositories"
+                target="_blank"
+                rel="noopener"
+                style="text-decoration: none; color: inherit"
+                >VibeCoding
+                <span style="opacity: 0.6; font-size: 0.8em; margin-left: 4px"
+                  >↗</span
+                ></a
+              >
             </h3>
-            <p class="domain-desc" style="margin-bottom: 2rem;">Building with Google Antigravity, Stitch, Gemini CLI, and KiloCode.</p>
-            <a href="https://github.com/officebeats" target="_blank" rel="noopener" style="width: 100%; display: block; margin-top: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 8px 24px rgba(0,0,0,0.06); padding: 0.5rem; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); text-decoration: none;">
-              <img src="https://github-readme-streak-stats.herokuapp.com/?user=officebeats&theme=transparent&hide_border=true&ring=009270&fire=009270&title_color=009270&text_color=333333&currStreakNum=009270&sideNums=333333&sideLabels=666666&dates=666666" alt="GitHub Stats" style="width: 100%; display: block;" />
-            </a>
+            <p class="domain-desc" style="margin-bottom: 2rem">
+              Building with Google Antigravity, Stitch, Gemini CLI, and
+              KiloCode.
+            </p>
+            <div
+              style="
+                margin-top: auto;
+                width: 100%;
+                height: 160px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <a
+                href="https://github.com/officebeats"
+                target="_blank"
+                rel="noopener"
+                style="
+                  width: 100%;
+                  display: block;
+                  border-radius: 8px;
+                  border: 1px solid rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                  padding: 0.5rem;
+                  background: rgba(255, 255, 255, 0.8);
+                  backdrop-filter: blur(10px);
+                  text-decoration: none;
+                "
+              >
+                <img
+                  src="https://github-readme-streak-stats.herokuapp.com/?user=officebeats&theme=transparent&hide_border=true&ring=009270&fire=009270&title_color=009270&text_color=333333&currStreakNum=009270&sideNums=333333&sideLabels=666666&dates=666666"
+                  alt="GitHub Stats"
+                  style="width: 100%; display: block"
+                />
+              </a>
+            </div>
           </div>
-
         </div>
       </div>
     </section>
 
     <!-- Let's Connect CTA -->
     <section class="cta-section">
-      <div class="container">
-        <p class="section-label">Get in Touch</p>
-        <h2 class="section-heading">Building something ambitious?</h2>
-        <p class="cta-subtitle">
-          I'm always open to conversations about product leadership,
-          AI-powered platforms, and teams doing meaningful work.
+      <div class="container" style="max-width: 700px; text-align: center">
+        <p
+          class="section-label"
+          style="
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+          "
+        >
+          GET IN TOUCH
         </p>
-        <div class="cta-actions">
-          <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener" class="btn btn-primary">Connect on LinkedIn</a>
-          <a href="mailto:Ernesto@ProductMG.com" class="btn btn-ghost">Ernesto@ProductMG.com →</a>
+        <h2
+          class="section-heading"
+          style="
+            color: var(--accent);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+          "
+        >
+          Building something ambitious?
+        </h2>
+        <p
+          class="cta-subtitle"
+          style="
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.125rem;
+          "
+        >
+          I'm always open to conversations about product leadership, AI-powered
+          platforms, and teams doing meaningful work.
+        </p>
+        <div
+          class="cta-actions"
+          style="justify-content: center; gap: 1.5rem; align-items: center"
+        >
+          <a
+            href="https://www.linkedin.com/in/productmg/"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+            >Connect on LinkedIn</a
+          >
+          <a
+            href="mailto:Ernesto@ProductMG.com"
+            class="btn btn-ghost"
+            style="color: var(--text-secondary); font-weight: 500"
+            >Ernesto@ProductMG.com &rarr;</a
+          >
         </div>
       </div>
     </section>
@@ -640,24 +1154,85 @@
           <p>Product Leader &middot; AI &middot; Digital Transformation</p>
         </div>
         <div class="footer-meta">
-          <p>&copy; 2026 Ernesto Rodriguez &middot; Ernest0.com &middot; Chicago</p>
+          <p>
+            &copy; 2026 Ernesto Rodriguez &middot; Ernest0.com &middot; Chicago
+          </p>
           <div class="footer-attribution">
-            Built with 
-            <svg class="ag-logo" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-              <path d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" />
+            Built with
+            <svg
+              class="ag-logo"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="currentColor"
+            >
+              <path
+                d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z"
+              />
             </svg>
             Antigravity
           </div>
         </div>
         <div class="footer-socials">
-          <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a
+            href="https://www.linkedin.com/in/productmg/"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewbox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
           </a>
-          <a href="https://x.com/officebeats" target="_blank" rel="noopener" aria-label="X (Twitter)">
-            <svg width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768m2.46-2.46l6.772-6.772"/></svg>
+          <a
+            href="https://x.com/officebeats"
+            target="_blank"
+            rel="noopener"
+            aria-label="X (Twitter)"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewbox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 4l11.733 16h4.267l-11.733-16z" />
+              <path d="M4 20l6.768-6.768m2.46-2.46l6.772-6.772" />
+            </svg>
           </a>
           <a href="mailto:Ernesto@ProductMG.com" aria-label="Email">
-            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg
+              width="20"
+              height="20"
+              viewbox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
           </a>
         </div>
       </div>
@@ -666,113 +1241,122 @@
     <script src="app.js"></script>
     <script>
       function openLightbox(src) {
-        var lb = document.getElementById('img-lightbox');
-        document.getElementById('lightbox-video').style.display = 'none';
-        document.getElementById('lightbox-video').pause();
-        var img = document.getElementById('lightbox-img');
-        img.style.display = 'block';
+        var lb = document.getElementById("img-lightbox");
+        document.getElementById("lightbox-video").style.display = "none";
+        document.getElementById("lightbox-video").pause();
+        var img = document.getElementById("lightbox-img");
+        img.style.display = "block";
         img.src = src;
-        lb.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        lb.style.display = "flex";
+        document.body.style.overflow = "hidden";
       }
-      
+
       function openVideoLightbox(src) {
-        var lb = document.getElementById('img-lightbox');
-        document.getElementById('lightbox-img').style.display = 'none';
-        var vid = document.getElementById('lightbox-video');
-        vid.style.display = 'block';
+        var lb = document.getElementById("img-lightbox");
+        document.getElementById("lightbox-img").style.display = "none";
+        var vid = document.getElementById("lightbox-video");
+        vid.style.display = "block";
         vid.src = src;
-        lb.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        
+        lb.style.display = "flex";
+        document.body.style.overflow = "hidden";
+
         // Safely play video so exceptions (e.g., Chrome autoplay blocks) don't break the UI
         var playPromise = vid.play();
         if (playPromise !== undefined) {
-          playPromise.catch(function(error) {
-            console.log('Video autoplay blocked or delayed by browser.', error);
+          playPromise.catch(function (error) {
+            console.log("Video autoplay blocked or delayed by browser.", error);
           });
         }
       }
 
       function openLightbox(src) {
-        var lb = document.getElementById('img-lightbox');
-        document.getElementById('lightbox-video').style.display = 'none';
-        document.getElementById('lightbox-video').pause();
-        var img = document.getElementById('lightbox-img');
-        img.style.display = 'block';
+        var lb = document.getElementById("img-lightbox");
+        document.getElementById("lightbox-video").style.display = "none";
+        document.getElementById("lightbox-video").pause();
+        var img = document.getElementById("lightbox-img");
+        img.style.display = "block";
         img.src = src;
-        lb.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        lb.style.display = "flex";
+        document.body.style.overflow = "hidden";
       }
-      
+
       function openVideoLightbox(src) {
-        var lb = document.getElementById('img-lightbox');
-        document.getElementById('lightbox-img').style.display = 'none';
-        var vid = document.getElementById('lightbox-video');
-        vid.style.display = 'block';
+        var lb = document.getElementById("img-lightbox");
+        document.getElementById("lightbox-img").style.display = "none";
+        var vid = document.getElementById("lightbox-video");
+        vid.style.display = "block";
         vid.src = src;
-        lb.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        
+        lb.style.display = "flex";
+        document.body.style.overflow = "hidden";
+
         // Safely play video so exceptions (e.g., Chrome autoplay blocks) don't break the UI
         var playPromise = vid.play();
         if (playPromise !== undefined) {
-          playPromise.catch(function(error) {
-            console.log('Video autoplay blocked or delayed by browser.', error);
+          playPromise.catch(function (error) {
+            console.log("Video autoplay blocked or delayed by browser.", error);
           });
         }
       }
 
       function closeLightbox() {
-        var lb = document.getElementById('img-lightbox');
-        lb.style.display = 'none';
-        document.body.style.overflow = '';
-        var vid = document.getElementById('lightbox-video');
+        var lb = document.getElementById("img-lightbox");
+        lb.style.display = "none";
+        document.body.style.overflow = "";
+        var vid = document.getElementById("lightbox-video");
         vid.pause();
-        vid.src = '';
-        document.getElementById('lightbox-img').src = '';
+        vid.src = "";
+        document.getElementById("lightbox-img").src = "";
       }
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeLightbox();
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeLightbox();
       });
 
       // PWA Service Worker Registration
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
-            .then(reg => console.log('Service Worker registered.', reg))
-            .catch(err => console.log('Service Worker registration failed.', err));
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js?v=1.5")
+            .then((reg) => console.log("Service Worker registered.", reg))
+            .catch((err) =>
+              console.log("Service Worker registration failed.", err),
+            );
         });
       }
 
       // FAANG-Grade Intersection Observer for Scroll Animations
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         const observerOptions = {
           root: null,
-          rootMargin: '0px 0px -25% 0px',
-          threshold: 0.15
+          rootMargin: "0px 0px -25% 0px",
+          threshold: 0.15,
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
+              entry.target.classList.add("is-visible");
               observer.unobserve(entry.target); // Run once
             }
           });
         }, observerOptions);
 
-        const animatedElements = document.querySelectorAll('.reveal, .reveal-blur, .reveal-left, .reveal-right, .stagger-parent');
-        animatedElements.forEach(el => observer.observe(el));
-        
+        const animatedElements = document.querySelectorAll(
+          ".reveal, .reveal-blur, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate, .stagger-parent",
+        );
+        animatedElements.forEach((el) => observer.observe(el));
+
         // Force the first load items (Hero, Nav) to be visible immediately without relying purely on scroll
         setTimeout(() => {
-            document.querySelectorAll('#top .reveal, #top .reveal-blur, #top .stagger-parent').forEach(el => {
-                el.classList.add('is-visible');
+          document
+            .querySelectorAll(
+              "#top .reveal, #top .reveal-blur, #top .stagger-parent",
+            )
+            .forEach((el) => {
+              el.classList.add("is-visible");
             });
-            document.querySelectorAll('.logo-bar').forEach(el => {
-                el.classList.add('is-visible');
-            });
+          document.querySelectorAll(".logo-bar").forEach((el) => {
+            el.classList.add("is-visible");
+          });
         }, 150);
       });
     </script>

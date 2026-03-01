@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /c/Users/admin-beats/OneDrive/xo Vibe Coding xo/ernesto-portfolio/ernesto-portfolio)",
+      "Bash(xargs:*)"
+    ]
+  }
+}

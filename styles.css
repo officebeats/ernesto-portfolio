@@ -648,9 +648,8 @@ hr.divider {
   transform: translateX(0);
   z-index: 2;
   position: absolute;
-  left: 5px;
-  top: 50%;
-  margin-top: -13px; /* half of 26px height */
+  left: 4px;
+  top: 4px; /* The available inner height is 34px (36-2). Thumb is 26px. Gap is 8px, so top/bottom is 4px. */
 }
 
 .theme-label-dark,

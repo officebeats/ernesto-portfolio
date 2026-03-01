@@ -646,12 +646,7 @@ hr.divider {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: 2;
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  transform: translateY(
-    -50%
-  ); /* Best way to perfectly center regardless of borders/padding */
+  transform: translateX(0);
 }
 
 .theme-label-dark,
@@ -692,7 +687,7 @@ hr.divider {
 }
 
 [data-theme="dark"] .theme-toggle-thumb {
-  transform: translate(68px, -50%); /* Dark mode position (right) */
+  transform: translateX(68px); /* Dark mode position (right) */
 }
 
 .hero {

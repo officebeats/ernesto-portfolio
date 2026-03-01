@@ -645,11 +645,13 @@ hr.divider {
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transform: translateX(0);
   z-index: 2;
   position: absolute;
   left: 4px;
-  top: 4px; /* The available inner height is 34px (36-2). Thumb is 26px. Gap is 8px, so top/bottom is 4px. */
+  top: 50%;
+  transform: translateY(
+    -50%
+  ); /* Best way to perfectly center regardless of borders/padding */
 }
 
 .theme-label-dark,
@@ -690,7 +692,7 @@ hr.divider {
 }
 
 [data-theme="dark"] .theme-toggle-thumb {
-  transform: translateX(70px); /* Dark mode position (right) */
+  transform: translate(68px, -50%); /* Dark mode position (right) */
 }
 
 .hero {

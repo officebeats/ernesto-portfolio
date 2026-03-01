@@ -1,48 +1,101 @@
 {
-  "id": "ernesto-portfolio",
-  "name": "Ernesto Rodriguez | Product Leader",
+  "name": "Ernesto Rodriguez | Product Leader, AI & Digital Transformation",
   "short_name": "ErnestoR",
-  "description": "Product Leader · AI · Digital Transformation",
+  "description": "Product Leader specializing in AI-powered platforms, digital health systems, and consumer products across healthcare, fintech, retail, and B2B SaaS.",
+  "id": "ernesto-portfolio",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "any",
-  "background_color": "#ffffff",
+  "background_color": "#050505",
   "theme_color": "#009270",
-  "categories": ["business", "personalization"],
+  "categories": ["business", "personalization", "productivity"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "./logos/pwa-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./logos/pwa-icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
       "src": "./logos/pwa-icon-512.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "./logos/pwa-icon-512.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./logos/pwa-icon-512.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./logos/pwa-icon-512.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./logos/pwa-icon-512.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./logos/pwa-icon-512.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./logos/pwa-icon-512.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./profile-full.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Ernesto Rodriguez Portfolio"
     }
   ],
   "shortcuts": [
     {
-      "name": "View Career Experience",
+      "name": "Experience",
       "short_name": "Experience",
-      "description": "Jump directly to my career history and achievements.",
-      "url": "./index.html#experience"
+      "description": "View career history and achievements",
+      "url": "./index.html#experience",
+      "icons": [{ "src": "./logos/pwa-icon-512.png", "sizes": "96x96" }]
     },
     {
-      "name": "View Credentials",
+      "name": "Credentials",
       "short_name": "Credentials",
-      "description": "See my certifications and formal training.",
-      "url": "./index.html#credentials"
+      "description": "View certifications and training",
+      "url": "./index.html#credentials",
+      "icons": [{ "src": "./logos/pwa-icon-512.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Send an email",
+      "url": "mailto:Ernesto@ProductMG.com",
+      "icons": [{ "src": "./logos/pwa-icon-512.png", "sizes": "96x96" }]
     }
-  ]
+  ],
+  "related_applications": [],
+  "feed": "./index.html"
 }

@@ -31,7 +31,7 @@ test.describe("Certificate Lightbox System", () => {
     page,
   }) => {
     const trigger = page.locator(
-      '.cred-item:has-text("Gen AI Product Management Specialization")',
+      '.cred-item:has-text("Gen AI Product Management")',
     );
     await trigger.click();
 
@@ -103,10 +103,14 @@ test.describe("Footer", () => {
     await expect(footer).toHaveCSS("background-color", /rgb\(0, 146, 112\)/);
   });
 
-  test("footer text is white", async ({ page }) => {
+  test("footer text is appropriate for theme", async ({ page }) => {
     await page.goto(BASE_URL);
+    // Page defaults to dark mode - footer text should be black in dark mode
     const footerH2 = page.locator(".footer h2");
-    await expect(footerH2).toHaveCSS("color", "rgb(255, 255, 255)");
+    // In dark mode, footer text is black (see CSS [data-theme="dark"] .footer h2)
+    const color = await footerH2.evaluate((el) => getComputedStyle(el).color);
+    // Should be black in dark mode
+    expect(color).toMatch(/rgb\(0, 0, 0\)|rgb\(0,0,0\)/);
   });
 });
 

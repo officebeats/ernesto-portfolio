@@ -1,24 +1,33 @@
-const CACHE_NAME = "ernesto-portfolio-v2.1-pwa";
+/**
+ * Service Worker - Ernesto Rodriguez Portfolio
+ * Version: 2.5 - Optimized for performance
+ * Caching strategies: Network-first (navigate), Cache-first (fonts/media), Stale-while-revalidate (assets)
+ */
 
-const ASSETS_TO_CACHE = [
-  "./",
-  "./index.html",
-  "./styles.css",
-  "./app.js",
-  "./manifest.json",
-  "./logos/pwa-icon-512.png",
+const CACHE_NAME = 'portfolio-cache-v2.5';
+
+// Core assets to cache immediately
+const PRECACHE_ASSETS = [
+  './',
+  './index.html',
+  './styles.css',
+  './app.js',
+  './manifest.json',
+  './logos/pwa-icon-512.png',
+  './switch.mp3'
 ];
 
-// Media extensions for strict cache-first policy
-const MEDIA_EXTS = [".png", ".jpg", ".jpeg", ".svg", ".mp4", ".webp"];
+// Media extensions for cache-first strategy
+const MEDIA_EXTS = ['.png', '.jpg', '.jpeg', '.svg', '.mp4', '.webm', '.gif', '.ico'];
 
-// Google Fonts CDN for runtime caching
+// External origins to cache (fonts)
 const FONT_ORIGINS = [
-  "https://fonts.googleapis.com",
-  "https://fonts.gstatic.com",
+  'https://fonts.googleapis.com',
+  'https://fonts.gstatic.com',
+  'https://unpkg.com'
 ];
 
-// Lightweight offline fallback
+// Offline fallback HTML
 const OFFLINE_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,132 +60,224 @@ const OFFLINE_HTML = `<!DOCTYPE html>
 </body>
 </html>`;
 
-// ————— Install —————
-self.addEventListener("install", (event) => {
-  self.skipWaiting();
+// ============================================
+// Install Event - Precache critical assets
+// ============================================
+self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Activate immediately
+  
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE)),
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('PWA SW: Precaching critical assets');
+        return cache.addAll(PRECACHE_ASSETS);
+      })
+      .then(() => {
+        console.log('PWA SW: Installation complete');
+      })
+      .catch(err => {
+        console.error('PWA SW: Precache failed:', err);
+      })
   );
 });
 
-// ————— Activate (Navigation Preload + Cache Purge) —————
-self.addEventListener("activate", (event) => {
+// ============================================
+// Activate Event - Cleanup old caches
+// ============================================
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
-      // Enable Navigation Preload for faster first-paint
+      // Enable navigation preload for faster first paint
       if (self.registration.navigationPreload) {
-        await self.registration.navigationPreload.enable();
+        try {
+          await self.registration.navigationPreload.enable();
+        } catch (e) {
+          console.log('PWA SW: Navigation preload not supported');
+        }
       }
 
-      // Purge old caches
+      // Delete old caches
       const cacheNames = await caches.keys();
       await Promise.all(
-        cacheNames.map((name) => {
-          if (name !== CACHE_NAME) {
-            console.log("PWA SW: Purging old cache", name);
+        cacheNames
+          .filter(name => name !== CACHE_NAME)
+          .map(name => {
+            console.log('PWA SW: Deleting old cache:', name);
             return caches.delete(name);
-          }
-        }),
+          })
       );
 
       // Take control immediately
       await self.clients.claim();
-    })(),
+      console.log('PWA SW: Activated and controlling clients');
+    })()
   );
 });
 
-// ————— Fetch —————
-self.addEventListener("fetch", (event) => {
-  const url = new URL(event.request.url);
+// ============================================
+// Fetch Event - Handle all requests
+// ============================================
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  const url = new URL(request.url);
 
-  // Skip non-GET and cross-origin (except fonts)
-  if (event.request.method !== "GET") return;
+  // Skip non-GET requests
+  if (request.method !== 'GET') return;
 
+  // Check if same origin or allowed external
   const isSameOrigin = url.origin === self.location.origin;
-  const isFont = FONT_ORIGINS.some((origin) => url.origin === origin);
+  const isFont = FONT_ORIGINS.some(origin => url.origin === origin);
+  const isNpm = url.origin === 'https://unpkg.com';
 
-  if (!isSameOrigin && !isFont) return;
+  // Skip other cross-origin requests
+  if (!isSameOrigin && !isFont && !isNpm) return;
 
-  // Navigation requests — Network-first with preload + offline fallback
-  if (event.request.mode === "navigate") {
+  // ----------------------
+  // Navigation requests (HTML)
+  // ----------------------
+  if (request.mode === 'navigate') {
     event.respondWith(
       (async () => {
         try {
-          // Use navigation preload response if available
-          const preloadResponse = await event.preloadResponse;
-          if (preloadResponse) return preloadResponse;
-
-          return await fetch(event.request);
-        } catch {
-          // Network failed — try cache, then offline fallback
-          const cached = await caches.match(event.request);
+          // Try network first
+          const response = await fetch(request);
+          
+          // Cache the fresh response
+          const cache = await caches.open(CACHE_NAME);
+          cache.put(request, response.clone());
+          
+          return response;
+        } catch (error) {
+          // Network failed - try cache
+          const cached = await caches.match(request);
           if (cached) return cached;
-
+          
+          // Return offline page
           return new Response(OFFLINE_HTML, {
-            headers: { "Content-Type": "text/html" },
+            headers: { 'Content-Type': 'text/html' }
           });
         }
-      })(),
+      })()
     );
     return;
   }
 
-  // Font requests — Cache-first (fonts rarely change)
-  if (isFont) {
+  // ----------------------
+  // Font requests - Cache first (rarely change)
+  // ----------------------
+  if (isFont || isNpm) {
     event.respondWith(
-      caches.match(event.request).then((cached) => {
-        if (cached) return cached;
-        return fetch(event.request).then((response) => {
-          const clone = response.clone();
-          caches
-            .open(CACHE_NAME)
-            .then((cache) => cache.put(event.request, clone));
+      caches.match(request).then(cached => {
+        if (cached) {
+          // Return cached, update in background
+          fetch(request).then(response => {
+            if (response.ok) {
+              caches.open(CACHE_NAME).then(cache => 
+                cache.put(request, response)
+              );
+            }
+          }).catch(() => {});
+          return cached;
+        }
+        
+        // Not cached, fetch and cache
+        return fetch(request).then(response => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => 
+              cache.put(request, clone)
+            );
+          }
           return response;
+        }).catch(() => {
+          // Return fallback for fonts if offlineisFont) {
+
+          if (            return new Response('', { status: 200 });
+          }
         });
-      }),
+      })
     );
     return;
   }
 
-  // Media assets — Cache-first (save bandwidth on mobile)
-  const isMedia = MEDIA_EXTS.some((ext) =>
-    url.pathname.toLowerCase().endsWith(ext),
+  // ----------------------
+  // Media assets - Cache first (large, save bandwidth)
+  // ----------------------
+  const isMedia = MEDIA_EXTS.some(ext => 
+    url.pathname.toLowerCase().endsWith(ext)
   );
 
   if (isMedia) {
     event.respondWith(
-      caches.match(event.request).then((cached) => {
+      caches.match(request).then(cached => {
         if (cached) return cached;
-        return fetch(event.request).then((response) => {
-          const clone = response.clone();
-          caches
-            .open(CACHE_NAME)
-            .then((cache) => cache.put(event.request, clone));
+        
+        return fetch(request).then(response => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => 
+              cache.put(request, clone)
+            );
+          }
           return response;
         });
-      }),
+      })
     );
     return;
   }
 
-  // Core assets — Stale-while-revalidate
+  // ----------------------
+  // Core assets (JS, CSS) - Stale while revalidate
+  // ----------------------
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const fetchPromise = fetch(event.request)
-        .then((response) => {
+    caches.match(request).then(cached => {
+      const fetchPromise = fetch(request)
+        .then(response => {
           if (response && response.status === 200) {
             const clone = response.clone();
-            caches
-              .open(CACHE_NAME)
-              .then((cache) => cache.put(event.request, clone));
+            caches.open(CACHE_NAME).then(cache => 
+              cache.put(request, clone)
+            );
           }
           return response;
         })
         .catch(() => {
-          console.log("PWA SW: Network failed, relying on cache.");
+          console.log('PWA SW: Network failed for:', request.url);
         });
 
+      // Return cached immediately, update in background
       return cached || fetchPromise;
-    }),
+    })
   );
+});
+
+// ============================================
+// Background Sync (for future use)
+// ============================================
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'sync-analytics') {
+    console.log('PWA SW: Background sync triggered');
+  }
+});
+
+// ============================================
+// Push Notifications (for future use)
+// ============================================
+self.addEventListener('push', (event) => {
+  if (event.data) {
+    const data = event.data.json();
+    const options = {
+      body: data.body || 'New update available',
+      icon: './logos/pwa-icon-512.png',
+      badge: './logos/pwa-icon-512.png',
+      vibrate: [100, 50, 100],
+      data: {
+        url: data.url || './'
+      }
+    };
+
+    event.waitUntil(
+      self.registration.showNotification(data.title || 'Ernesto Rodriguez', options)
+    );
+  }
 });

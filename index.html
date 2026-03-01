@@ -1,15 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- ULTRATHINK Canonical Edge Routing Enforcer -->
+    <!-- ULTRATHINK Canonical Edge Routing Enforcer - Only redirect in production -->
     <script>
       (function () {
         var host = window.location.hostname;
+        // Allow local development and testing
         var isLocal =
           host === "localhost" ||
           host === "127.0.0.1" ||
-          host.includes("github.io");
-        if (!isLocal) {
+          host.startsWith("192.168.") ||
+          host.startsWith("10.") ||
+          host.includes("github.io") ||
+          window.location.protocol === "file:";
+        
+        if (!isLocal && window.location.protocol !== "file:") {
           var targetProtocol = "https:";
           var targetHost = "ernest0.com";
           if (
@@ -60,27 +65,28 @@
       content="Ernesto Rodriguez — Product Leader, AI & Digital Transformation. Exploring sound design, AI PM, and Spatial Computing."
     />
 
+    <!-- Preload critical resources for optimal LCP -->
+    <link rel="preload" href="profile-full.jpg" as="image" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload critical fonts for FAANG-grade LCP -->
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap"
-      as="style"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="styles.css?v=2.2-sync" />
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" href="logos/pwa-icon-512.png" sizes="32x32" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#009270" />
+    <link rel="stylesheet" href="styles.css?v=2.3" />
   </head>
   <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Nav -->
     <header class="nav">
       <div class="container nav-inner">
         <a href="#" class="nav-logo">Ernesto Rodriguez</a>
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Main navigation">
           <a href="#experience">Experience</a>
           <a href="#domains">Domains</a>
           <a href="#credentials">Credentials</a>
@@ -88,51 +94,21 @@
           <a href="#hobbies">Pursuits</a>
         </nav>
         <div class="nav-actions">
-          <button class="theme-toggle" aria-label="Toggle theme">
+          <button class="theme-toggle" aria-label="Toggle dark/light theme">
             <span class="theme-label-dark">Dark</span>
-            <div class="theme-toggle-thumb"></div>
+            <div class="theme-toggle-thumb" aria-hidden="true"></div>
             <span class="theme-label-light">Light</span>
           </button>
-          <a
-            href="Ernesto_Rodriguez_Resume.pdf"
-            target="_blank"
-            rel="noopener"
-            class="nav-cta"
-            >Resume
-            <span
-              style="font-size: 1.1em; vertical-align: -1px; margin-left: 2px"
-              >↓</span
-            ></a
-          >
-          <button
-            class="mobile-menu-btn"
-            aria-label="Toggle mobile menu"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-          >
-            <svg
-              class="hamburger"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="nav-cta" aria-label="Download Resume (PDF)">
+            Resume <span aria-hidden="true">↓</span>
+          </a>
+          <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
-            <svg
-              class="close-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              style="display: none"
-            >
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -142,39 +118,28 @@
     </header>
 
     <!-- Mobile Overlay Menu -->
-    <div id="mobile-menu" class="mobile-overlay" aria-hidden="true">
+    <div id="mobile-menu" class="mobile-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <nav class="mobile-nav-links">
         <a href="#experience" class="mobile-link" style="--i: 0">Experience</a>
         <a href="#domains" class="mobile-link" style="--i: 1">Domains</a>
-        <a href="#credentials" class="mobile-link" style="--i: 2"
-          >Credentials</a
-        >
+        <a href="#credentials" class="mobile-link" style="--i: 2">Credentials</a>
         <a href="#writing" class="mobile-link" style="--i: 3">Publications</a>
         <a href="#hobbies" class="mobile-link" style="--i: 4">Pursuits</a>
-        <a
-          href="Ernesto_Rodriguez_Resume.pdf"
-          target="_blank"
-          rel="noopener"
-          class="mobile-link mobile-cta"
-          style="--i: 5"
-          >Resume
-          <span style="font-size: 1.1em; vertical-align: -2px; margin-left: 2px"
-            >↓</span
-          ></a
-        >
+        <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="mobile-link mobile-cta" style="--i: 5">Resume <span aria-hidden="true">↓</span></a>
       </nav>
       <div class="mobile-overlay-footer" style="--i: 6">
         <p>Ernesto Rodriguez &middot; Product Leader</p>
       </div>
     </div>
-    <main>
+
+    <main id="main-content">
       <!-- ═══════════ Hero ═══════════ -->
       <section class="hero bg-mesh-light" id="top">
         <div class="container hero-grid">
           <div class="hero-content reveal-blur stagger-parent">
             <h1 class="hero-title reveal">
               I launch products and manage teams that
-              <span style="color: var(--accent)">MOVE THE BUSINESS.</span>
+              <span class="emphasis" style="color: var(--accent)">MOVE THE BUSINESS.</span>
             </h1>
             <p class="hero-body stagger-item">
               Product management leader with over a decade of experience
@@ -323,7 +288,7 @@
             </div>
             <div class="logo-item">
               <img
-                src="logos/levelex-games.svg"
+                src="logos/LEX-logo.png"
                 alt="LevelEx Games"
                 class="invert-on-light"
                 loading="lazy"
@@ -339,6 +304,14 @@
               /><span>Allscripts</span>
             </div>
 
+            <div class="logo-item">
+              <img
+                src="logos/centerpoint-energy.png"
+                alt="CenterPoint Energy"
+                loading="lazy"
+                decoding="async"
+              /><span>CenterPoint Energy</span>
+            </div>
             <div class="logo-item">
               <img
                 src="logos/route.png"
@@ -551,7 +524,7 @@
                 </div>
                 <div class="domain-logo-item">
                   <img
-                    src="logos/levelex-games.svg"
+                    src="logos/LEX-logo.png"
                     alt="LevelEx Games"
                     class="invert-on-light"
                   /><span>LevelEx Games</span>
@@ -696,7 +669,7 @@
               <div class="domain-logos">
                 <div class="domain-logo-item">
                   <img
-                    src="logos/levelex-games.svg"
+                    src="logos/LEX-logo.png"
                     alt="LevelEx Games"
                     class="logo-invert"
                     loading="lazy"
@@ -736,28 +709,10 @@
       </section>
 
       <!-- Image Lightbox -->
-      <div id="img-lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img
-          id="lightbox-img"
-          src=""
-          alt="Certificate"
-          onclick="event.stopPropagation()"
-        />
-        <video
-          id="lightbox-video"
-          src=""
-          controls
-          style="
-            display: none;
-            max-height: 90vh;
-            max-width: 90vw;
-            border-radius: 12px;
-            z-index: 1001;
-            position: relative;
-          "
-          onclick="event.stopPropagation()"
-        ></video>
+      <div id="img-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview">
+        <button class="lightbox-close" aria-label="Close preview">&times;</button>
+        <img id="lightbox-img" src="" alt="Certificate preview" />
+        <video id="lightbox-video" controls playsinline aria-label="Video preview"></video>
       </div>
 
       <!-- Credentials -->
@@ -772,9 +727,10 @@
             style="display: grid; gap: 1.5rem"
           >
             <div
-              class="exp-item stagger-item"
+              class="exp-item stagger-item cred-item"
               onclick="openLightbox('logos/ai-pm-cert.png')"
               style="cursor: pointer; grid-template-columns: 1fr"
+              data-src="logos/ai-pm-cert.png"
             >
               <div>
                 <h3 style="display: flex; align-items: center; gap: 0.5rem">
@@ -808,9 +764,10 @@
             </div>
 
             <div
-              class="exp-item stagger-item"
+              class="exp-item stagger-item cred-item"
               onclick="openLightbox('logos/design-sprint-cert.png')"
               style="cursor: pointer; grid-template-columns: 1fr"
+              data-src="logos/design-sprint-cert.png"
             >
               <div>
                 <h3 style="display: flex; align-items: center; gap: 0.5rem">
@@ -843,9 +800,10 @@
             </div>
 
             <div
-              class="exp-item stagger-item"
+              class="exp-item stagger-item cred-item"
               onclick="openLightbox('logos/csm-cert.png')"
               style="cursor: pointer; grid-template-columns: 1fr"
+              data-src="logos/csm-cert.png"
             >
               <div>
                 <h3 style="display: flex; align-items: center; gap: 0.5rem">
@@ -1312,71 +1270,7 @@
       </div>
     </footer>
 
+    <!-- Initialize App -->
     <script src="app.js"></script>
-    <script>
-      function openLightbox(src) {
-        var lb = document.getElementById("img-lightbox");
-        document.getElementById("lightbox-video").style.display = "none";
-        document.getElementById("lightbox-video").pause();
-        var img = document.getElementById("lightbox-img");
-        img.style.display = "block";
-        img.src = src;
-        lb.style.display = "flex";
-        document.body.style.overflow = "hidden";
-      }
-
-      function openVideoLightbox(src) {
-        var lb = document.getElementById("img-lightbox");
-        document.getElementById("lightbox-img").style.display = "none";
-        var vid = document.getElementById("lightbox-video");
-        vid.style.display = "block";
-        vid.src = src;
-        lb.style.display = "flex";
-        document.body.style.overflow = "hidden";
-
-        // Safely play video so exceptions (e.g., Chrome autoplay blocks) don't break the UI
-        var playPromise = vid.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(function (error) {
-            console.log("Video autoplay blocked or delayed by browser.", error);
-          });
-        }
-      }
-
-      function closeLightbox() {
-        var lb = document.getElementById("img-lightbox");
-        lb.style.display = "none";
-        document.body.style.overflow = "";
-        var vid = document.getElementById("lightbox-video");
-        vid.pause();
-        vid.src = "";
-        document.getElementById("lightbox-img").src = "";
-      }
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") closeLightbox();
-      });
-
-      // PWA Service Worker Registration
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("./sw.js?v=2.3-force-sync")
-            .then((reg) => {
-              console.log("Service Worker registered.", reg);
-              reg.update();
-            })
-            .catch((err) =>
-              console.log("Service Worker registration failed.", err),
-            );
-        });
-      }
-
-      // Icons managed via app.js or initial load
-      document.addEventListener("DOMContentLoaded", () => {
-        if (window.lucide) {
-          lucide.createIcons();
-        }
-      });
-    </script>
   </body>
 </html>

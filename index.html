@@ -711,12 +711,7 @@
         </div>
       </section>
 
-      <!-- Image Lightbox -->
-      <div id="img-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview">
-        <button class="lightbox-close" aria-label="Close preview">&times;</button>
-        <img id="lightbox-img" src="" alt="Certificate preview" />
-        <video id="lightbox-video" controls playsinline aria-label="Video preview"></video>
-      </div>
+
 
       <!-- Credentials -->
       <section id="credentials" class="section reveal-kinetic">
@@ -731,9 +726,9 @@
           >
             <div
               class="exp-item stagger-item cred-item"
-              onclick="openLightbox('logos/ai-pm-cert.png')"
+              onclick="openLightbox('logos/ai-pm-cert.webp')"
               style="cursor: pointer; grid-template-columns: 1fr"
-              data-src="logos/ai-pm-cert.png"
+              data-src="logos/ai-pm-cert.webp"
             >
               <div>
                 <h3 style="display: flex; align-items: center; gap: 0.5rem">
@@ -768,9 +763,9 @@
 
             <div
               class="exp-item stagger-item cred-item"
-              onclick="openLightbox('logos/design-sprint-cert.png')"
+              onclick="openLightbox('logos/design-sprint-cert.webp')"
               style="cursor: pointer; grid-template-columns: 1fr"
-              data-src="logos/design-sprint-cert.png"
+              data-src="logos/design-sprint-cert.webp"
             >
               <div>
                 <h3 style="display: flex; align-items: center; gap: 0.5rem">
@@ -804,9 +799,9 @@
 
             <div
               class="exp-item stagger-item cred-item"
-              onclick="openLightbox('logos/csm-cert.png')"
+              onclick="openLightbox('logos/csm-cert.webp')"
               style="cursor: pointer; grid-template-columns: 1fr"
-              data-src="logos/csm-cert.png"
+              data-src="logos/csm-cert.webp"
             >
               <div>
                 <h3 style="display: flex; align-items: center; gap: 0.5rem">
@@ -1278,6 +1273,13 @@
         </div>
       </div>
     </footer>
+
+    <!-- Image Lightbox (Root level for proper viewport anchoring) -->
+    <div id="img-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Preview">
+      <button class="lightbox-close" aria-label="Close preview">&times;</button>
+      <img id="lightbox-img" src="" alt="Preview" />
+      <video id="lightbox-video" controls playsinline aria-label="Video preview"></video>
+    </div>
 
     <!-- Initialize App -->
     <script src="app.js"></script>

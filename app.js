@@ -87,11 +87,23 @@ window.closeLightbox = function () {
     );
     targets.forEach((target) => observer.observe(target));
 
-    // Force reveal for above-fold content
-    const aboveFold = document.querySelectorAll(
-      "#top .reveal, #top .reveal-blur, #chicago .reveal-left",
-    );
-    aboveFold.forEach((el) => el.classList.add("is-visible"));
+    // Force reveal for above-fold content with a tiny safety delay
+    const triggerInView = () => {
+      const reveals = document.querySelectorAll(
+        ".reveal, .reveal-blur, .reveal-left, .reveal-right, .stagger-parent",
+      );
+      reveals.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add("is-visible");
+        }
+      });
+    };
+
+    // Initial check
+    triggerInView();
+    // Safety check after load
+    window.addEventListener("load", triggerInView);
   };
 
   // ============================================

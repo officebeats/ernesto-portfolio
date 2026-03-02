@@ -1775,7 +1775,7 @@ body {
 
 .reveal-rotate {
   transform: translateY(60px) rotateX(15deg);
-  perspective: 1000px;
+  /* perspective: 1000px; - Removed to fix fixed positioning bug */
 }
 
 /* Active State Triggered by Observer */
@@ -2004,7 +2004,7 @@ body {
 .theme-toggle-thumb {
   transform: translateZ(0);
   backface-visibility: hidden;
-  perspective: 1000px;
+  /* perspective: 1000px; - Removed to fix fixed positioning bug */
 }
 
 /* Optimize images */
@@ -2049,7 +2049,7 @@ img {
 
 /* 3D Root Foundations */
 #main-content {
-  perspective: 1200px;
+  /* Removed perspective to avoid breaking fixed positioning on children/modals */
 }
 
 /* Responsive Kinetic Guards */

@@ -2125,3 +2125,10 @@ img {
   transform: translateY(0);
   visibility: visible;
 }
+
+/* Case study 2x2 grid — collapse to 1 col on mobile */
+@media (max-width: 640px) {
+  .case-study-2col {
+    grid-template-columns: 1fr !important;
+  }
+}

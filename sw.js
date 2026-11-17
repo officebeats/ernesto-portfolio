@@ -4,7 +4,7 @@
  * Caching strategies: Network-first (navigate), Cache-first (fonts/media), Stale-while-revalidate (assets)
  */
 
-const CACHE_NAME = 'portfolio-cache-v2.9';
+const CACHE_NAME = 'portfolio-cache-v2.11';
 
 // Core assets to cache immediately
 const PRECACHE_ASSETS = [
@@ -191,10 +191,9 @@ self.addEventListener('fetch', (event) => {
           }
           return response;
         }).catch(() => {
-          // Return fallback for fonts if offlineisFont) {
+          // Return a successful empty response for fonts while offline.
 
-          if (            return new Response('', { status: 200 });
-          }
+          return new Response('', { status: 200 });
         });
       })
     );

@@ -48,20 +48,16 @@ window.closeLightbox = function () {
     initLightbox();
     initServiceWorker();
     initLucideIcons();
-    initKineticEngine();
   };
 
   // Acoustic Material Registry
   const acoustic = {
     switch: new Audio("switch.mp3"),
-    paper: new Audio("page-turn.mp3"),
-    thud: new Audio("thud.mp3"),
   };
 
-  // Set volumes for subtle micro-interactions
+  // Keep the theme-toggle sound subtle.
   acoustic.switch.volume = 0.4;
-  acoustic.paper.volume = 0.25;
-  acoustic.thud.volume = 0.3;
+
 
   // ============================================
   // FAANG-Grade Intersection Observer
@@ -287,7 +283,7 @@ window.closeLightbox = function () {
   const initServiceWorker = () => {
     if (!("serviceWorker" in navigator)) return;
 
-    const swVersion = "v2.6";
+    const swVersion = "v2.8";
 
     window.addEventListener("load", () => {
       navigator.serviceWorker
@@ -329,13 +325,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".logo-track");
   if (!track) return;
 
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
   let currentX = 0;
   let isDragging = false;
   let startX = 0;
   let initialX = 0;
   let speed = 0.8;
   let direction = -1;
-  let animationId;
+  let animationId = 0;
   let trackWidth = 0;
   let parentWidth = 0;
 
@@ -344,36 +341,22 @@ document.addEventListener("DOMContentLoaded", () => {
     parentWidth = track.parentElement.clientWidth;
   };
 
-  // Measure on load and resize
-  if (document.readyState === "complete") {
-    measure();
-  } else {
-    window.addEventListener("load", measure);
-  }
-  window.addEventListener("resize", measure);
-
-  // Initial measurement with retry for images
-  let measureCount = 0;
-  const measureInterval = setInterval(() => {
-    measure();
-    if (++measureCount > 10) clearInterval(measureInterval);
-  }, 500);
-
   const animate = () => {
-    if (!isDragging) {
-      currentX += speed * direction;
+    if (mobileQuery.matches) {
+      animationId = 0;
+      track.style.transform = "none";
+      return;
     }
+
+    if (!isDragging) currentX += speed * direction;
 
     if (trackWidth > 0 && parentWidth > 0) {
       const maxScroll = Math.max(0, trackWidth - parentWidth + 100);
-      const leftBound = -maxScroll;
-      const rightBound = 50;
-
-      if (currentX <= leftBound) {
-        currentX = leftBound;
+      if (currentX <= -maxScroll) {
+        currentX = -maxScroll;
         direction = 1;
-      } else if (currentX >= rightBound) {
-        currentX = rightBound;
+      } else if (currentX >= 50) {
+        currentX = 50;
         direction = -1;
       }
     }
@@ -382,179 +365,82 @@ document.addEventListener("DOMContentLoaded", () => {
     animationId = requestAnimationFrame(animate);
   };
 
-  animationId = requestAnimationFrame(animate);
+  const handleResize = () => {
+    measure();
+    if (mobileQuery.matches) {
+      cancelAnimationFrame(animationId);
+      animationId = 0;
+      currentX = 0;
+      isDragging = false;
+      track.style.transform = "none";
+      track.style.cursor = "default";
+      document.body.style.userSelect = "";
+    } else if (!animationId) {
+      track.style.cursor = "grab";
+      animationId = requestAnimationFrame(animate);
+    }
+  };
 
-  // Pause on hover
-  track.addEventListener("mouseenter", () => (speed = 0.2));
+  measure();
+  window.addEventListener("load", measure);
+  window.addEventListener("resize", handleResize);
+  if (!mobileQuery.matches) {
+    let measureCount = 0;
+    const measureInterval = setInterval(() => {
+      measure();
+      if (++measureCount > 10) clearInterval(measureInterval);
+    }, 500);
+    animationId = requestAnimationFrame(animate);
+  } else {
+    track.style.transform = "none";
+    track.style.cursor = "default";
+  }
+
+  track.addEventListener("mouseenter", () => {
+    if (!mobileQuery.matches) speed = 0.2;
+  });
   track.addEventListener("mouseleave", () => {
+    if (mobileQuery.matches) return;
     speed = 0.8;
     isDragging = false;
     track.style.cursor = "grab";
   });
 
-  // Mouse drag events
-  track.addEventListener("mousedown", (e) => {
+  track.addEventListener("mousedown", (event) => {
+    if (mobileQuery.matches) return;
     isDragging = true;
-    startX = e.pageX;
+    startX = event.pageX;
     initialX = currentX;
     track.style.cursor = "grabbing";
     document.body.style.userSelect = "none";
   });
-
   window.addEventListener("mouseup", () => {
-    if (isDragging) {
-      isDragging = false;
-      track.style.cursor = "grab";
-      document.body.style.userSelect = "";
-    }
+    if (mobileQuery.matches || !isDragging) return;
+    isDragging = false;
+    track.style.cursor = "grab";
+    document.body.style.userSelect = "";
   });
-
-  window.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const walk = (e.pageX - startX) * 1.8;
+  window.addEventListener("mousemove", (event) => {
+    if (mobileQuery.matches || !isDragging) return;
+    event.preventDefault();
+    const walk = (event.pageX - startX) * 1.8;
     currentX = initialX + walk;
     if (walk !== 0) direction = walk > 0 ? 1 : -1;
   });
 
-  // Touch events for mobile
-  track.addEventListener(
-    "touchstart",
-    (e) => {
-      isDragging = true;
-      startX = e.touches[0].pageX;
-      initialX = currentX;
-    },
-    { passive: true },
-  );
-
+  track.addEventListener("touchstart", (event) => {
+    if (mobileQuery.matches) return;
+    isDragging = true;
+    startX = event.touches[0].pageX;
+    initialX = currentX;
+  }, { passive: true });
   window.addEventListener("touchend", () => {
-    isDragging = false;
+    if (!mobileQuery.matches) isDragging = false;
   });
-
-  window.addEventListener(
-    "touchmove",
-    (e) => {
-      if (!isDragging) return;
-      const walk = (e.touches[0].pageX - startX) * 1.8;
-      currentX = initialX + walk;
-      if (walk !== 0) direction = walk > 0 ? 1 : -1;
-    },
-    { passive: true },
-  );
-
-  // ============================================
-  // Kinetic Engine — Micro-Interactions 2026
-  // ============================================
-  const initKineticEngine = () => {
-    // 1. Magnetic Gravity (CTAs)
-    const magneticTargets = document.querySelectorAll(
-      ".btn-primary, .btn-email, .mobile-cta, .nav-logo",
-    );
-    magneticTargets.forEach((el) => {
-      el.addEventListener("mousemove", (e) => {
-        if (!window.matchMedia("(hover: hover)").matches) return;
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        el.style.setProperty("--mag-x", `${x * 0.35}px`);
-        el.style.setProperty("--mag-y", `${y * 0.35}px`);
-      });
-      el.addEventListener("mouseleave", () => {
-        el.style.setProperty("--mag-x", "0px");
-        el.style.setProperty("--mag-y", "0px");
-      });
-    });
-
-    // 2. 3D Tilt & Bloom (Cards)
-    const tiltTargets = document.querySelectorAll(
-      ".domain-card, .exp-item, .metric-card, .writing-card, .hobby-card",
-    );
-    tiltTargets.forEach((el) => {
-      el.addEventListener("mousemove", (e) => {
-        if (!window.matchMedia("(hover: hover)").matches) return;
-        const rect = el.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.setProperty("--tilt-x", `${x * 5}deg`);
-        el.style.setProperty("--tilt-y", `${-y * 5}deg`);
-      });
-      el.addEventListener("mouseleave", () => {
-        el.style.setProperty("--tilt-x", "0deg");
-        el.style.setProperty("--tilt-y", "0deg");
-      });
-    });
-
-    // 3. Refractive Glare (Theme Toggle)
-    const themeToggle = document.querySelector(".theme-toggle");
-    if (themeToggle) {
-      themeToggle.addEventListener("mousemove", (e) => {
-        if (!window.matchMedia("(hover: hover)").matches) return;
-        const rect = themeToggle.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        themeToggle.style.setProperty("--glare-x", `${x}%`);
-        themeToggle.style.setProperty("--glare-y", `${y}%`);
-        themeToggle.style.setProperty("--glare-opacity", "1");
-      });
-      themeToggle.addEventListener("mouseleave", () => {
-        themeToggle.style.setProperty("--glare-opacity", "0");
-      });
-    }
-
-    // 4. Proximity Variable Typography (Scroll)
-    const impactTexts = document.querySelectorAll(".impact-text");
-    const updateImpact = () => {
-      const vhCenter = window.innerHeight / 2;
-      impactTexts.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        const elCenter = rect.top + rect.height / 2;
-        const dist = Math.abs(vhCenter - elCenter);
-        const maxDist = window.innerHeight / 1.2;
-        const proximity = Math.max(0, 1 - dist / maxDist);
-        const weight = 400 + proximity * proximity * 300;
-        el.style.setProperty("--impact-weight", Math.round(weight));
-      });
-    };
-
-    // 5. Acoustic Scroll Anchor (Bottom Thud)
-    let bottomReached = false;
-    const checkBottom = () => {
-      const scrollPos = window.innerHeight + window.scrollY;
-      const threshold = document.documentElement.scrollHeight - 5;
-      if (scrollPos >= threshold && !bottomReached) {
-        acoustic.thud.currentTime = 0;
-        acoustic.thud.play().catch(() => {});
-        bottomReached = true;
-      } else if (scrollPos < threshold - 100) {
-        bottomReached = false;
-      }
-    };
-
-    // 6. Paper Expansion Sound (Interactive items)
-    document
-      .querySelectorAll(
-        ".domain-card, .writing-card, .hobby-card, .nav-links a",
-      )
-      .forEach((el) => {
-        el.addEventListener("mouseenter", () => {
-          acoustic.paper.currentTime = 0;
-          acoustic.paper.play().catch(() => {});
-        });
-      });
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        requestAnimationFrame(() => {
-          updateImpact();
-          checkBottom();
-        });
-      },
-      { passive: true },
-    );
-
-    // Initial check
-    updateImpact();
-  };
-})();
+  window.addEventListener("touchmove", (event) => {
+    if (mobileQuery.matches || !isDragging) return;
+    const walk = (event.touches[0].pageX - startX) * 1.8;
+    currentX = initialX + walk;
+    if (walk !== 0) direction = walk > 0 ? 1 : -1;
+  }, { passive: true });
+});

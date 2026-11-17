@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en" data-type="software">
+  <head>
+    <!-- ULTRATHINK Canonical Edge Routing Enforcer - Only redirect in production -->
+    <script>
+      (function () {
+        var host = window.location.hostname;
+        // Allow local development and testing
+        var isLocal =
+          host === "localhost" ||
+          host === "127.0.0.1" ||
+          host.startsWith("192.168.") ||
+          host.startsWith("10.") ||
+          host.includes("github.io") ||
+          window.location.protocol === "file:";
+
+        if (!isLocal && window.location.protocol !== "file:") {
+          var targetProtocol = "https:";
+          var targetHost = "ernest0.com";
+          if (
+            window.location.protocol !== targetProtocol ||
+            host !== targetHost
+          ) {
+            window.location.replace(
+              targetProtocol +
+                "//" +
+                targetHost +
+                window.location.pathname +
+                window.location.search +
+                window.location.hash,
+            );
+          }
+        }
+      })();
+    </script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <link rel="canonical" href="https://ernest0.com/cleanquest.html" />
+    <link rel="apple-touch-icon" href="logos/pwa-icon-512.png" />
+    <link rel="icon" type="image/png" href="logos/pwa-icon-512.png" sizes="32x32" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <title>CleanQuest: Cleaning feedback for commercial crews</title>
+    <meta name="description" content="CleanQuest is a mobile-first cleaning challenge built for fair feedback, recognition, and an inspection record crews can take job to job." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CleanQuest: Cleaning feedback for commercial crews" />
+    <meta property="og:description" content="CleanQuest is a mobile-first cleaning challenge built for fair feedback, recognition, and an inspection record crews can take job to job." />
+    <meta property="og:url" content="https://ernest0.com/cleanquest.html" />
+    <meta property="og:image" content="https://ernest0.com/hero-new.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CleanQuest: Cleaning feedback for commercial crews" />
+    <meta name="twitter:description" content="CleanQuest is a mobile-first cleaning challenge built for fair feedback, recognition, and an inspection record crews can take job to job." />
+    <meta name="twitter:image" content="https://ernest0.com/hero-new.webp" />
+    <meta name="page-type" content="software" />
+    <meta name="site-kind" content="software" />
+    <meta name="theme-color" content="#009270" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Instrument+Serif:ital@0;1&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=2.4" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-logo">Ernesto Rodriguez</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#work">Case Studies</a>
+          <a href="index.html#domains">Domains</a>
+          <a href="index.html#credentials">Credentials</a>
+          <a href="index.html#writing">Publications</a>
+          <a href="index.html#hobbies">Pursuits</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" aria-label="Toggle dark/light theme">
+            <span class="theme-label-dark">Dark</span>
+            <div class="theme-toggle-thumb" aria-hidden="true"><div class="glare-overlay"></div></div>
+            <span class="theme-label-light">Light</span>
+          </button>
+          <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="nav-cta" aria-label="Download Resume (PDF)">Resume <span aria-hidden="true">↓</span></a>
+          <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobile-menu" class="mobile-overlay" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <nav class="mobile-nav-links">
+        <a href="index.html#experience" class="mobile-link" style="--i: 0">Experience</a>
+        <a href="index.html#work" class="mobile-link" style="--i: 1">Case Studies</a>
+        <a href="index.html#domains" class="mobile-link" style="--i: 2">Domains</a>
+        <a href="index.html#credentials" class="mobile-link" style="--i: 3">Credentials</a>
+        <a href="index.html#writing" class="mobile-link" style="--i: 4">Publications</a>
+        <a href="index.html#hobbies" class="mobile-link" style="--i: 5">Pursuits</a>
+        <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="mobile-link mobile-cta" style="--i: 6">Resume <span aria-hidden="true">↓</span></a>
+      </nav>
+      <div class="mobile-overlay-footer" style="--i: 7"><p>Ernesto Rodriguez · Director-Level AI Product Leader</p></div>
+    </div>
+
+    <main id="main-content">
+      <section class="hero bg-mesh-light" id="top" style="min-height: calc(100svh - 64px); padding: clamp(2.5rem, 5vw, 4rem) 0 2rem;">
+        <div class="container">
+          <p class="section-label">Case Study</p>
+          <h1 class="section-heading" style="font-size: clamp(3.25rem, 8vw, 6rem); line-height: 0.95; margin: 0 0 1rem;">CleanQuest<br /><em>for commercial cleaning crews.</em></h1>
+          <p style="max-width: 700px; font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.55; color: var(--text-secondary); margin-bottom: 1.5rem;">A mobile-first cleaning challenge that turns visible work into fair feedback, recognition, and an inspection record.</p>
+          <p style="max-width: 700px; color: var(--text-secondary); font-size: 0.95rem; margin: -0.75rem 0 1.5rem;">A case study by Ernesto Rodriguez — Director-level AI product leader.</p>
+          <div style="display: inline-flex; align-items: center; gap: 0.8rem; margin: 0 0 1rem; padding: 0.65rem 0.9rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span style="font-weight: 600;">Locked 90-second cleaning run</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;">
+            <a href="https://officebeats.github.io/cleanquest/" target="_blank" rel="noopener" class="btn btn-primary">Live app <span aria-hidden="true">↗</span></a>
+            <a href="https://www.youtube.com/watch?v=MQ7P3IyOubo" target="_blank" rel="noopener" class="btn btn-secondary">Demo video <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/officebeats/cleanquest" target="_blank" rel="noopener" class="btn btn-secondary">GitHub repo <span aria-hidden="true">↗</span></a>
+            <a href="https://officebeats.github.io/cleanquest/docs/judges/report.html" target="_blank" rel="noopener" class="btn btn-secondary">Judges' report <span aria-hidden="true">↗</span></a>
+            <a href="mailto:Ernesto@ProductMG.com" class="btn btn-secondary">Email me</a>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+            <span style="background: var(--accent); color: #000; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.3rem 0.75rem; border-radius: 999px;">AI Product · 2026</span>
+            <span style="border: 1px solid var(--accent); color: var(--accent); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px;">Meta Global AI Developer Hackathon</span>
+            <span style="border: 1px solid var(--accent); color: var(--accent); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px;">Solo build · 10 days</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
+            <div>
+              <p class="section-label">The problem</p>
+              <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Cleaning work<br /><em>needs a record.</em></h2>
+            </div>
+            <div style="max-width: 650px;">
+              <p style="font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">Commercial cleaning employs crews across the US, often with little feedback, recognition, or proof of what they finished.</p>
+              <p style="font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary);">When a company loses an account over “they didn't clean,” it may have no shared record to settle the dispute. CleanQuest gives the work a visible, reviewable record.</p>
+            </div>
+          </div>
+          <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center;">
+            <strong style="font-size: 1.05rem;">One cleaning run</strong>
+            <span style="color: var(--text-secondary);">Check in <span class="impact-text">→</span> Clean for 90 seconds <span class="impact-text">→</span> Get a verified score</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">Business model</p>
+          <h2 class="section-heading">Free for cleaners. <em>Funded by sponsors.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">CleanQuest is free for cleaners, forever. Sponsors fund the game: brands pay $15K–$55K per package, one sponsor per category, sold through associations and trade shows. Companies pay to use an earned credential commercially — never to earn it. The record a cleaner earns travels with them from job to job, which is why the business model is a trust decision, not just a pricing one.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">A run in three steps</p>
+          <h2 class="section-heading">A cleaning run<br /><em>in three steps.</em></h2>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase;">Check in</span>
+              <div class="domain-icon" aria-hidden="true" style="margin: 0.6rem 0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="m9 12 2 2 4-4"/></svg></div>
+              <h3 style="font-size: 1.2rem; margin: 0.35rem 0 0.6rem;">Choose, don't type</h3>
+              <p style="color: var(--text-secondary); line-height: 1.65;">Pick a language and use dropdowns. Consent is read aloud; take the before photo in the app.</p>
+            </article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase;">Run</span>
+              <div class="domain-icon" aria-hidden="true" style="margin: 0.6rem 0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <h3 style="font-size: 1.2rem; margin: 0.35rem 0 0.6rem;">Clean for 90 seconds</h3>
+              <p style="color: var(--text-secondary); line-height: 1.65;">A locked timer and neural host voice guide the run in English, Spanish, or Polish.</p>
+            </article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase;">Get scored</span>
+              <div class="domain-icon" aria-hidden="true" style="margin: 0.6rem 0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg></div>
+              <h3 style="font-size: 1.2rem; margin: 0.35rem 0 0.6rem;">Review the result</h3>
+              <p style="color: var(--text-secondary); line-height: 1.65;">The before-and-after pair is graded, then a verified score goes to the leaderboard.</p>
+            </article>
+          </div>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.65; margin-top: 1.25rem;"><strong>Scope matters:</strong> CleanQuest scores visible cleanliness and technique, never sanitation. A benchmark time is not a certification.</p>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <p class="section-label">Key product decisions</p>
+          <h2 class="section-heading">How CleanQuest<br /><em>scores fairly.</em></h2>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
+            <article style="background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.7rem;"><div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,210,141,0.1); display: flex; align-items: center; justify-content: center; color: var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="m9 12 2 2 4-4"/></svg></div><span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Consent first</span></div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Keep cleaners out of model scoring</h3>
+              <p style="color: var(--text-secondary); line-height: 1.65;">Faces are never identified. Scores are never used for discipline. Consent is read aloud before a run. I rejected face recognition and typed fine-print consent: the product verifies work, not people — so consent is read aloud, in the cleaner's own language, before the before photo exists.</p>
+            </article>
+            <article style="background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.7rem;"><div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,210,141,0.1); display: flex; align-items: center; justify-content: center; color: var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h-4l-2 3H4a2 2 0 0 0-2 2v9h20V9a2 2 0 0 0-2-2h-4z"/><circle cx="12" cy="13" r="3"/></svg></div><span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Honest failure</span></div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Give a reason when a photo can't score</h3>
+              <p style="color: var(--text-secondary); line-height: 1.65;">A NOT SCORED result gives one plain reason—wrong area, person in photo, too dark, glare, camera moved, too far, or no change—and offers a retake. Scores are read-only; nobody can edit them. I rejected always returning a number: a score the system can't stand behind teaches crews to distrust every score.</p>
+            </article>
+            <article style="background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.7rem;"><div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,210,141,0.1); display: flex; align-items: center; justify-content: center; color: var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M17 9H9.5a3.5 3.5 0 0 0 0 7H15"/></svg></div><span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Money stays separate</span></div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Sponsor funding stays out of scoring</h3>
+              <p style="color: var(--text-secondary); line-height: 1.65;">CleanQuest is free for cleaners and funded by sponsors. Sponsors have no say over scores or rankings. I rejected sponsored influence on scores, training answers, and rankings — the moment money can move a score, the record is worthless in a dispute.</p>
+            </article>
+            <article style="background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.7rem;"><div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,210,141,0.1); display: flex; align-items: center; justify-content: center; color: var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 7 17l-5-5"/><path d="M22 10v6a2 2 0 0 1-2 2h-5"/><path d="M2 6h6a2 2 0 0 1 2 2v2"/></svg></div><span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">For night-shift crews</span></div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Controls for night-shift cleaning crews</h3>
+              <p style="color: var(--text-secondary); line-height: 1.65;">Zero typing, 44px glove-friendly controls, and English, Mexican Spanish, or Polish. JSON/CSV inspection records travel with a cleaner from job to job.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
+            <div>
+              <p class="section-label">How it works</p>
+              <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Two score reviews.</h2>
+            </div>
+            <div>
+              <article style="padding: 0 0 1.25rem; border-bottom: 1px solid var(--border);">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">On device · works offline</span>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">MediaPipe EfficientDet-Lite0 and Pose Landmarker Lite run with 96×72 edge analysis and a 3×3 luminance-zone check, including when there is no signal.</p>
+              </article>
+              <article style="padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Cloud · second review</span>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">Muse Spark Open runs through a serverless proxy: Baseten is primary, Fireworks AI is failover, and SAM 3.1 outlines surfaces. The app ships with 715 pre-rendered neural voice clips for an offline host.</p>
+              </article>
+              <article style="padding-top: 1.25rem;">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Score components</span>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">The final score is Clean 50%, Technique 25%, and Time 25%. Clean is computed on-device by spot type: 55% surface, 25% zones, and 20% items by default.</p>
+              </article>
+            </div>
+          </div>
+          <svg viewBox="0 0 900 120" role="img" aria-label="On-device checks feed a cloud review and verified composite score" style="display: block; width: 100%; height: auto; margin-top: 1.5rem;">
+            <rect x="8" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
+            <rect x="325" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
+            <rect x="642" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
+            <path d="M270 57h40m-8-8 8 8-8 8M587 57h40m-8-8 8 8-8 8" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <text x="28" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">On-device checks</text>
+            <text x="28" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">offline capable</text>
+            <text x="345" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">Cloud review</text>
+            <text x="345" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">primary + failover</text>
+            <text x="662" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">Verified score</text>
+            <text x="662" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">Clean · Technique · Time</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <p class="section-label">Evaluation &amp; outcomes</p>
+          <h2 class="section-heading">How I checked <em>the model.</em></h2>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">0.6 confidence gate</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Cloud surface grades (clean / partly clean / missed) count as verified only at confidence ≥ 0.6. Below 0.6, surfaces display as unverified — and if a run can't be judged fairly, it resolves to NOT SCORED instead of a number.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Score 98 · 1,405 tokens — primary</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">In a live verification run, both providers graded the same fixed before/after demo pair (task: vision scorecard). Baseten, the primary, returned an overall score of 98/100 using 1,405 tokens. That is a score the model assigned — not an accuracy rate. It proves the primary path returns a valid, complete scorecard live.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Score 96 · 1,695 tokens — failover</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">On the same pair, Fireworks AI, the failover, returned 96/100 using 1,695 tokens — close enough to trust the failover path, different enough to prove it is a real second opinion, not a copy.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Self-tests: 6/6 · 11/11</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Labeled honestly as self-tests: 6/6 hermetic in-app self-tests (no network — provider routing, no-key fallbacks, demo-mode hermeticity, run-log rendering) and 11/11 end-to-end persona walkthroughs in the browser test suite. They verify the software keeps its promises; they are not user research.</p></article>
+          </div>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.65; margin-top: 1.25rem;">Built solo in 10 days, Oct 26–Nov 4, 2026, for the Meta Global AI Developer Hackathon. The starting point was a crude local-only proof of concept.</p>
+          <a href="https://officebeats.github.io/cleanquest/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1.25rem;">Open the live app <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
+          <div>
+            <p class="section-label">What didn't work</p>
+            <h2 class="section-heading">What <em>didn't work.</em></h2>
+          </div>
+          <div>
+            <article style="padding: 0 0 1.25rem; border-bottom: 1px solid var(--border);">
+              <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">It started crude. CleanQuest began as a local-only proof of concept — local voice, local image recognition, no cloud scoring. The on-device rung still can't judge everything: darkness, glare, a moved camera, or the wrong room all defeat fair grading.</p>
+            </article>
+            <article style="padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
+              <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">So failure became a designed outcome, not an error state. The NOT SCORED taxonomy — seven plain-language reasons — exists because early runs produced confident scores for photos that deserved none.</p>
+            </article>
+            <article style="padding-top: 1.25rem;">
+              <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">One cloud provider wasn't enough. A verification step that depends on a single provider fails when that provider does, so the Fireworks AI failover was built — and both paths were verified live before I trusted either.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
+          <div>
+            <p class="section-label">Next</p>
+            <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Next steps.</h2>
+          </div>
+          <div>
+            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.75rem;">Planned — not yet shipped:</p>
+            <ul style="list-style: none; display: grid; gap: 0.5rem; max-width: 650px;">
+            <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);"><span class="domain-icon" aria-hidden="true" style="margin: 0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h4v4h-7z"/></svg></span>Supervisor panes for site registry and squad tools</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);"><span class="domain-icon" aria-hidden="true" style="margin: 0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h2v2h-2zM20 14h1M14 20v1M20 20v1"/></svg></span>Printable QR station stickers</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);"><span class="domain-icon" aria-hidden="true" style="margin: 0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 10h8M8 14h5"/></svg></span>Cached AI shift briefings</li>
+            <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; color: var(--text-secondary);"><span class="domain-icon" aria-hidden="true" style="margin: 0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h3M8 17h7"/></svg></span>Five-day training packs</li>
+            </ul>
+            <a href="https://officebeats.github.io/cleanquest/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1rem;">Open the live app <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+      <section class="cta-section">
+        <div class="container" style="max-width: 700px; text-align: center">
+          <p class="section-label" style="color: var(--accent); letter-spacing: 0.15em; font-weight: 600; margin-bottom: 1rem;">Get in touch</p>
+          <img src="profile-full.jpg" alt="Ernesto Rodriguez" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; border: 2px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.1);" loading="lazy" />
+          <h2 class="section-heading">Building an <em>AI product team?</em></h2>
+          <p class="cta-subtitle" style="max-width: 600px; margin: 1.25rem auto 2rem; font-size: 1.125rem;">I'm Ernesto Rodriguez, a Director-level AI product leader. CleanQuest is one case study — the full record is on my homepage.</p>
+          <div class="cta-actions" style="justify-content: center; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="mailto:Ernesto@ProductMG.com" class="btn btn-email">Ernesto@ProductMG.com</a>
+            <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener" class="btn btn-linkedin">Connect on LinkedIn</a>
+            <a href="index.html#work" class="btn btn-secondary">More case studies</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <h2>Ernesto Rodriguez</h2>
+          <p>Director-Level AI Product Leader · AI Products &amp; Agents</p>
+        </div>
+        <div class="footer-meta">
+          <p>&copy; 2026 Ernesto Rodriguez &middot; Ernest0.com &middot; Chicago</p>
+          <div class="footer-attribution">
+            <a href="https://github.com/officebeats/beats-pm-kit" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="This site was built using the Beats PM Antigravity Kit">Built with
+              <svg class="ag-logo" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C12 6.62742 17.3726 12 24 12C24 17.3726 17.3726 24 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" /></svg>
+              Antigravity Kit &rarr;</a>
+          </div>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

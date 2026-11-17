@@ -1,0 +1,26 @@
+# Ernesto Rodriguez
+
+Director-level AI product leader based in Chicago, Illinois.
+
+## Current and recent roles
+- Product Engagement Lead, Captios Partners — Aug 2026–Present.
+- Product Lead (Contract), MCG Health — Apr–Sep 2026.
+- AI Product Lead, Ascension — Nov 2024–Apr 2026. Resume-reported outcomes: patient engagement +10%, support efficiency +20%, support ticket volume −20%, self-service +15%, and NPS +10%. Established an agentic AI implementation roadmap using GCP, Vertex AI, Deepgram, and atomic agents.
+
+## Earlier roles
+- Head of Product, Route — Mar–Oct 2024; monthly recurring revenue +25%; secured a $500K Morgan Stanley investment on the product growth strategy.
+- Senior Product Manager, BCG — Apr 2022–Mar 2024; self-serve portal operational efficiency +50%; EMR interoperability KPI +40% over 18 months.
+- Senior Product Lead, Fetch Rewards — Apr 2021–Apr 2022; monthly active users grew from 15M to 18M, engagement +10%, daily retention +25%.
+- Senior Product Manager, LevelEx — Apr 2020–Apr 2021; discovery-to-development cycle reduced from 12 weeks to 4; multiplayer product sales +20%.
+- Senior Product Owner, CoolerX — Jan 2019–Mar 2020; pilot scaled from 75 to 2,500 stores; revenue +500%; impressions grew from 20M to 38.1M.
+- Technical Product Manager, PatientPoint — Apr 2013–Oct 2017; two touchscreen products achieved 100% YoY revenue growth; product quality +25% after engineering shifted in-house.
+
+## CleanQuest
+Solo-built AI-verified cleaning quality case study. Cloud surface grades (clean / partly clean / missed) count as verified only at confidence ≥ 0.6; below 0.6, surfaces are unverified, and runs that cannot be judged fairly resolve to NOT SCORED. In a live verification run on the same fixed before/after demo pair (task: vision scorecard), Baseten returned 98/100 using 1,405 tokens and Fireworks AI returned 96/100 using 1,695 tokens. These are model-assigned scores, not accuracy rates; they demonstrate live valid, complete scorecards on primary and failover paths. Self-tests: 6/6 hermetic in-app tests and 11/11 end-to-end persona walkthroughs; these verify software behavior, not user research.
+
+## Links
+- Homepage: https://ernest0.com/
+- CleanQuest case study: https://ernest0.com/cleanquest.html
+- LinkedIn: https://www.linkedin.com/in/productmg/
+- GitHub: https://github.com/officebeats/cleanquest
+- CleanQuest live app: https://officebeats.github.io/cleanquest/

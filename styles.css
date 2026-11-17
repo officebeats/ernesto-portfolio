@@ -175,6 +175,24 @@ a:hover {
   filter: brightness(0) saturate(100%) invert(0.2) !important; /* Ensure visibility on light cards */
 }
 
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 1rem;
+  z-index: 2002;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.skip-link:focus {
+  top: calc(64px + env(safe-area-inset-top));
+  transform: translateY(0);
+}
+
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -395,7 +413,7 @@ hr.divider {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 2000;
   background: var(--nav-bg);
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
@@ -420,6 +438,10 @@ hr.divider {
 }
 
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  white-space: nowrap;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 1rem;
@@ -431,7 +453,7 @@ hr.divider {
   gap: 2.25rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .nav-links {
     display: flex;
   }
@@ -443,6 +465,7 @@ hr.divider {
   color: var(--text-secondary);
   position: relative;
   padding-bottom: 2px;
+  white-space: nowrap;
 }
 
 .nav-links a::after {
@@ -528,13 +551,14 @@ hr.divider {
   height: 36px;
   color: var(--text);
   cursor: pointer;
+  position: relative;
   z-index: 2001; /* Above the overlay */
   min-width: 48px; /* 2026 FAANG Touch Target */
   min-height: 48px; /* 2026 FAANG Touch Target */
   padding: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .mobile-menu-btn {
     display: none;
   }
@@ -1109,6 +1133,11 @@ hr.divider {
   color: var(--metric-value-color);
   line-height: 1;
 }
+.metric:last-child .metric-value {
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  white-space: nowrap;
+}
+
 
 .metric-label {
   font-size: 0.75rem;
@@ -1949,7 +1978,7 @@ body {
   gap: 0.5rem;
 }
 
-.leadership-text h4 {
+.leadership-text h3 {
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--text-primary);

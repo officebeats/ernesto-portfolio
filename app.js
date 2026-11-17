@@ -158,10 +158,17 @@ window.closeLightbox = function () {
       const isActive = mobileMenu.classList.toggle("is-active");
       menuBtn.setAttribute("aria-expanded", isActive);
       mobileMenu.setAttribute("aria-hidden", !isActive);
+      mobileMenu.inert = !isActive;
       document.body.style.overflow = isActive ? "hidden" : "";
 
       if (hamburger) hamburger.style.display = isActive ? "none" : "block";
       if (closeIcon) closeIcon.style.display = isActive ? "block" : "none";
+
+      if (isActive) {
+        mobileLinks[0]?.focus();
+      } else {
+        menuBtn.focus();
+      }
     };
 
     menuBtn.addEventListener("click", toggleMenu, { passive: true });
@@ -181,8 +188,26 @@ window.closeLightbox = function () {
 
     // Close on escape key
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && mobileMenu.classList.contains("is-active")) {
+      if (!mobileMenu.classList.contains("is-active")) return;
+
+      if (e.key === "Escape") {
         toggleMenu();
+        return;
+      }
+
+      if (e.key !== "Tab" || mobileLinks.length === 0) return;
+
+      const firstLink = mobileLinks[0];
+      const lastLink = mobileLinks[mobileLinks.length - 1];
+      if (!mobileMenu.contains(document.activeElement)) {
+        e.preventDefault();
+        firstLink.focus();
+      } else if (e.shiftKey && document.activeElement === firstLink) {
+        e.preventDefault();
+        lastLink.focus();
+      } else if (!e.shiftKey && document.activeElement === lastLink) {
+        e.preventDefault();
+        firstLink.focus();
       }
     });
   };
@@ -262,7 +287,7 @@ window.closeLightbox = function () {
   const initServiceWorker = () => {
     if (!("serviceWorker" in navigator)) return;
 
-    const swVersion = "v2.5";
+    const swVersion = "v2.6";
 
     window.addEventListener("load", () => {
       navigator.serviceWorker

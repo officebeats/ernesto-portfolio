@@ -4,13 +4,14 @@
  * Caching strategies: Network-first (navigate), Cache-first (fonts/media), Stale-while-revalidate (assets)
  */
 
-const CACHE_NAME = 'portfolio-cache-v2.11';
+const CACHE_NAME = 'portfolio-cache-v2.12';
 
 // Core assets to cache immediately
 const PRECACHE_ASSETS = [
   './',
   './index.html',
   './cleanquest.html',
+  './evals.html',
   './styles.css',
   './app.js',
   './manifest.json',

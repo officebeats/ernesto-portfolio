@@ -48,6 +48,182 @@ window.closeLightbox = function () {
     initLightbox();
     initServiceWorker();
     initLucideIcons();
+    initHeroMotion();
+    initImpactToggle();
+    initBuilderLottie();
+  };
+
+
+  // ============================================
+  // Hero Motion — Premium archetype (motion-design skill)
+  // Count-up metrics + pointer parallax. Skipped entirely
+  // under prefers-reduced-motion or on touch pointers.
+  // ============================================
+  const initHeroMotion = () => {
+    const hero = document.querySelector(".hero");
+    if (!hero) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Count-up: 950ms ease-out, formats preserved via data attributes.
+    const values = hero.querySelectorAll(".metric-value[data-count]");
+    if (values.length && !reduceMotion && "IntersectionObserver" in window) {
+      const animate = (el) => {
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || "";
+        const comma = el.dataset.format === "comma";
+        const start = performance.now();
+        const dur = 950;
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const current = Math.round(target * eased);
+          el.textContent = (comma ? current.toLocaleString("en-US") : current) + suffix;
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      const counter = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => animate(entry.target), 350);
+            counter.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      values.forEach((el) => counter.observe(el));
+    }
+
+    // Parallax: avatar follows at 6px, ambient layer counter-moves at 12px
+    // (counter-motion rule). Lerped via rAF so it settles, never snaps.
+    if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+      const render = () => {
+        cx += (tx - cx) * 0.06;
+        cy += (ty - cy) * 0.06;
+        hero.style.setProperty("--px", cx.toFixed(3));
+        hero.style.setProperty("--py", cy.toFixed(3));
+        if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) {
+          raf = requestAnimationFrame(render);
+        } else { raf = null; }
+      };
+      const kick = () => { if (!raf) raf = requestAnimationFrame(render); };
+      hero.addEventListener("pointermove", (event) => {
+        const rect = hero.getBoundingClientRect();
+        tx = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+        ty = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+        kick();
+      });
+      hero.addEventListener("pointerleave", () => { tx = 0; ty = 0; kick(); });
+    }
+  };
+
+
+  // ============================================
+  // Impact (Career) — collapsed by default.
+  // Expands on toggle, and auto-expands when a
+  // visitor arrives via an #experience link.
+  // ============================================
+  const initImpactToggle = () => {
+    const section = document.getElementById("experience");
+    if (!section || section.hidden) return; // career section hidden by request — code kept, inert
+    const button = section ? section.querySelector(".impact-toggle") : null;
+    if (!section || !button) return;
+    const label = button.querySelector(".impact-toggle-label");
+    // Career history is not in the page source; it renders on first expand.
+    const IMPACT_ITEMS = [
+      {
+            "time": "Aug 2026 — Present",
+            "title": "Product Engagement Lead — Captios Partners",
+            "body": "Product engagement leadership for enterprise clients — AI product strategy, delivery, and adoption across client product teams."
+      },
+      {
+            "time": "Apr 2026 — Sep 2026",
+            "title": "Product Lead (Contract) — MCG Health",
+            "body": "Contract product lead at a healthcare information company — product strategy, roadmap, and delivery."
+      },
+      {
+            "time": "Nov 2024 — Apr 2026",
+            "title": "AI Product Lead — Ascension Health",
+            "body": "Facilitated and aligned high-impact AI use cases across teams, prioritized by business impact and feasibility, and established the implementation roadmap for agentic AI (GCP, Vertex AI, Deepgram, atomic agents). Shipped messaging and knowledge-base products: <span class=\"impact-text\">+10% patient engagement, +20% support efficiency, −20% support ticket volume, +15% self-service rates, +10% NPS.</span>"
+      },
+      {
+            "time": "Mar 2024 — Oct 2024",
+            "title": "Head of Product — Route",
+            "body": "Led product strategy and a team of 10 (2 PMs, 5 engineers, 1 designer): <span class=\"impact-text\">+25% monthly recurring revenue</span>, and landed a <span class=\"impact-text\">$500K Morgan Stanley investment</span> on the product growth strategy."
+      },
+      {
+            "time": "Apr 2022 — Mar 2024",
+            "title": "Senior Product Manager — BCG",
+            "body": "Digital transformation for healthcare and energy clients: launched a self-serve portal (+50% operational efficiency), managed two FHIR data-store teams, and directed the Cerner/Athena EMR integration that raised the interoperability KPI by 40% over 18 months."
+      },
+      {
+            "time": "Apr 2021 — Apr 2022",
+            "title": "Senior Product Lead — Fetch Rewards",
+            "body": "Led social and gamification features: MAU grew from 15M to 18M, engagement +10%, daily user retention +25%."
+      },
+      {
+            "time": "Apr 2020 — Apr 2021",
+            "title": "Senior Product Manager — LevelEx",
+            "body": "Cut the discovery-to-development cycle from 12 weeks to 4, and launched a multiplayer product that lifted sales 20% after two years of stagnation."
+      },
+      {
+            "time": "Jan 2019 — Mar 2020",
+            "title": "Senior Product Owner — CoolerX",
+            "body": "Scaled a retail pilot from 75 to 2,500 stores ahead of schedule, driving a 500% revenue increase; the flagship redesign grew impressions from 20M to 38.1M."
+      },
+      {
+            "time": "Apr 2013 — Oct 2017",
+            "title": "Technical Product Manager — PatientPoint",
+            "body": "Led two touchscreen patient- and provider-facing products to 100% YoY revenue growth; shifted engineering in-house, improving product quality by 25%."
+      }
+];
+    let rendered = false;
+    const renderItems = () => {
+      if (rendered) return;
+      rendered = true;
+      const list = section.querySelector(".experience-right");
+      if (!list) return;
+      IMPACT_ITEMS.forEach((item) => {
+        const wrap = document.createElement("div");
+        wrap.className = "exp-item stagger-item";
+        const time = document.createElement("span");
+        time.className = "exp-time";
+        time.textContent = item.time;
+        const body = document.createElement("div");
+        const h3 = document.createElement("h3");
+        h3.textContent = item.title;
+        const p = document.createElement("p");
+        p.innerHTML = item.body;
+        body.append(h3, p);
+        wrap.append(time, body);
+        list.append(wrap);
+      });
+    };
+    const setOpen = (open) => {
+      if (open) renderItems();
+      section.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", String(open));
+      if (label) label.textContent = open ? "Collapse career history" : "Expand career history";
+    };
+    button.addEventListener("click", () => setOpen(!section.classList.contains("is-open")));
+    if (window.location.hash === "#experience") setOpen(true);
+    document.querySelectorAll('a[href$="#experience"]').forEach((link) => {
+      link.addEventListener("click", () => setOpen(true));
+    });
+  };
+
+
+  // Builder section Lottie — persistent ambient loop.
+  // Reduced motion: render the first frame, never play.
+  const initBuilderLottie = () => {
+    const stage = document.getElementById("builder-lottie");
+    if (!stage || !window.lottie) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const anim = window.lottie.loadAnimation({
+      container: stage, renderer: "svg", loop: true,
+      autoplay: !reduceMotion, path: "builder-spark.json",
+    });
+    if (reduceMotion) anim.goToAndStop(0, true);
   };
 
   // Acoustic Material Registry

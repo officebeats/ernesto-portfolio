@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en" data-type="software">
+  <head>
+    <!-- ULTRATHINK Canonical Edge Routing Enforcer - Only redirect in production -->
+    <script>
+      (function () {
+        var host = window.location.hostname;
+        // Allow local development and testing
+        var isLocal =
+          host === "localhost" ||
+          host === "127.0.0.1" ||
+          host.startsWith("192.168.") ||
+          host.startsWith("10.") ||
+          host.includes("github.io") ||
+          window.location.protocol === "file:";
+
+        if (!isLocal && window.location.protocol !== "file:") {
+          var targetProtocol = "https:";
+          var targetHost = "ernest0.com";
+          if (
+            window.location.protocol !== targetProtocol ||
+            host !== targetHost
+          ) {
+            window.location.replace(
+              targetProtocol +
+                "//" +
+                targetHost +
+                window.location.pathname +
+                window.location.search +
+                window.location.hash,
+            );
+          }
+        }
+      })();
+    </script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <link rel="canonical" href="https://ernest0.com/cleanquest.html" />
+    <link rel="apple-touch-icon" href="logos/pwa-icon-512.png" />
+    <link rel="icon" type="image/png" href="logos/pwa-icon-512.png" sizes="32x32" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <title>AI Evaluation in Practice — CleanQuest Eval Case Study | Ernesto Rodriguez</title>
+    <meta name="description" content="A worked example of AI evaluation: the rubric, confidence gate, live two-provider judge run (98 vs 96), and refusal design behind CleanQuest's AI scorecard." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CleanQuest: Cleaning feedback for commercial crews" />
+    <meta property="og:description" content="CleanQuest is a mobile-first cleaning challenge built for fair feedback, recognition, and an inspection record crews can take job to job." />
+    <meta property="og:url" content="https://ernest0.com/cleanquest.html" />
+    <meta property="og:image" content="https://ernest0.com/hero-new.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CleanQuest: Cleaning feedback for commercial crews" />
+    <meta name="twitter:description" content="CleanQuest is a mobile-first cleaning challenge built for fair feedback, recognition, and an inspection record crews can take job to job." />
+    <meta name="twitter:image" content="https://ernest0.com/hero-new.webp" />
+    <meta name="page-type" content="software" />
+    <meta name="site-kind" content="software" />
+    <meta name="theme-color" content="#009270" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=2.4" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-logo">Ernesto Rodriguez</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#work">AI Projects</a>
+          <a href="index.html#domains">Domains</a>
+          <a href="index.html#credentials">Credentials</a>
+          <a href="index.html#writing">Publications</a>
+          <a href="index.html#hobbies">Pursuits</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" aria-label="Toggle dark/light theme">
+            <span class="theme-label-dark">Dark</span>
+            <div class="theme-toggle-thumb" aria-hidden="true"><div class="glare-overlay"></div></div>
+            <span class="theme-label-light">Light</span>
+          </button>
+          <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="nav-cta" aria-label="Download Resume (PDF)">Resume <span aria-hidden="true">↓</span></a>
+          <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobile-menu" class="mobile-overlay" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <nav class="mobile-nav-links">
+        <a href="index.html#experience" class="mobile-link" style="--i: 0">Experience</a>
+        <a href="index.html#work" class="mobile-link" style="--i: 1">AI Projects</a>
+        <a href="index.html#domains" class="mobile-link" style="--i: 2">Domains</a>
+        <a href="index.html#credentials" class="mobile-link" style="--i: 3">Credentials</a>
+        <a href="index.html#writing" class="mobile-link" style="--i: 4">Publications</a>
+        <a href="index.html#hobbies" class="mobile-link" style="--i: 5">Pursuits</a>
+        <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="mobile-link mobile-cta" style="--i: 6">Resume <span aria-hidden="true">↓</span></a>
+      </nav>
+      <div class="mobile-overlay-footer" style="--i: 7"><p>Ernesto Rodriguez · Director-Level AI Product Leader</p></div>
+    </div>
+
+    <main id="main-content">
+      <section class="section" style="padding-top: 7rem;">
+        <div class="container">
+          <p class="section-label">Evaluation case study</p>
+          <h1 class="section-heading" style="font-size: clamp(2.5rem, 5vw, 4rem);">Evals, run<br /><em>like a product.</em></h1>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem; margin-top: 1rem;">
+            A worked example from <a href="cleanquest.html" style="color: var(--accent);">CleanQuest</a>, the AI verification product I designed and shipped solo:
+            the evaluation task, the rubric, the confidence gate, a live two-provider judge run, and the refusal path for inputs that deserve no score.
+            Every number on this page comes from the product's own configuration or its logged verification run. Where the evidence is thin, the page says so — starting here: the one logged run graded a procedurally drawn demo scene, not a photograph, and it is labeled that way wherever it appears.
+          </p>
+        </div>
+      </section>
+
+
+      <section class="section" style="padding-top: 0;">
+        <div class="container">
+          <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; letter-spacing: 0.02em;">
+            <strong style="color: var(--text);">Method:</strong> success criteria first &rarr; rubric &amp; confidence gate &rarr; refusal taxonomy for unusable inputs &rarr; logged judge run &rarr; artifacts published with the page. What the method still owes — a human-labeled validation set — is named at the bottom, not skipped.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">The evaluation task</p>
+          <h2 class="section-heading">Grade the pair.<br /><em>Or refuse.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">
+            The judge receives a before-and-after image pair of a work surface and returns a vision scorecard: per-surface grades,
+            per-object detections with confidences, and one composite score. The eval is designed around a single product requirement —
+            <strong style="color: var(--text);">a score the system can stand behind, or an explicit refusal.</strong>
+            A confident number on a bad photo is the worst output this system can produce, because crews act on the score.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">The rubric</p>
+          <h2 class="section-heading">What gets scored,<br /><em>and how much it counts.</em></h2>
+          <div style="overflow-x: auto; margin-top: 1.5rem;">
+            <table style="width: 100%; border-collapse: collapse; min-width: 560px;">
+              <thead><tr style="border-bottom: 1px solid var(--border);"><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Component</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Weight</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">How it is measured</th></tr></thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>Clean</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">50%</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Visible cleanliness, before vs. after. Computed on-device by spot type: surface 55%, zones 25%, items 20%.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>Technique</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">25%</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Wipe order and zone coverage, top to bottom.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>Time</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">25%</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Run duration against the benchmark for the spot type. A benchmark time is not a certification.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>Surface grades</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">—</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Cloud review grades each surface clean / partly clean / missed. A grade counts as <strong>verified only at model confidence ≥ 0.6</strong>; below that it displays as unverified.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>On-device layer</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">—</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">MediaPipe EfficientDet-Lite0 and Pose Landmarker Lite, with 96×72 edge analysis and a 3×3 luminance-zone check — runs with no signal, before any cloud review.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">The live run</p>
+          <h2 class="section-heading">Two judges.<br /><em>Same input. Δ2 points.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">
+            On Nov 4, 2026, one fixed demo pair — a procedurally drawn sink-and-counter scene (960×720 canvas, generated in code, not a photograph) — was graded live by two providers
+            running the same judge model (Muse Spark Open, task: vision scorecard). Both calls are logged as verified, non-mock. This is a single-case verification run: n = 1.
+          </p>
+          <div style="overflow-x: auto; margin-top: 1.5rem;">
+            <table style="width: 100%; border-collapse: collapse; min-width: 560px;">
+              <thead><tr style="border-bottom: 1px solid var(--border);"><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Provider</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Role</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Overall score</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Tokens (in / out)</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Status</th></tr></thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>Baseten</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Primary</td><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>98 / 100</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">1,405 (871 / 534)</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Verified</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>Fireworks AI</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Failover</td><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>96 / 100</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">1,695 (866 / 829)</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Verified</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">
+            Read these correctly: 98 and 96 are <strong style="color: var(--text);">scores the model assigned — not accuracy rates.</strong>
+            What the pair of runs actually proves is narrower and more useful: the primary path returns a valid, complete scorecard live,
+            and the same model served by a second host lands within 2 points on identical input. That is a consistency smoke check — the cheapest judge check there is —
+            not judge validation. Validation against human labels is a different artifact, and it does not exist yet (see below).
+          </p>
+          <figure style="margin-top: 2rem; max-width: 420px;">
+            <img src="evals-scorecard.webp" alt="CleanQuest sample run scorecard: total score 93 percent, per-object confidences, surface verdict CLEAN" style="width: 100%; border-radius: 12px; border: 1px solid var(--border);" />
+            <figcaption style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-top: 0.75rem;">
+              A real scorecard from the product (demo mode, labeled in-product): total 93%, per-object confidences (cup 95%, bottle 92%, bowl 90%),
+              surface verdict CLEAN, and the Clean component broken out at 91%.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">When the eval refuses</p>
+          <h2 class="section-heading">NOT SCORED is<br /><em>a designed outcome.</em></h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Seven plain reasons</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Wrong area, person in photo, too dark, glare, camera moved, too far, or no change. Each refusal names one reason and offers a retake — never a silent failure and never a guessed number.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Why refusal exists</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">The taxonomy is designed against the failure mode that matters most here: a confident score on an input that deserved none. Failure is a designed outcome, not an error state — a score the system can't stand behind teaches crews to distrust every score.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Scores are read-only</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Nobody can edit a score — including me. The dispute path is a one-tap appeal, reviewed within 5 business days. The eval's integrity is the product's integrity.</p></article>
+          </div>
+          <figure style="margin-top: 2rem; max-width: 420px;">
+            <img src="evals-noscored.webp" alt="CleanQuest NOT SCORED screen: wrong area refusal with the reason shown to the user" style="width: 100%; border-radius: 12px; border: 1px solid var(--border);" />
+            <figcaption style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-top: 0.75rem;">
+              The refusal as shipped (demo render): NOT SCORED — wrong area, with the reason stated and a retake offered. One of the seven taxonomy reasons, rendered in-product.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">The eval dataset</p>
+          <h2 class="section-heading">Dataset v0.1.<br /><em>Status on every row.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">A credible small eval is 20–50 real cases with provenance — this set is not there yet, and the table doesn't pretend otherwise. One case has been run; the refusal classes are designed and waiting on collected photo pairs.</p>
+          <div style="overflow-x: auto; margin-top: 1.5rem;">
+            <table style="width: 100%; border-collapse: collapse; min-width: 640px;">
+              <thead><tr style="border-bottom: 1px solid var(--border);"><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Case</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Input</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Source</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Expected</th><th style="text-align: left; padding: 0.6rem 0.75rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">Status</th></tr></thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>CQ-001</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Fixed demo before/after pair (sink &amp; counter)</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Procedurally drawn canvas scene — not a photograph</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Score issued</td><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>Run</strong> — Nov 4, 2026: 98 / 96</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>CQ-002</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Refusal case class: wrong area</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed from the shipped refusal taxonomy</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">NOT SCORED — Wrong area</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed — not yet run</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>CQ-003</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Refusal case class: person in photo</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed from the shipped refusal taxonomy</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">NOT SCORED — Person in photo</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed — not yet run</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>CQ-004</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Refusal case class: too dark</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed from the shipped refusal taxonomy</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">NOT SCORED — Too dark</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed — not yet run</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>CQ-005</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Refusal case class: glare</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed from the shipped refusal taxonomy</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">NOT SCORED — Glare</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed — not yet run</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>CQ-006</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Refusal case class: camera moved</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed from the shipped refusal taxonomy</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">NOT SCORED — Camera moved</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed — not yet run</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>CQ-007</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Refusal case class: too far</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed from the shipped refusal taxonomy</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">NOT SCORED — Too far</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed — not yet run</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.6rem 0.75rem; line-height: 1.5;"><strong>CQ-008</strong></td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Refusal case class: no change</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed from the shipped refusal taxonomy</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">NOT SCORED — No change</td><td style="padding: 0.6rem 0.75rem; color: var(--text-secondary); line-height: 1.5;">Designed — not yet run</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">The judge prompt</p>
+          <h2 class="section-heading">The exact prompt<br /><em>the judge runs.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">Published verbatim from the product code — an eval you can't inspect is an eval you can't trust. The response is validated before use: surface names restricted to a whitelist (counter, glass, floor, fixture), scores clamped 0–100, and a surface is flagged verified only when its confidence clears the 0.6 gate. Malformed output is rejected, not repaired.</p>
+          <details style="margin-top: 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); padding: 1.25rem;">
+            <summary style="cursor: pointer; font-weight: 600;">CLOUD_SCORING_PROMPT — verbatim</summary>
+            <pre style="white-space: pre-wrap; line-height: 1.6; font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">You are the CleanQuest score verifier.
+You receive two photos: BEFORE cleaning and AFTER cleaning.
+Score only visible cleanliness and technique.
+Never claim sanitation, disinfection, or certification.
+Think briefly (&lt;35 words). Respond with JSON ONLY, no other text, matching this schema:
+{
+  &quot;surfaces&quot;: [
+    { &quot;name&quot;: &quot;counter|glass|floor|fixture&quot;, &quot;score&quot;: 0-100,
+      &quot;missed&quot;: [], &quot;confidence&quot;: 0-1, &quot;box_2d&quot;: [ymin, xmin, ymax, xmax] }
+  ],
+  &quot;overall&quot;: 0-100,
+  &quot;verdict&quot;: &quot;pass|retry&quot;,
+  &quot;hype_line&quot;: &quot;one celebratory hype sentence, at most 20 words&quot;
+}
+The hype line celebrates the result. No cleaning advice,
+no instructions, no coaching, no technique tips.</pre>
+          </details>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">The artifacts</p>
+          <h2 class="section-heading">Take the workbook.<br /><em>Check everything.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">The full artifact set behind this page, exported from the product's own code and logs: the run log verbatim, the complete rubric and all 28 spot profiles, the refusal taxonomy with the shipped user copy in English, Spanish, and Polish, the dataset with per-case status, and the judge prompt.</p>
+          <p style="margin-top: 1.25rem;"><a href="cleanquest-eval-artifacts.xlsx" class="btn btn-email" download>Download the eval artifacts workbook (.xlsx)</a></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">What is not claimed yet</p>
+          <h2 class="section-heading">The honest<br /><em>missing pieces.</em></h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">No judge validation stats</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">There is no human-labeled set, so there are no agreement rates, no TPR/TNR, no kappa on this page — any such number today would be invented. The 98-vs-96 pair is judge-vs-judge on one case, and it is labeled as exactly that.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">No regression history</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">One logged run is not a trend. A regression table needs the same dataset graded again after a prompt or model change — the dataset above is built so that comparison can exist.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">What makes them real</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Collect 20–50 real before/after pairs (including deliberate refusal triggers), label each by hand as the domain expert, grade them, and compare judge vs. labels. That single pass produces the dataset, the validation stats, and the first regression baseline — a weekend-sized eval, and the stated next step.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">Governance is part of the rubric</p>
+          <h2 class="section-heading">Constraints the eval<br /><em>has to enforce.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">
+            Three rules are product checks, not policy text: consent is read aloud before the before photo exists;
+            faces are never identified (no facial recognition, no biometrics); and scores are never used for discipline or tied to money.
+            Sponsors fund the product and have no say over scores or rankings. The moment money can move a score, the record is worthless in a dispute —
+            so the eval, not a promise, is what keeps it that way.
+          </p>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">
+            This is the same evaluation discipline I set as launch gates for production agent systems at Ascension Health —
+            quality standards agents had to meet before release, with evidence traceability and human-review paths —
+            and the basis of the LLM Evaluation Audit I offer through Aladdin Studio.
+            Full product story: <a href="cleanquest.html" style="color: var(--accent);">the CleanQuest case study</a>.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <h2>Ernesto Rodriguez</h2>
+          <p>Director-Level AI Product Leader · AI Products &amp; Agents</p>
+        </div>
+        <div class="footer-meta">
+          <p>&copy; 2026 Ernesto Rodriguez &middot; Ernest0.com &middot; Chicago</p>
+          <div class="footer-attribution">
+            <a href="https://github.com/officebeats/beats-pm-kit" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="This site was built using the Beats PM Kit">Built with
+              <svg class="ag-logo" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C12 6.62742 17.3726 12 24 12C24 17.3726 17.3726 24 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" /></svg>
+              Beats PM Kit &rarr;</a>
+          </div>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

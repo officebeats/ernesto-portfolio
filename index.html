@@ -78,8 +78,8 @@
     <link rel="preload" href="profile-full.jpg" as="image" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Instrument+Serif:ital@0;1&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
     <!-- Favicon & App Icons -->
     <link rel="icon" type="image/png" href="logos/pwa-icon-512.png" sizes="32x32" />
@@ -96,8 +96,8 @@
       <div class="container nav-inner">
         <a href="#top" class="nav-logo">Ernesto Rodriguez</a>
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="#experience">Experience</a>
-          <a href="#work">Case Studies</a>
+          <a href="#experience" hidden style="display: none !important">Experience</a>
+          <a href="#work">AI Projects</a>
           <a href="#domains">Domains</a>
           <a href="#credentials">Credentials</a>
           <a href="#writing">Publications</a>
@@ -132,8 +132,8 @@
     <!-- Mobile Overlay Menu -->
     <div id="mobile-menu" class="mobile-overlay" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <nav class="mobile-nav-links">
-        <a href="#experience" class="mobile-link" style="--i: 0">Experience</a>
-        <a href="#work" class="mobile-link" style="--i: 1">Case Studies</a>
+        <a href="#experience" class="mobile-link" hidden style="--i: 0; display: none !important">Experience</a>
+        <a href="#work" class="mobile-link" style="--i: 1">AI Projects</a>
         <a href="#domains" class="mobile-link" style="--i: 2">Domains</a>
         <a href="#credentials" class="mobile-link" style="--i: 3">Credentials</a>
         <a href="#writing" class="mobile-link" style="--i: 4">Publications</a>
@@ -152,17 +152,17 @@
           <div class="hero-content reveal-blur stagger-parent">
             <p class="section-label">Director-Level AI Product Leader · Healthcare &amp; Enterprise AI</p>
             <h1 class="hero-title reveal">
-              I design the products that make
-              <span class="emphasis impact-text" style="color: var(--accent)">AGENTIC AI SHIP.</span>
+              <span class="line-mask"><span class="line-inner">I design the products that make</span></span>
+              <span class="line-mask"><span class="line-inner"><span class="emphasis impact-text" style="color: var(--accent)">AGENTIC AI SHIP.</span></span></span>
             </h1>
             <p class="hero-body stagger-item">
-              Director-level AI product leader with over a decade of experience across healthcare, retail, and B2B SaaS — now leading product engagement at Captios Partners. At Ascension, one of the largest US health systems, I led AI product work and shipped messaging and knowledge-base products that lifted patient engagement 10% and cut support ticket volume 20%. Former BCG consultant.
+              Director-level AI product leader with over a decade of experience across healthcare, retail, and B2B SaaS — now leading product engagement at Captios Partners. At Ascension Health, one of the largest US health systems, I led AI product work and shipped messaging and knowledge-base products that lifted patient engagement 10% and cut support ticket volume 20%. Former BCG consultant.
               <span class="hero-mission-line impact-text"
                 >Defining agent architecture. Setting the roadmap. Moving the business.</span
               >
             </p>
-            <div class="hero-status stagger-item" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; font-size: 0.875rem; color: var(--text-secondary);">
-              <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; box-shadow: 0 0 0 0 var(--accent); animation: pulse-dot 2s infinite;"></span>
+            <div class="hero-status stagger-item">
+              <span class="status-dot"></span>
               Open to Director-level AI product leadership roles · Selective fractional engagements
             </div>
             <div class="hero-actions stagger-item">
@@ -185,7 +185,7 @@
                   /></svg
                 >Connect</a
               >
-              <a href="mailto:Ernesto@ProductMG.com" class="btn btn-email"
+              <a href="mailto:ernesto@aladdinstudioai.com" class="btn btn-email"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -200,7 +200,7 @@
                 >
                   <rect width="20" height="16" x="2" y="4" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg
-                >Ernesto@ProductMG.com</a
+                >ernesto@aladdinstudioai.com</a
               >
               <a href="cleanquest.html" class="btn btn-secondary">CleanQuest case study →</a>
             </div>
@@ -217,400 +217,24 @@
             />
             <div class="metric-stack stagger-parent">
               <div class="metric stagger-item">
-                <span class="metric-value">10+</span>
+                <span class="metric-value" data-count="10" data-suffix="+">10+</span>
                 <span class="metric-label">Years Leading Product</span>
               </div>
               <div class="metric stagger-item">
-                <span class="metric-value">10%</span>
-                <span class="metric-label">Patient Engagement Lift — Ascension Messaging</span>
+                <span class="metric-value" data-count="10" data-suffix="%">10%</span>
+                <span class="metric-label">Patient Engagement Lift — Ascension Health Messaging</span>
               </div>
               <div class="metric stagger-item">
-                <span class="metric-value">40%</span>
+                <span class="metric-value" data-count="40" data-suffix="%">40%</span>
                 <span class="metric-label">Interoperability KPI Gain — EMR Integration (BCG)</span>
               </div>
               <div class="metric stagger-item">
-                <span class="metric-value">2,500</span>
+                <span class="metric-value" data-count="2500" data-format="comma">2,500</span>
                 <span class="metric-label">Stores Scaled — CoolerX Pilot (75) to National</span>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ═══════════ Logo Bar (Above Fold) ═══════════ -->
-      <div class="logo-bar" aria-label="Companies I've worked with">
-        <p class="logo-bar-label" style="font-weight: 800; font-size: 0.9rem">
-          Companies I've contributed to
-        </p>
-        <div class="marquee-wrapper">
-          <div class="logo-track">
-            <!-- Group 1 -->
-            <div class="logo-item">
-              <img
-                src="logos/bcg.png"
-                alt="BCG"
-                loading="lazy"
-                decoding="async"
-              /><span>BCG</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/coolerscreens.png"
-                alt="Cooler Screens"
-                class="invert-on-light"
-                loading="lazy"
-                decoding="async"
-              /><span>Cooler Screens</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/groupon.png"
-                alt="Groupon"
-                loading="lazy"
-                decoding="async"
-              /><span>Groupon</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/fetchrewards.png"
-                alt="Fetch Rewards"
-                class="invert-on-light"
-                loading="lazy"
-                decoding="async"
-              /><span>Fetch Rewards</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/redbox.png"
-                alt="Redbox"
-                loading="lazy"
-                decoding="async"
-              /><span>Redbox</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/ascension.png"
-                alt="Ascension"
-                loading="lazy"
-                decoding="async"
-              /><span>Ascension</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/patientpoint.png"
-                alt="PatientPoint"
-                loading="lazy"
-                decoding="async"
-              /><span>PatientPoint</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/LEX-logo.png"
-                alt="LevelEx Games"
-                class="invert-on-light"
-                loading="lazy"
-                decoding="async"
-              /><span>LevelEx Games</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/allscripts.png"
-                alt="Allscripts"
-                loading="lazy"
-                decoding="async"
-              /><span>Allscripts</span>
-            </div>
-
-            <div class="logo-item">
-              <img
-                src="logos/centerpoint-energy.png"
-                alt="CenterPoint Energy"
-                loading="lazy"
-                decoding="async"
-              /><span>CenterPoint Energy</span>
-            </div>
-            <div class="logo-item">
-              <img
-                src="logos/route.png"
-                alt="Route"
-                class="invert-on-dark"
-                loading="lazy"
-                decoding="async"
-              /><span>Route</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══════════ Experience ═══════════ -->
-      <section id="experience" class="section reveal-kinetic">
-        <div class="container experience-grid">
-          <div class="experience-left reveal-rotate">
-            <p class="section-label">Career</p>
-            <h2 class="section-heading">
-              Where I've<br /><em>driven impact.</em>
-            </h2>
-          </div>
-          <div class="experience-right stagger-parent">
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Aug 2026 — Present</span>
-              <div>
-                <h3>Product Engagement Lead — Captios Partners</h3>
-                <p>Product engagement leadership for enterprise clients — AI product strategy, delivery, and adoption across client product teams.</p>
-              </div>
-            </div>
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Apr 2026 — Sep 2026</span>
-              <div>
-                <h3>Product Lead (Contract) — MCG Health</h3>
-                <p>Contract product lead at a healthcare information company — product strategy, roadmap, and delivery.</p>
-              </div>
-            </div>
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Nov 2024 — Apr 2026</span>
-              <div>
-                <h3>AI Product Lead — Ascension</h3>
-                <p>Facilitated and aligned high-impact AI use cases across teams, prioritized by business impact and feasibility, and established the implementation roadmap for agentic AI (GCP, Vertex AI, Deepgram, atomic agents). Shipped messaging and knowledge-base products: <span class="impact-text">+10% patient engagement, +20% support efficiency, −20% support ticket volume, +15% self-service rates, +10% NPS.</span></p>
-              </div>
-            </div>
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Mar 2024 — Oct 2024</span>
-              <div>
-                <h3>Head of Product — Route</h3>
-                <p>Led product strategy and a team of 10 (2 PMs, 5 engineers, 1 designer): <span class="impact-text">+25% monthly recurring revenue</span>, and landed a <span class="impact-text">$500K Morgan Stanley investment</span> on the product growth strategy.</p>
-              </div>
-            </div>
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Apr 2022 — Mar 2024</span>
-              <div>
-                <h3>Senior Product Manager — BCG</h3>
-                <p>Digital transformation for healthcare and energy clients: launched a self-serve portal (+50% operational efficiency), managed two FHIR data-store teams, and directed the Cerner/Athena EMR integration that raised the interoperability KPI by 40% over 18 months.</p>
-              </div>
-            </div>
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Apr 2021 — Apr 2022</span>
-              <div>
-                <h3>Senior Product Lead — Fetch Rewards</h3>
-                <p>Led social and gamification features: MAU grew from 15M to 18M, engagement +10%, daily user retention +25%.</p>
-              </div>
-            </div>
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Apr 2020 — Apr 2021</span>
-              <div>
-                <h3>Senior Product Manager — LevelEx</h3>
-                <p>Cut the discovery-to-development cycle from 12 weeks to 4, and launched a multiplayer product that lifted sales 20% after two years of stagnation.</p>
-              </div>
-            </div>
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Jan 2019 — Mar 2020</span>
-              <div>
-                <h3>Senior Product Owner — CoolerX</h3>
-                <p>Scaled a retail pilot from 75 to 2,500 stores ahead of schedule, driving a 500% revenue increase; the flagship redesign grew impressions from 20M to 38.1M.</p>
-              </div>
-            </div>
-            <div class="exp-item stagger-item">
-              <span class="exp-time">Apr 2013 — Oct 2017</span>
-              <div>
-                <h3>Technical Product Manager — PatientPoint</h3>
-                <p>Led two touchscreen patient- and provider-facing products to 100% YoY revenue growth; shifted engineering in-house, improving product quality by 25%.</p>
-              </div>
-            </div>
-            <!-- End Experience Right -->
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════ Featured Work: Case Study ═══════════ -->
-      <section class="section section-dark reveal-kinetic" style="border-top: 2px solid var(--accent);">
-        <div class="container">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-            <div>
-              <p class="section-label">Featured Work</p>
-              <h2 class="section-heading" style="margin-bottom: 0;">AI product leadership at <em>Ascension.</em></h2>
-            </div>
-            <div class="case-study-tags" style="display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center;">
-              <span style="background: var(--accent); color: #000; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; padding: 0.2rem 0.65rem; border-radius: 999px;">Healthcare · 2024–2026</span>
-              <span style="border: 1px solid var(--accent); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; padding: 0.2rem 0.65rem; border-radius: 999px;">Agentic AI</span>
-              <span style="border: 1px solid var(--accent); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; padding: 0.2rem 0.65rem; border-radius: 999px;">GCP · Vertex AI</span>
-            </div>
-          </div>
-
-          <!-- 2x2 icon grid -->
-          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem;">
-
-            <!-- Problem -->
-            <div class="stagger-item" style="background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.25rem 1.25rem 1.25rem;">
-              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.65rem;">
-                <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,210,141,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-                  </svg>
-                </div>
-                <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">The Problem</span>
-              </div>
-              <p style="font-size: 0.875rem; line-height: 1.65; color: var(--text-secondary);">Ascension needed to decide which AI use cases were worth building across clinical and consumer teams — and a roadmap to deliver them on shared platforms instead of one-off pilots.</p>
-            </div>
-
-            <!-- My Role -->
-            <div class="stagger-item" style="background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;">
-              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.65rem;">
-                <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,210,141,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-                  </svg>
-                </div>
-                <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">My Role</span>
-              </div>
-              <p style="font-size: 0.875rem; line-height: 1.65; color: var(--text-secondary);">AI Product Lead. I facilitated and aligned high-impact AI use cases across teams, and prioritized the portfolio by business impact and feasibility.</p>
-            </div>
-
-            <!-- Approach -->
-            <div class="stagger-item" style="background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;">
-              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.65rem;">
-                <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,210,141,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/>
-                  </svg>
-                </div>
-                <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Approach</span>
-              </div>
-              <p style="font-size: 0.875rem; line-height: 1.65; color: var(--text-secondary);">I established the implementation roadmap for agentic AI — GCP integrations, Vertex AI, Deepgram, and atomic agents — and ran weekly voice-of-customer reviews (Qualtrics, Amplitude) to keep prioritization honest.</p>
-            </div>
-
-            <!-- Outcome -->
-            <div class="stagger-item" style="background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;">
-              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.65rem;">
-                <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,210,141,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </div>
-                <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Outcome</span>
-              </div>
-              <p style="font-size: 0.875rem; line-height: 1.65; color: var(--text-secondary);">Shipped and measured: the messaging platform lifted patient engagement 10% and support efficiency 20%; knowledge-base enhancements cut support ticket volume 20% and raised self-service 15%; NPS rose 10%.</p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════ Case Studies ═══════════ -->
-      <section id="work" class="section">
-        <div class="container">
-          <p class="section-label">Case Studies</p>
-          <h2 class="section-heading">Products built for<br /><em>real work.</em></h2>
-          <article class="exp-item" style="grid-template-columns: 1fr; margin-top: 1.5rem;">
-            <div>
-              <h3>CleanQuest</h3>
-              <p>AI-verified cleaning quality, gamified — consent-first, trilingual, and honest about what it can't judge.</p>
-              <div class="case-study-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
-                <span style="border: 1px solid var(--accent); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; padding: 0.2rem 0.65rem; border-radius: 999px;">Meta Global AI Developer Hackathon</span>
-                <span style="border: 1px solid var(--accent); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; padding: 0.2rem 0.65rem; border-radius: 999px;">Solo build</span>
-                <span style="background: var(--accent); color: #000; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; padding: 0.2rem 0.65rem; border-radius: 999px;">Live app</span>
-              </div>
-              <a href="cleanquest.html" class="link-arrow">Read the case study &rarr;</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-
-      <!-- ═══════════ Agentic AI Philosophy ═══════════ -->
-      <section class="section section-leadership">
-        <div class="container about-grid">
-          <div class="about-left reveal-left">
-            <p class="section-label">Point of View</p>
-            <h2 class="section-heading">My take on<br /><em>agentic AI.</em></h2>
-          </div>
-
-          <div class="about-right leadership-stack stagger-parent">
-
-            <div class="leadership-item stagger-item">
-              <div class="leadership-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
-                  <line x1="16" y1="13" x2="8" y2="13"/>
-                  <line x1="16" y1="17" x2="8" y2="17"/>
-                  <polyline points="10 9 9 9 8 9"/>
-                </svg>
-              </div>
-              <div class="leadership-text">
-                <h3 style="color: var(--text);">Agents need contracts before code.</h3>
-                <p>Agent cards, A2A handoff protocols, and capability boundaries must be defined before prompts are written. Ambiguous agent design produces unpredictable production behavior — and that's a PM failure, not an engineering one.</p>
-              </div>
-            </div>
-
-            <div class="leadership-item stagger-item">
-              <div class="leadership-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="8" x2="12" y2="12"/>
-                  <line x1="12" y1="16" x2="12.01" y2="16"/>
-                </svg>
-              </div>
-              <div class="leadership-text">
-                <h3 style="color: var(--text);">The PM owns the agent's judgment calls.</h3>
-                <p>Every routing decision, every fallback, every escalation path is a product decision. I treat agent behavior like any critical user flow: intentional, tested, and owned end-to-end.</p>
-              </div>
-            </div>
-
-            <div class="leadership-item stagger-item">
-              <div class="leadership-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <div class="leadership-text">
-                <h3 style="color: var(--text);">Human-in-the-loop is a feature, not a fallback.</h3>
-                <p>Designing when and how an agent hands off to a human is as important as the agent workflow itself. The best agentic products make that handoff feel invisible — and that's entirely a product design problem.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════ The Foundation ═══════════ -->
-      <section class="section section-foundation">
-        <div class="container about-grid">
-          <div class="about-left reveal-left">
-            <p class="section-label">Origin</p>
-            <h2 class="section-heading">The<br /><em>foundation.</em></h2>
-          </div>
-          <div
-            class="about-right foundation-content reveal-blur stagger-parent"
-          >
-            <p>
-              Before roadmaps and sprint planning, I spent years as a
-              <strong>customer service representative</strong> and
-              <strong>call center manager</strong> — listening to consumer pain
-              points for 8 hours a day, every day. That wasn't a stepping stone.
-              It was the foundation.
-            </p>
-            <p>
-              To this day, that experience is the engine behind my product
-              intuition. It's why I instinctively design for scalable, intuitive
-              journeys — not just features.
-            </p>
-            <blockquote class="foundation-quote">
-              <p>
-                &ldquo;How do I reduce the likelihood of a support rep — like I
-                used to be — ever needing to be involved?&rdquo;
-              </p>
-            </blockquote>
-            <p class="foundation-coda">
-              That's the question I ask on every product decision. It keeps me
-              honest, keeps me close to the user, and keeps the work grounded in
-              real problems — not hypothetical ones.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <hr class="divider container" />
 
       <!-- ═══════════ Domains ═══════════ -->
       <section id="domains" class="section reveal-kinetic">
@@ -642,7 +266,7 @@
               </p>
               <div class="domain-logos">
                 <div class="domain-logo-item">
-                  <img src="logos/ascension.png" alt="Ascension" /><span
+                  <img src="logos/ascension.png" alt="Ascension Health" /><span
                     >Ascension</span
                   >
                 </div>
@@ -854,7 +478,7 @@
               <div style="flex: 1;">
                 <h3 class="domain-title">Agentic AI &amp; LLMs</h3>
                 <p class="domain-desc">
-                  Designing AI agent systems — from multi-agent orchestration and LLM-powered workflow automation to consumer-facing conversational agents. At Ascension, I aligned high-impact AI use cases across teams and built the implementation roadmap for agentic systems on GCP and Vertex AI. I also build the open-source <span class="impact-text">Beats PM Antigravity Kit</span> — 12 agent personas, 46 PM skills, and 18 agentic workflows running 100% locally.
+                  Designing AI agent systems — from multi-agent orchestration and LLM-powered workflow automation to consumer-facing conversational agents. At Ascension Health, I aligned high-impact AI use cases across teams and built the implementation roadmap for agentic systems on GCP and Vertex AI. I also build the open-source <span class="impact-text">Beats PM Kit</span> — 26 agents, 69 PM skills, and 44 protected workflows running 100% locally.
                 </p>
               </div>
             </article>
@@ -862,19 +486,352 @@
         </div>
       </section>
 
+      <!-- ═══════════ Featured Work: Case Study ═══════════ -->
+      <section class="section section-dark reveal-kinetic" style="border-top: 2px solid var(--accent);">
+        <div class="container">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <p class="section-label">Featured Work</p>
+              <h2 class="section-heading" style="margin-bottom: 0;">AI product leadership at <em>Ascension Health.</em></h2>
+            </div>
+            <div class="case-study-tags tags-tight">
+              <span class="tag tag--solid">Healthcare · 2024–2026</span>
+              <span class="tag">Agentic AI</span>
+              <span class="tag">GCP · Vertex AI</span>
+            </div>
+          </div>
 
+          <!-- 2x2 icon grid -->
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem;">
+
+            <!-- Problem -->
+            <div class="stagger-item tile">
+              <div class="tile-head">
+                <div class="tile-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </div>
+                <span class="tile-label">The Problem</span>
+              </div>
+              <ul class="tile-bullets"><li>AI use cases competing across clinical and consumer teams</li><li>No shared way to decide which were worth building</li><li>Needed one roadmap on shared platforms, not one-off pilots</li></ul>
+            </div>
+
+            <!-- My Role -->
+            <div class="stagger-item tile">
+              <div class="tile-head">
+                <div class="tile-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                  </svg>
+                </div>
+                <span class="tile-label">My Role</span>
+              </div>
+              <ul class="tile-bullets"><li>AI Product Lead</li><li>Facilitated and aligned high-impact AI use cases across teams</li><li>Prioritized the portfolio by business impact and feasibility</li></ul>
+            </div>
+
+            <!-- Approach -->
+            <div class="stagger-item tile">
+              <div class="tile-head">
+                <div class="tile-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/>
+                  </svg>
+                </div>
+                <span class="tile-label">Approach</span>
+              </div>
+              <ul class="tile-bullets"><li>Built the implementation roadmap for agentic AI</li><li>Stack: GCP integrations, Vertex AI, Deepgram, atomic agents</li><li>Weekly voice-of-customer reviews (Qualtrics, Amplitude) kept prioritization honest</li></ul>
+            </div>
+
+            <!-- Outcome -->
+            <div class="stagger-item tile">
+              <div class="tile-head">
+                <div class="tile-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <span class="tile-label">Outcome</span>
+              </div>
+              <ul class="tile-bullets"><li>Messaging platform: +10% patient engagement, +20% support efficiency</li><li>Knowledge base: −20% support ticket volume, +15% self-service</li><li>NPS up 10%</li></ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ Case Studies ═══════════ -->
+      <section id="work" class="section section-builder">
+        <div class="container">
+          <div class="builder-head">
+            <div>
+              <p class="section-label">AI Projects Built</p>
+              <h2 class="section-heading">GenAI unlocked<br /><em>the builder in me.</em></h2>
+            </div>
+            <div id="builder-lottie" class="builder-lottie" aria-hidden="true"></div>
+          </div>
+          <div class="project-grid">
+          <article class="project-card">
+            <img src="cleanquest-app.webp" alt="CleanQuest on a phone — before and after comparison with surface overlays for counter, fixture, glass, and floor" class="project-shot project-shot--app" loading="lazy" decoding="async" />
+            <div>
+              <h3>CleanQuest</h3>
+              <ul class="tile-bullets"><li>AI-verified cleaning quality, gamified</li><li>Consent-first and trilingual — English, Spanish, Polish</li><li>Says NOT SCORED when it can't judge — never fakes a score</li></ul>
+              <div class="case-study-tags">
+                <span class="tag">Meta Global AI Developer Hackathon</span>
+                <span class="tag">Solo build</span>
+                <span class="tag tag--solid">Live app</span>
+              </div>
+              <a href="cleanquest.html" class="link-arrow">Read the case study &rarr;</a>
+              <a href="evals.html" class="link-arrow" style="margin-left: 1.25rem;">See the evals &rarr;</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="kit-banner.webp" alt="Beats PM Kit — agentic PM harness" class="project-shot project-shot--kit" loading="lazy" decoding="async" />
+            <div>
+              <h3>Beats PM Kit</h3>
+              <ul class="tile-bullets"><li>Local-first AI operating system for PMs — 100% on your machine, zero cloud storage</li><li>26 agents, 69 just-in-time skills, 44 protected workflows</li><li>Contracts before code: capability boundaries a product leader can defend</li></ul>
+              <div class="case-study-tags">
+                <span class="tag">Open source</span>
+                <span class="tag">Local-first</span>
+                <span class="tag tag--solid">Live on GitHub</span>
+              </div>
+              <a href="https://github.com/officebeats/beats-pm-kit" target="_blank" rel="noopener" class="link-arrow">Explore it on GitHub &rarr;</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="boxing-shot.png" alt="Boxing Puzzle Fighter — Crash Out: Ring Rush title screen" class="project-shot project-shot--pixel" loading="lazy" decoding="async" />
+            <div>
+              <h3>Boxing Puzzle Fighter</h3>
+              <ul class="tile-bullets"><li>A retro puzzle-boxing game on the PICO-8 fantasy console — clear gems to throw punches</li><li>14 playable fighters, 9 arenas, and a 7-stage Road to Gold tournament</li><li>The arcade corner of the builder section — built purely for fun</li></ul>
+              <a href="https://github.com/officebeats/cob-puzzle-boxer-game" target="_blank" rel="noopener" class="link-arrow">See the code &rarr;</a>
+              <div class="case-study-tags">
+                <span class="tag">PICO-8</span>
+                <span class="tag">Solo build</span>
+                <span class="tag tag--solid">Playable now</span>
+              </div>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="iptv-shot.png" alt="IPTV TUI — a terminal interface for browsing live TV streams" class="project-shot" loading="lazy" decoding="async" />
+            <div>
+              <h3>IPTV TUI</h3>
+              <ul class="tile-bullets"><li>IPTV, plainly: live TV, movies, and shows streamed over the internet — no cable box, no satellite dish</li><li>A Matrix-inspired terminal app built with Rust — browse everything from the keyboard</li><li>Optimized for live TV and sports performance</li></ul>
+              <a href="https://github.com/officebeats/matrix-iptv#-matrix-iptv-cli" target="_blank" rel="noopener" class="link-arrow">See the code &rarr;</a>
+              <div class="case-study-tags">
+                <span class="tag">Rust</span>
+                <span class="tag">Solo build</span>
+                <span class="tag tag--solid">Open source</span>
+              </div>
+            </div>
+          </article>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ═══════════ Agentic AI Philosophy ═══════════ -->
+      <section class="section section-leadership">
+        <div class="container about-grid">
+          <div class="about-left reveal-left">
+            <p class="section-label">Point of View</p>
+            <h2 class="section-heading">My take on<br /><em>agentic AI.</em></h2>
+          </div>
+
+          <div class="about-right leadership-stack stagger-parent">
+
+            <div class="leadership-item stagger-item">
+              <div class="leadership-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </div>
+              <div class="leadership-text">
+                <h3 style="color: var(--text);">Agents need contracts before code.</h3>
+                <p>Agent cards, A2A handoff protocols, and capability boundaries must be defined before prompts are written. Ambiguous agent design produces unpredictable production behavior — and that's a PM failure, not an engineering one.</p>
+              </div>
+            </div>
+
+            <div class="leadership-item stagger-item">
+              <div class="leadership-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
+              <div class="leadership-text">
+                <h3 style="color: var(--text);">The PM owns the agent's judgment calls.</h3>
+                <p>Every routing decision, every fallback, every escalation path is a product decision. I treat agent behavior like any critical user flow: intentional, tested, and owned end-to-end.</p>
+              </div>
+            </div>
+
+            <div class="leadership-item stagger-item">
+              <div class="leadership-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="leadership-text">
+                <h3 style="color: var(--text);">Human-in-the-loop is a feature, not a fallback.</h3>
+                <p>Designing when and how an agent hands off to a human is as important as the agent workflow itself. The best agentic products make that handoff feel invisible — and that's entirely a product design problem.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ The Foundation ═══════════ -->
+      <section class="section section-foundation">
+        <div class="container">
+          <div class="foundation-head reveal-right">
+            <p class="section-label">Origin</p>
+            <h2 class="section-heading">The <em>foundation.</em></h2>
+          </div>
+          <div class="about-grid foundation-grid">
+            <div class="about-right foundation-content reveal-blur stagger-parent">
+              <p>
+                Before roadmaps and sprint planning, I spent years as a
+                <strong>customer service representative</strong> and
+                <strong>call center manager</strong> — listening to consumer pain
+                points for 8 hours a day, every day. That wasn't a stepping stone.
+                It was the foundation.
+              </p>
+              <p>
+                To this day, that experience is the engine behind my product
+                intuition. It's why I instinctively design for scalable, intuitive
+                journeys — not just features.
+              </p>
+              <blockquote class="foundation-quote">
+                <p>
+                  &ldquo;How do I reduce the likelihood of a support rep — like I
+                  used to be — ever needing to be involved?&rdquo;
+                </p>
+              </blockquote>
+              <p class="foundation-coda">
+                That's the question I ask on every product decision. It keeps me
+                honest, keeps me close to the user, and keeps the work grounded in
+                real problems — not hypothetical ones.
+              </p>
+            </div>
+            <figure class="foundation-map foundation-map--tall" aria-label="Minimal map of Cicero and Little Village, Chicago, with Lake Michigan">
+              <svg viewBox="0 0 720 470" role="img" aria-hidden="true" style="font-family: Inter, sans-serif">
+                <rect x="1" y="1" width="718" height="468" rx="16" fill="var(--bg-card)" stroke="var(--border)" />
+                <!-- Lake Michigan -->
+                <path d="M 618,18 C 604,110 626,190 610,270 C 600,330 616,400 606,452 L 719,452 L 719,18 Z" fill="#3d7ab8" opacity="0.38" />
+                <path d="M 618,18 C 604,110 626,190 610,270 C 600,330 616,400 606,452" fill="none" stroke="#3d7ab8" stroke-width="2" opacity="0.8" />
+                <g stroke="#7fb2dd" stroke-width="1.5" fill="none" opacity="0.7">
+                  <path d="M 648,150 q 8,-6 16,0 q 8,6 16,0" />
+                  <path d="M 640,300 q 8,-6 16,0 q 8,6 16,0" />
+                </g>
+                <text x="664" y="228" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="0.2em" fill="var(--text)">LAKE</text>
+                <text x="664" y="246" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="0.2em" fill="var(--text)">MICHIGAN</text>
+                <!-- zones -->
+                <rect x="16" y="84" width="88" height="300" fill="var(--accent)" opacity="0.07" />
+                <rect x="208" y="168" width="192" height="92" fill="var(--accent)" opacity="0.13" />
+                <!-- street grid -->
+                <g stroke="var(--border)" stroke-width="1">
+                  <line x1="56" y1="30" x2="56" y2="420" /><line x1="104" y1="30" x2="104" y2="420" />
+                  <line x1="152" y1="30" x2="152" y2="420" /><line x1="208" y1="30" x2="208" y2="420" />
+                  <line x1="288" y1="30" x2="288" y2="420" /><line x1="344" y1="30" x2="344" y2="420" />
+                  <line x1="400" y1="30" x2="400" y2="420" /><line x1="456" y1="30" x2="456" y2="420" />
+                  <line x1="496" y1="30" x2="496" y2="420" /><line x1="540" y1="30" x2="540" y2="420" />
+                  <line x1="576" y1="30" x2="576" y2="420" />
+                  <line x1="16" y1="84" x2="612" y2="84" /><line x1="16" y1="168" x2="616" y2="168" />
+                  <line x1="16" y1="214" x2="612" y2="214" /><line x1="16" y1="260" x2="610" y2="260" />
+                  <line x1="16" y1="322" x2="608" y2="322" /><line x1="16" y1="384" x2="606" y2="384" />
+                </g>
+                <!-- diagonals: Ogden + Archer -->
+                <g stroke="var(--border)" stroke-width="1.5">
+                  <line x1="130" y1="30" x2="430" y2="214" />
+                  <line x1="170" y1="420" x2="560" y2="230" />
+                </g>
+                <!-- zone labels -->
+                <text x="26" y="110" font-size="11" font-weight="700" letter-spacing="0.14em" fill="var(--text)">CICERO</text>
+                <text x="218" y="194" font-size="11" font-weight="700" letter-spacing="0.14em" fill="var(--text)">LITTLE VILLAGE</text>
+                <text x="218" y="209" font-size="8" letter-spacing="0.18em" fill="var(--accent)">LA VILLITA</text>
+                <!-- street labels -->
+                <g font-size="7.5" letter-spacing="0.12em" fill="var(--text-secondary)">
+                  <text x="108" y="46">CICERO AVE</text>
+                  <text x="212" y="46">PULASKI RD</text>
+                  <text x="544" y="46">STATE ST</text>
+                  <text x="20" y="164">CERMAK RD</text>
+                  <text x="300" y="232">W 26TH ST</text>
+                  <text x="392" y="306" transform="rotate(-27 392 306)">ARCHER AVE</text>
+                  <text x="476" y="60">DOWNTOWN</text>
+                </g>
+                <g fill="var(--text)" aria-hidden="true">
+                  <rect x="530.25" y="83" width="19.5" height="21" />
+                  <rect x="532.5" y="74" width="15" height="9" />
+                  <rect x="534.75" y="66.5" width="10.5" height="7.5" />
+                  <line x1="537" y1="66.5" x2="537" y2="54.5" stroke="var(--text)" stroke-width="1.6" />
+                  <line x1="543" y1="66.5" x2="543" y2="54.5" stroke="var(--text)" stroke-width="1.6" />
+                </g>
+                <!-- marker: 26th & Pulaski -->
+                <circle class="map-ping" cx="208" cy="214" r="5" fill="none" stroke="var(--accent)" stroke-width="1.5" />
+                <circle cx="208" cy="214" r="4" fill="var(--accent)" />
+                <!-- footer tag + north -->
+                <text x="20" y="454" font-size="9" font-weight="700" letter-spacing="0.22em" fill="var(--accent)">SOUTH SIDE · CHICAGO</text>
+                <text x="692" y="454" font-size="9" letter-spacing="0.1em" fill="var(--text-secondary)">N ↑</text>
+              </svg>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider container" />
+
+      <!-- Chicago -->
+      <section id="chicago" class="section section-dark">
+        <div class="container about-grid">
+          <div class="about-left reveal-left">
+            <p class="section-label">Community</p>
+            <h2 class="section-heading">Chicago <em>roots.</em></h2>
+          </div>
+          <div class="about-right stagger-parent reveal-right">
+            <p class="stagger-item">
+              Born to Mexican immigrant parents, I am a first-generation American who started on the North Side by Humboldt Park and was raised on the South Side. My journey is proof that diverse beginnings fuel distinct, strategic perspectives.
+            </p>
+            <p class="stagger-item" style="margin-top: 1rem;">
+              Today, I mentor emerging product managers, speak at local tech events, and collaborate with Chicago companies. Building the next generation of diverse product leaders is not just a passion—it is the responsibility of being the first.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <!-- Credentials -->
       <section id="credentials" class="section reveal-kinetic">
-        <div class="container credentials-grid">
-          <div>
+        <div class="container">
+          <div class="section-head">
             <p class="section-label">Proven Capabilities</p>
             <h2 class="section-heading">Credentials</h2>
           </div>
           <div
-            class="cred-list stagger-parent"
+            class="cred-list cred-grid stagger-parent"
             style="display: grid; gap: 1.5rem"
           >
+            <div
+              class="exp-item stagger-item cred-item"
+              style="grid-template-columns: 1fr"
+            >
+              <div>
+                <div class="cred-logo"><img src="logos/ibm.svg" alt="IBM" loading="lazy" decoding="async" /></div>
+                <div class="cred-badge"><span class="tag tag--solid">Specialization Certificate</span></div>
+                <h3>Generative AI for Product Managers</h3>
+                <p>IBM &middot; 2026</p>
+                <p style="margin-top: 0.75rem; font-size: 0.875rem">
+                  Applied generative AI across the product lifecycle —
+                  opportunity framing, prototyping, and evaluation.
+                </p>
+              </div>
+            </div>
             <div
               class="exp-item stagger-item cred-item"
               onclick="openLightbox('logos/ai-pm-cert.webp')"
@@ -882,8 +839,10 @@
               data-src="logos/ai-pm-cert.webp"
             >
               <div>
+                <div class="cred-logo"><img src="logos/microsoft.svg" alt="Microsoft" loading="lazy" decoding="async" /></div>
+                <div class="cred-badge"><span class="tag tag--solid">Specialization Certificate</span></div>
                 <h3 style="display: flex; align-items: center; gap: 0.5rem">
-                  Gen AI Product Management Specialization
+                  AI Product Management
                   <span
                     class="cert-icon"
                     title="View Certificate"
@@ -912,6 +871,36 @@
               </div>
             </div>
 
+<div
+              class="exp-item stagger-item cred-item"
+              style="grid-template-columns: 1fr"
+            >
+              <div>
+                <div class="cred-logo cred-logo--wordmark">AJ&amp;Smart</div>
+                <div class="cred-badge"><span class="tag tag--solid">Specialization Certificate</span></div>
+                <h3>GV Design Sprint Certified</h3>
+                <p>AJ &amp; Smart</p>
+                <p style="margin-top: 0.75rem; font-size: 0.875rem">
+                  Facilitation of Google Ventures design sprints — problem
+                  framing to a tested prototype in five days.
+                </p>
+              </div>
+            </div>
+            <div
+              class="exp-item stagger-item cred-item"
+              style="grid-template-columns: 1fr"
+            >
+              <div>
+                <div class="cred-logo"><img src="logos/3back.svg" alt="3Back" loading="lazy" decoding="async" /><span class="cred-logo-text">Back</span></div>
+                <div class="cred-badge"><span class="tag tag--solid">Specialization Certificate</span></div>
+                <h3>Certified Scrum Master</h3>
+                <p>3Back</p>
+                <p style="margin-top: 0.75rem; font-size: 0.875rem">
+                  Scrum facilitation and agile delivery leadership for product
+                  teams.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -924,97 +913,71 @@
             <h2 class="section-heading">Publications</h2>
           </div>
           <div
-            class="cred-list stagger-parent"
+            class="cred-list pub-grid stagger-parent"
             style="display: grid; gap: 1.5rem"
           >
-            <div
-              class="exp-item stagger-item"
+            <a
+              class="exp-item stagger-item pub-tile"
+              href="https://productschool.com/product-leaders/ernesto-rodriguez"
+              target="_blank"
+              rel="noopener"
               style="grid-template-columns: 1fr"
             >
               <div>
-                <h3>
-                  How to Overcome AR Challenges: A Guide for Product Managers
-                </h3>
-                <p>Product School &middot; 2023</p>
-                <p
-                  style="
-                    margin-top: 0.75rem;
-                    font-size: 0.875rem;
-                    margin-bottom: 1rem;
-                  "
-                >
-                  A framework for driving adoption in
-                  <span class="impact-text">emerging technology</span> and
-                  navigating complex technical constraints.
+                <div class="pub-logo-plate pub-logo-plate--brand">
+                  <img src="logos/productschool-logo.png" alt="Product School" loading="lazy" decoding="async" />
+                </div>
+                <p style="margin-top: 1rem">
+                  Article: How to Overcome AR Challenges — a guide for product
+                  managers.
                 </p>
-                <a
-                  href="https://productschool.com/product-leaders/ernesto-rodriguez"
-                  target="_blank"
-                  rel="noopener"
-                  class="btn btn-secondary"
-                  style="font-size: 0.875rem; padding: 0.35rem 1rem"
-                  >Read on Product School</a
-                >
+                <span class="link-arrow">Read the article &rarr;</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr class="divider container" />
-
-      <!-- Side Project -->
-      <section class="section">
-        <div class="container about-grid">
-          <div class="about-left reveal-left">
-            <p class="section-label">AI Projects Built</p>
-            <h2 class="section-heading">
-              <span class="brand-antigravity">Antigravity</span>
-              <em>Kit</em>
-            </h2>
-          </div>
-          <div class="about-right stagger-parent reveal-right">
-            <p class="stagger-item">
-              Outside of work, I engineer the
-              <strong>Beats PM Antigravity Kit</strong> &mdash; a local-first,
-              agent-driven AI operating system for product managers. It runs a
-              virtual PM team of <span class="impact-text">12 agent personas</span>,
-              <span class="impact-text">46 JIT-loaded PM skills</span>, and
-              <span class="impact-text">18 protected slash-command workflows</span> —
-              all on your machine with zero cloud storage.
-            </p>
-            <p class="stagger-item" style="margin-top: 1rem;">
-              The same pattern-thinking informs my day job: contracts before code, explicit capability boundaries, and routing logic a product leader can defend — the approach behind my AI roadmap work at Ascension.
-            </p>
+            </a>
             <a
-              href="https://github.com/officebeats/beats-pm-kit"
+              class="exp-item stagger-item pub-tile"
+              href="https://chicagoinnovation.com/programs/the-ladder/"
               target="_blank"
               rel="noopener"
-              class="btn btn-primary"
-              style="margin-top: 0.75rem"
-              >Explore It on GitHub &rarr;</a
+              style="grid-template-columns: 1fr"
             >
+              <div>
+                <div class="pub-logo-plate">
+                  <img src="logos/the-ladder.png" alt="Chicago Innovation — The Ladder" loading="lazy" decoding="async" />
+                </div>
+                <p style="margin-top: 1rem">
+                  Chicago Innovation — The Ladder mentorship program. Ernesto
+                  is on the past &amp; current mentor roster.
+                </p>
+                <span class="link-arrow">About the program &rarr;</span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
 
-      <!-- Chicago -->
-      <section id="chicago" class="section section-dark">
-        <div class="container about-grid">
-          <div class="about-left reveal-left">
-            <p class="section-label">Community</p>
-            <h2 class="section-heading">Chicago <em>roots.</em></h2>
+      
+      <!-- ═══════════ Experience ═══════════ -->
+      <section id="experience" class="section reveal-kinetic" hidden style="display: none !important">
+        <div class="container experience-grid">
+          <div class="experience-left reveal-rotate">
+            <p class="section-label">Career</p>
+            <h2 class="section-heading">
+              Where I've<br /><em>driven impact.</em>
+            </h2>
+            <button class="impact-toggle" type="button" aria-expanded="false" aria-controls="impact-body">
+              <span class="impact-toggle-label">Expand career history</span>
+              <span class="impact-chevron" aria-hidden="true">▾</span>
+            </button>
           </div>
-          <div class="about-right stagger-parent reveal-right">
-            <p class="stagger-item">
-              Born to Mexican immigrant parents, I am a first-generation American who started on the North Side by Humboldt Park and was raised on the South Side. My journey is proof that diverse beginnings fuel distinct, strategic perspectives.
-            </p>
-            <p class="stagger-item" style="margin-top: 1rem;">
-              Today, I mentor emerging product managers, speak at local tech events, and collaborate with Chicago companies. Building the next generation of diverse product leaders is not just a passion—it is the responsibility of being the first.
-            </p>
+          <div class="impact-collapse" id="impact-body">
+          <div class="experience-right stagger-parent">
+                <!-- Career history renders on expand (initImpactToggle in app.js) -->
+              </div>
           </div>
         </div>
       </section>
+
     </main>
 
     <!-- Hobbies Section -->
@@ -1122,6 +1085,7 @@
             >
               <video
                 src="logos/vr_productivity.mp4"
+                preload="metadata"
                 controls
                 playsinline
                 style="
@@ -1168,9 +1132,11 @@
                 >VibeCoding</a
               >
             </h3>
-            <p class="domain-desc">
-              Shipping agentic tools with Google Antigravity, Gemini CLI, Claude Code, and KiloCode. Projects include the <strong>Beats PM Kit</strong> (open-source agentic PM OS) and this portfolio itself.
-            </p>
+            <ul class="tile-bullets domain-bullets">
+              <li>AI-ambidextrous: Gemini, OpenAI, Anthropic, Meta, and open-source models</li>
+              <li>Desktop and CLI tools, driven through harnesses like Oh My Pi and Kilo Code</li>
+              <li>Home of the <strong>Beats PM Kit</strong> — open-source agentic PM OS — and this portfolio itself</li>
+            </ul>
             <div
               style="
                 margin-top: auto;
@@ -1261,7 +1227,26 @@
               /></svg
             >Connect on LinkedIn</a
           >
-          <a href="mailto:Ernesto@ProductMG.com" class="btn btn-email"
+          <a
+            href="https://github.com/officebeats"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-github"
+            aria-label="GitHub"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              style="margin-right: 8px"
+            >
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+              /></svg
+            >Follow on GitHub</a
+          >
+          <a href="mailto:ernesto@aladdinstudioai.com" class="btn btn-email"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -1276,14 +1261,8 @@
             >
               <rect width="20" height="16" x="2" y="4" rx="2" />
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg
-            >Ernesto@ProductMG.com</a
+            >ernesto@aladdinstudioai.com</a
           >
-          <a
-            href="https://github.com/officebeats/beats-pm-kit"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-secondary"
-          >Explore Antigravity Kit &rarr;</a>
         </div>
       </div>
     </section>
@@ -1305,7 +1284,7 @@
               target="_blank"
               rel="noopener"
               style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;"
-              title="This site was built using the Beats PM Antigravity Kit"
+              title="This site was built using the Beats PM Kit"
             >Built with
             <svg
               class="ag-logo"
@@ -1318,7 +1297,7 @@
                 d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z"
               />
             </svg>
-            Antigravity Kit &rarr;</a>
+            Beats PM Kit &rarr;</a>
           </div>
         </div>
         <div class="footer-socials">
@@ -1352,6 +1331,14 @@
     </div>
 
     <!-- Initialize App -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <script src="app.js"></script>
+  
+    <!-- Sticky mobile contact bar: one-tap actions for a rushed reader -->
+    <nav class="mobile-cta-bar" aria-label="Quick contact">
+      <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
+      <a href="mailto:ernesto@aladdinstudioai.com">Email</a>
+    </nav>
   </body>
 </html>

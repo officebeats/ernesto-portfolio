@@ -55,8 +55,8 @@
     <meta name="theme-color" content="#009270" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Instrument+Serif:ital@0;1&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css?v=2.4" />
   </head>
   <body>
@@ -67,7 +67,7 @@
         <a href="index.html" class="nav-logo">Ernesto Rodriguez</a>
         <nav class="nav-links" aria-label="Main navigation">
           <a href="index.html#experience">Experience</a>
-          <a href="index.html#work">Case Studies</a>
+          <a href="index.html#work">AI Projects</a>
           <a href="index.html#domains">Domains</a>
           <a href="index.html#credentials">Credentials</a>
           <a href="index.html#writing">Publications</a>
@@ -91,7 +91,7 @@
     <div id="mobile-menu" class="mobile-overlay" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <nav class="mobile-nav-links">
         <a href="index.html#experience" class="mobile-link" style="--i: 0">Experience</a>
-        <a href="index.html#work" class="mobile-link" style="--i: 1">Case Studies</a>
+        <a href="index.html#work" class="mobile-link" style="--i: 1">AI Projects</a>
         <a href="index.html#domains" class="mobile-link" style="--i: 2">Domains</a>
         <a href="index.html#credentials" class="mobile-link" style="--i: 3">Credentials</a>
         <a href="index.html#writing" class="mobile-link" style="--i: 4">Publications</a>
@@ -117,7 +117,7 @@
             <a href="https://www.youtube.com/watch?v=MQ7P3IyOubo" target="_blank" rel="noopener" class="btn btn-secondary">Demo video <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/officebeats/cleanquest" target="_blank" rel="noopener" class="btn btn-secondary">GitHub repo <span aria-hidden="true">↗</span></a>
             <a href="https://officebeats.github.io/cleanquest/docs/judges/report.html" target="_blank" rel="noopener" class="btn btn-secondary">Judges' report <span aria-hidden="true">↗</span></a>
-            <a href="mailto:Ernesto@ProductMG.com" class="btn btn-secondary">Email me</a>
+            <a href="mailto:ernesto@aladdinstudioai.com" class="btn btn-secondary">Email me</a>
           </div>
           <div class="case-study-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
             <span style="background: var(--accent); color: #000; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.3rem 0.75rem; border-radius: 999px;">AI Product · 2026</span>
@@ -256,6 +256,7 @@
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">0.6 Confidence Gate</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Cloud surface grades (clean / partly clean / missed) count as verified only at confidence ≥ 0.6. Below 0.6, surfaces display as unverified — and if a run can't be judged fairly, it resolves to NOT SCORED instead of a number.</p></article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Score 98 · 1,405 tokens — Primary</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">In a live verification run, both providers graded the same fixed before/after demo pair (task: vision scorecard). Baseten, the primary, returned an overall score of 98/100 using 1,405 tokens. That is a score the model assigned — not an accuracy rate. It proves the primary path returns a valid, complete scorecard live.</p></article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Score 96 · 1,695 tokens — Failover</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">On the same pair, Fireworks AI, the failover, returned 96/100 using 1,695 tokens — close enough to trust the failover path, different enough to prove it is a real second opinion, not a copy.</p></article>
+            <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.65; margin-top: 1.25rem;">The full evaluation write-up — rubric, gate, live run, and refusal design: <a href="evals.html" style="color: var(--accent);">Evals, run like a product</a>.</p>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Self-Tests: 6/6 · 11/11</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Labeled honestly as self-tests: 6/6 hermetic in-app self-tests (no network — provider routing, no-key fallbacks, demo-mode hermeticity, run-log rendering) and 11/11 end-to-end persona walkthroughs in the browser test suite. They verify the software keeps its promises; they are not user research.</p></article>
           </div>
           <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.65; margin-top: 1.25rem;">Built solo in 10 days, Oct 26–Nov 4, 2026, for the Meta Global AI Developer Hackathon. The starting point was a crude local-only proof of concept.</p>
@@ -307,9 +308,9 @@
           <h2 class="section-heading">Building an <em>AI product team?</em></h2>
           <p class="cta-subtitle" style="max-width: 600px; margin: 1.25rem auto 2rem; font-size: 1.125rem;">I'm Ernesto Rodriguez, a Director-level AI product leader. CleanQuest is one case study — the full record is on my homepage.</p>
           <div class="cta-actions" style="justify-content: center; gap: 1rem; align-items: center; flex-wrap: wrap;">
-            <a href="mailto:Ernesto@ProductMG.com" class="btn btn-email">Ernesto@ProductMG.com</a>
+            <a href="mailto:ernesto@aladdinstudioai.com" class="btn btn-email">ernesto@aladdinstudioai.com</a>
             <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener" class="btn btn-linkedin">Connect on LinkedIn</a>
-            <a href="index.html#work" class="btn btn-secondary">More case studies</a>
+            <a href="index.html#work" class="btn btn-secondary">More AI projects</a>
           </div>
         </div>
       </section>
@@ -324,9 +325,9 @@
         <div class="footer-meta">
           <p>&copy; 2026 Ernesto Rodriguez &middot; Ernest0.com &middot; Chicago</p>
           <div class="footer-attribution">
-            <a href="https://github.com/officebeats/beats-pm-kit" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="This site was built using the Beats PM Antigravity Kit">Built with
+            <a href="https://github.com/officebeats/beats-pm-kit" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="This site was built using the Beats PM Kit">Built with
               <svg class="ag-logo" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C12 6.62742 17.3726 12 24 12C24 17.3726 17.3726 24 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" /></svg>
-              Antigravity Kit &rarr;</a>
+              Beats PM Kit &rarr;</a>
           </div>
         </div>
         <div class="footer-socials">

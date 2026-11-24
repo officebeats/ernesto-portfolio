@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" data-type="software">
+  <head>
+    <!-- ULTRATHINK Canonical Edge Routing Enforcer - Only redirect in production -->
+    <script>
+      (function () {
+        var host = window.location.hostname;
+        // Allow local development and testing
+        var isLocal =
+          host === "localhost" ||
+          host === "127.0.0.1" ||
+          host.startsWith("192.168.") ||
+          host.startsWith("10.") ||
+          host.includes("github.io") ||
+          window.location.protocol === "file:";
+
+        if (!isLocal && window.location.protocol !== "file:") {
+          var targetProtocol = "https:";
+          var targetHost = "ernest0.com";
+          if (
+            window.location.protocol !== targetProtocol ||
+            host !== targetHost
+          ) {
+            window.location.replace(
+              targetProtocol +
+                "//" +
+                targetHost +
+                window.location.pathname +
+                window.location.search +
+                window.location.hash,
+            );
+          }
+        }
+      })();
+    </script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <link rel="canonical" href="https://ernest0.com/grace.html" />
+    <link rel="apple-touch-icon" href="logos/pwa-icon-512.png" />
+    <link rel="icon" type="image/png" href="logos/pwa-icon-512.png" sizes="32x32" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <title>Grace: A Multi-Agent AI System for Patient Access — Case Study</title>
+    <meta name="description" content="Grace is a multi-agent AI system for patient access — one steering agent, many contract-bound atomic agents — designed and led by Ernesto Rodriguez at a major US health system." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Grace: A Multi-Agent AI System for Patient Access" />
+    <meta property="og:description" content="A multi-agent AI system for patient access, designed and led by Ernesto Rodriguez. Control first, automation second: routing, contracts, confidence gates, and a human path by design." />
+    <meta property="og:url" content="https://ernest0.com/grace.html" />
+    <meta property="og:image" content="https://ernest0.com/hero-new.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Grace: A Multi-Agent AI System for Patient Access" />
+    <meta name="twitter:description" content="A multi-agent AI system for patient access, designed and led by Ernesto Rodriguez. Control first, automation second: routing, contracts, confidence gates, and a human path by design." />
+    <meta name="twitter:image" content="https://ernest0.com/hero-new.webp" />
+    <meta name="page-type" content="software" />
+    <meta name="site-kind" content="software" />
+    <meta name="theme-color" content="#009270" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=2.4" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-logo">Ernesto Rodriguez</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#work">AI Projects</a>
+          <a href="grace.html">Grace</a>
+          <a href="index.html#domains">Domains</a>
+          <a href="index.html#credentials">Credentials</a>
+          <a href="index.html#writing">Publications</a>
+          <a href="index.html#hobbies">Pursuits</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" aria-label="Toggle dark/light theme">
+            <span class="theme-label-dark">Dark</span>
+            <div class="theme-toggle-thumb" aria-hidden="true"><div class="glare-overlay"></div></div>
+            <span class="theme-label-light">Light</span>
+          </button>
+          <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="nav-cta" aria-label="Download Resume (PDF)">Resume <span aria-hidden="true">↓</span></a>
+          <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobile-menu" class="mobile-overlay" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <nav class="mobile-nav-links">
+        <a href="index.html#experience" class="mobile-link" style="--i: 0">Experience</a>
+        <a href="index.html#work" class="mobile-link" style="--i: 1">AI Projects</a>
+        <a href="grace.html" class="mobile-link" style="--i: 2">Grace</a>
+        <a href="index.html#domains" class="mobile-link" style="--i: 3">Domains</a>
+        <a href="index.html#credentials" class="mobile-link" style="--i: 4">Credentials</a>
+        <a href="index.html#writing" class="mobile-link" style="--i: 5">Publications</a>
+        <a href="index.html#hobbies" class="mobile-link" style="--i: 6">Pursuits</a>
+        <a href="Ernesto_Rodriguez_Resume.pdf" target="_blank" rel="noopener" class="mobile-link mobile-cta" style="--i: 7">Resume <span aria-hidden="true">↓</span></a>
+      </nav>
+      <div class="mobile-overlay-footer" style="--i: 8"><p>Ernesto Rodriguez · Director-Level AI Product Leader</p></div>
+    </div>
+
+    <main id="main-content">
+      <section class="hero bg-mesh-light" id="top" style="min-height: calc(100svh - 64px); padding: clamp(2.5rem, 5vw, 4rem) 0 2rem;">
+        <div class="container">
+          <p class="section-label">Case Study</p>
+          <h1 class="section-heading" style="font-size: clamp(3.25rem, 8vw, 6rem); line-height: 0.95; margin: 0 0 1rem;">Grace<br /><em>a multi-agent AI system for patient access.</em></h1>
+          <p style="max-width: 700px; font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.55; color: var(--text-secondary); margin-bottom: 1.5rem;">One steering agent routes each patient request to a specialized agent with a defined contract — book, verify, cancel, change, answer — on Google Cloud and Vertex AI.</p>
+          <p style="max-width: 700px; color: var(--text-secondary); font-size: 0.95rem; margin: -0.75rem 0 1.5rem;">A case study by Ernesto Rodriguez — AI Product Lead at Ascension Health, November 2024 to April 2026.</p>
+          <div style="max-width: 700px; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); margin-bottom: 1.5rem;">
+            <p style="color: var(--text-secondary); line-height: 1.65; margin: 0;"><strong style="color: var(--text);">The honest frame, up front:</strong> I designed and led this system. It reached full live volume after I left in April 2026. This page keeps a clean line between the design and results that are mine and the live ramp that came later.</p>
+          </div>
+          <div class="case-study-links" style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;">
+            <a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/why-ascensions-many-ehrs-became-an-ai-advantage/" target="_blank" rel="noopener" class="btn btn-primary">Becker's coverage <span aria-hidden="true">↗</span></a>
+            <a href="evals.html" class="btn btn-secondary">How I evaluate agents</a>
+            <a href="mailto:ernesto@aladdinstudioai.com" class="btn btn-secondary">Email me</a>
+          </div>
+          <div class="case-study-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+            <span style="background: var(--accent); color: #000; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.3rem 0.75rem; border-radius: 999px;">Healthcare · 2024–2026</span>
+            <span style="border: 1px solid var(--accent); color: var(--accent); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px;">Agentic AI</span>
+            <span style="border: 1px solid var(--accent); color: var(--accent); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px;">GCP · Vertex AI</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
+            <div>
+              <p class="section-label">The setting</p>
+              <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Scale turns small failure rates<br /><em>into real harm.</em></h2>
+            </div>
+            <div style="max-width: 650px;">
+              <p style="font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">Grace was designed at Ascension Health — 95 hospitals and $25.3B in revenue in fiscal 2025 — where patient scheduling and support calls arrive at high volume, every day.</p>
+              <p style="font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary);">Callers range from simple requests (confirm, cancel, reschedule) to complex ones (new primary care appointments). At that scale, a small failure rate is a large number of patients. That is why the design put control and review ahead of automation rate.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
+            <div>
+              <p class="section-label">The problem</p>
+              <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Patients waited.<br /><em>Staff repeated the same work.</em></h2>
+            </div>
+            <div style="max-width: 650px;">
+              <p style="font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">Scheduling and support demand exceeded what human teams could absorb cleanly. Simple calls crowded out complex ones, and inconsistent handling hurt the patient experience.</p>
+              <p style="font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary);">This was never a "replace the call center" problem. It is a routing and trust problem: which requests can an agent close safely, and which must reach a person fast — with a clear record of what happened either way?</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <p class="section-label">The system</p>
+          <h2 class="section-heading">One steering agent.<br /><em>Many atomic agents.</em></h2>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span class="impact-text">The steering agent decides</span>
+              <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">A steering agent reads each incoming request and routes it to the right handler — a specialized agent, or a human. It decides who should handle a request before anyone answers it.</p>
+            </article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span class="impact-text">Atomic agents act</span>
+              <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Each atomic agent does exactly one job: book, verify, cancel, change, or answer. One job per agent keeps every agent narrow, testable, and replaceable.</p>
+            </article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span class="impact-text">Contracts, not vibes</span>
+              <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Agents connect under A2A agent cards and contracts: each agent states what it accepts, what it returns, and what it must not do. Behavior is written down, reviewable, and testable before it reaches a patient.</p>
+            </article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span class="impact-text">Built on GCP and Vertex AI</span>
+              <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">The system runs on Google Cloud and Vertex AI, on top of a unified patient record harmonized across the health system's many EHRs.</p>
+            </article>
+          </div>
+          <svg viewBox="0 0 900 120" role="img" aria-label="A patient request flows to a steering agent, which routes it to a specialized atomic agent or a human" style="display: block; width: 100%; height: auto; margin-top: 1.5rem;">
+            <rect x="8" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
+            <rect x="325" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
+            <rect x="642" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
+            <path d="M270 57h40m-8-8 8 8-8 8M587 57h40m-8-8 8 8-8 8" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <text x="28" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">Patient request</text>
+            <text x="28" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">confirm · cancel · book · change</text>
+            <text x="345" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">Steering agent</text>
+            <text x="345" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">routes under contract</text>
+            <text x="662" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">Atomic agent — or a human</text>
+            <text x="662" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">one job, full trace</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">Why this architecture</p>
+          <h2 class="section-heading">Control first.<br /><em>Automation second.</em></h2>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span class="impact-text">Narrow agents fail in narrow ways</span>
+              <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">A booking agent cannot drift into giving medical advice. A single general agent is simpler to build and harder to govern — and in healthcare, governable wins.</p>
+            </article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span class="impact-text">Behavior is reviewable before patients see it</span>
+              <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Contracts make each agent's behavior something a team can read, test, and approve in advance — not something discovered in production.</p>
+            </article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span class="impact-text">Every interaction leaves a trace</span>
+              <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Routing keeps a full record: which agent acted, under which contract, with what result. Failures get reviewed agent by agent instead of guessed at.</p>
+            </article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
+              <span class="impact-text">Humans stay in the loop by design</span>
+              <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">The human path is part of the design, not a fallback after failure. Requests the system should not close alone go to people — fast, and with context.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
+            <div>
+              <p class="section-label">Quality and safety design</p>
+              <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Every answer had to<br /><em>earn its way out.</em></h2>
+            </div>
+            <div>
+              <article style="padding: 0 0 1.25rem; border-bottom: 1px solid var(--border);">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Voice of the customer</span>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">Voice-of-customer reviews ran on a set cadence and fed design changes — the loop that kept prioritization honest and quality improving while the system was under my leadership.</p>
+              </article>
+              <article style="padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">A "do not answer" path</span>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">Low-confidence or out-of-scope cases route to humans instead of guessing. An agent system needs a "do not answer" path as much as it needs good answers.</p>
+              </article>
+              <article style="padding-top: 1.25rem;">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Traceability</span>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">Each interaction can be reviewed after the fact, agent by agent — which agent acted, under which contract, with what result.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">Results on my watch</p>
+          <h2 class="section-heading">Measured outcomes<br /><em>during my tenure.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">Program outcomes at Ascension during my tenure as AI Product Lead, November 2024 to April 2026 — the record from my résumé. The live-volume numbers in the next section are separate, and later.</p>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">NPS up 10%</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Voice-of-customer reviews fed design changes on a set cadence, and satisfaction followed.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Patient engagement up 10%</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Patient-facing messaging and access work lifted engagement across the program.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Support efficiency up 20%</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Support teams handled the same demand with measurably less repeated work.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Support ticket volume down 20% · Self-service up 15%</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">More patients resolved their own requests; fewer needed a ticket at all.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <p class="section-label">Third-party proof</p>
+          <h2 class="section-heading">The system I designed,<br /><em>live at volume.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">On November 16, 2026, Becker's Hospital Review reported on Grace in live operation at Ascension's contact center — about three months into live operation at the time of the article:</p>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">~20% of complex scheduling calls</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Grace books new primary care appointments and verifies, cancels, and changes existing ones — handling roughly 20% of more complex scheduling calls, such as new appointments.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Up to 65% of simpler calls</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Simpler scheduling requests are handled at a much higher share — as much as 65%.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Tens of thousands of conversations a week</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">AI-enabled conversations already numbered in the tens of thousands each week, with patient satisfaction rated better than the old IVR and comparable to human agents.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Corroborated by a teammate</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Madhav Srinivasan, an engineer on the team, describes building GRACE at Ascension on his public portfolio — the same routed, multi-agent system, described independently.</p></article>
+          </div>
+          <div style="margin-top: 1.75rem; padding: 1.25rem 1.5rem; border: 1px solid var(--accent); border-radius: 12px; background: var(--bg-card);">
+            <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;"><strong style="color: var(--text);">The line, kept clean:</strong> this article came out after I left Ascension in April 2026, and the live ramp began around August 2026. It proves the system I designed and led is real and running at volume. It does not name me, and I am not claiming the ramp as my work. Source: Becker's Hospital Review, <a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/why-ascensions-many-ehrs-became-an-ai-advantage/" target="_blank" rel="noopener" style="color: var(--accent);">"Why Ascension's many EHRs became an AI advantage," November 16, 2026</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="section-label">How I evaluate agent systems</p>
+          <h2 class="section-heading">Confidence gates and<br /><em>a human-review path.</em></h2>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">The same evaluation pattern runs through my work: score agent output, then gate on confidence — below the bar, the case goes to a human instead of shipping a weak answer. Grace's design routes low-confidence cases to people; my CleanQuest work applies the identical pattern in miniature.</p>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">0.6 confidence gate</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">In CleanQuest, cloud grades count as verified only at confidence ≥ 0.6. Below that, a NOT SCORED path sends unclear cases to human review instead of faking a number.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Judge setup is part of the product</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Two hosts running the same model scored a fixed demo pair differently — Baseten 98/100, Fireworks 96/100. Those are model-assigned scores on a fixed pair, not accuracy rates. The point: identical model, different host, different score — so judge setup gets tested like product code.</p></article>
+          </div>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.65; margin-top: 1.25rem;">The full evaluation write-up: <a href="evals.html" style="color: var(--accent);">Evals, run like a product</a>.</p>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
+            <div>
+              <p class="section-label">What the design got right</p>
+              <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Decisions<br /><em>that held up.</em></h2>
+            </div>
+            <div>
+              <article style="padding: 0 0 1.25rem; border-bottom: 1px solid var(--border);">
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;"><strong style="color: var(--text);">Routing before generation.</strong> Decide who should handle a request before anyone answers it.</p>
+              </article>
+              <article style="padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;"><strong style="color: var(--text);">Contracts over prompts.</strong> Behavior written down, reviewable, and testable per agent.</p>
+              </article>
+              <article style="padding-top: 1.25rem;">
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;"><strong style="color: var(--text);">A human path by design</strong> — not as a fallback after failure. These three choices are why the system could scale to live volume after my exit without a redesign anyone has reported.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container" style="max-width: 700px; text-align: center">
+          <p class="section-label" style="color: var(--accent); letter-spacing: 0.15em; font-weight: 600; margin-bottom: 1rem;">Get in touch</p>
+          <img src="profile-full.jpg" alt="Ernesto Rodriguez" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; border: 2px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.1);" loading="lazy" />
+          <h2 class="section-heading">Building an <em>AI product team?</em></h2>
+          <p class="cta-subtitle" style="max-width: 600px; margin: 1.25rem auto 2rem; font-size: 1.125rem;">I'm Ernesto Rodriguez, a Director-level AI product leader. Grace is one case study — the full record is on my homepage.</p>
+          <div class="cta-actions" style="justify-content: center; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="mailto:ernesto@aladdinstudioai.com" class="btn btn-email">ernesto@aladdinstudioai.com</a>
+            <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener" class="btn btn-linkedin">Connect on LinkedIn</a>
+            <a href="index.html#work" class="btn btn-secondary">More AI projects</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <h2>Ernesto Rodriguez</h2>
+          <p>Director-Level AI Product Leader · AI Products &amp; Agents</p>
+        </div>
+        <div class="footer-meta">
+          <p>&copy; 2026 Ernesto Rodriguez &middot; Ernest0.com &middot; Chicago</p>
+          <div class="footer-attribution">
+            <a href="https://github.com/officebeats/beats-pm-kit" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="This site was built using the Beats PM Kit">Built with
+              <svg class="ag-logo" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C12 6.62742 17.3726 12 24 12C24 17.3726 17.3726 24 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" /></svg>
+              Beats PM Kit &rarr;</a>
+          </div>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/productmg/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

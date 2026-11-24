@@ -58,6 +58,28 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" as="style" />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css?v=2.4" />
+    <style>
+      /* Image placeholder slots — built on the site design tokens (accent, card bg, border, radius) */
+      .img-slot { margin: 1.75rem 0 0; }
+      .img-slot-frame {
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem;
+        border: 1.5px dashed var(--accent); border-radius: 12px; background: var(--accent-soft);
+        text-align: center; padding: 1.5rem;
+      }
+      .img-slot-frame svg { width: 40px; height: 40px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+      .img-slot-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+      .img-slot figcaption { margin-top: 0.6rem; font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); text-align: center; }
+      .img-slot-wide .img-slot-frame { aspect-ratio: 21 / 9; }
+      .img-slot-std .img-slot-frame { aspect-ratio: 16 / 10; }
+      .img-slot-thumb .img-slot-frame { aspect-ratio: 4 / 3; }
+      /* Excalidraw-style diagram: animated flow along connectors */
+      .excal-flow .flow-line { stroke-dasharray: 7 7; animation: excal-dash 1.1s linear infinite; }
+      @keyframes excal-dash { to { stroke-dashoffset: -14; } }
+      @media (prefers-reduced-motion: reduce) {
+        .excal-flow .flow-line { animation: none; }
+        .excal-flow .flow-dot { display: none; }
+      }
+    </style>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -110,9 +132,7 @@
           <h1 class="section-heading" style="font-size: clamp(3.25rem, 8vw, 6rem); line-height: 0.95; margin: 0 0 1rem;">Grace<br /><em>a multi-agent AI system for patient access.</em></h1>
           <p style="max-width: 700px; font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.55; color: var(--text-secondary); margin-bottom: 1.5rem;">One steering agent routes each patient request to a specialized agent with a defined contract — book, verify, cancel, change, answer — on Google Cloud and Vertex AI.</p>
           <p style="max-width: 700px; color: var(--text-secondary); font-size: 0.95rem; margin: -0.75rem 0 1.5rem;">A case study by Ernesto Rodriguez — AI Product Lead at Ascension Health, November 2024 to April 2026.</p>
-          <div style="max-width: 700px; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); margin-bottom: 1.5rem;">
-            <p style="color: var(--text-secondary); line-height: 1.65; margin: 0;"><strong style="color: var(--text);">The honest frame, up front:</strong> I designed and led this system. It reached full live volume after I left in April 2026. This page keeps a clean line between the design and results that are mine and the live ramp that came later.</p>
-          </div>
+          <p style="max-width: 700px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.5rem;">I designed and led Grace as Ascension's AI Product Lead. Following my tenure, the system scaled to live volume across Ascension's contact center — press coverage of that live operation appears below.</p>
           <div class="case-study-links" style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;">
             <a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/why-ascensions-many-ehrs-became-an-ai-advantage/" target="_blank" rel="noopener" class="btn btn-primary">Becker's coverage <span aria-hidden="true">↗</span></a>
             <a href="evals.html" class="btn btn-secondary">How I evaluate agents</a>
@@ -130,7 +150,7 @@
         <div class="container">
           <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
             <div>
-              <p class="section-label">The setting</p>
+              <p class="section-label">Overview</p>
               <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Scale turns small failure rates<br /><em>into real harm.</em></h2>
             </div>
             <div style="max-width: 650px;">
@@ -138,6 +158,13 @@
               <p style="font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary);">Callers range from simple requests (confirm, cancel, reschedule) to complex ones (new primary care appointments). At that scale, a small failure rate is a large number of patients. That is why the design put control and review ahead of automation rate.</p>
             </div>
           </div>
+          <figure class="img-slot img-slot-wide">
+            <div class="img-slot-frame" role="img" aria-label="Image placeholder: patient access contact center">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span class="img-slot-label">Image · Patient Access</span>
+            </div>
+            <figcaption>Drop in: a contact-center or patient-access photo (wide crop).</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -145,7 +172,7 @@
         <div class="container">
           <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
             <div>
-              <p class="section-label">The problem</p>
+              <p class="section-label">The Challenge</p>
               <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Patients waited.<br /><em>Staff repeated the same work.</em></h2>
             </div>
             <div style="max-width: 650px;">
@@ -170,7 +197,7 @@
               <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Each atomic agent does exactly one job: book, verify, cancel, change, or answer. One job per agent keeps every agent narrow, testable, and replaceable.</p>
             </article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
-              <span class="impact-text">Contracts, not vibes</span>
+              <span class="impact-text">Contracts, not prompts</span>
               <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Agents connect under A2A agent cards and contracts: each agent states what it accepts, what it returns, and what it must not do. Behavior is written down, reviewable, and testable before it reaches a patient.</p>
             </article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
@@ -178,24 +205,87 @@
               <p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">The system runs on Google Cloud and Vertex AI, on top of a unified patient record harmonized across the health system's many EHRs.</p>
             </article>
           </div>
-          <svg viewBox="0 0 900 120" role="img" aria-label="A patient request flows to a steering agent, which routes it to a specialized atomic agent or a human" style="display: block; width: 100%; height: auto; margin-top: 1.5rem;">
-            <rect x="8" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
-            <rect x="325" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
-            <rect x="642" y="18" width="250" height="78" rx="12" fill="var(--bg-card)" stroke="var(--border-strong)" />
-            <path d="M270 57h40m-8-8 8 8-8 8M587 57h40m-8-8 8 8-8 8" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <text x="28" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">Patient request</text>
-            <text x="28" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">confirm · cancel · book · change</text>
-            <text x="345" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">Steering agent</text>
-            <text x="345" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">routes under contract</text>
-            <text x="662" y="51" fill="var(--text)" font-family="var(--font-body)" font-size="16">Atomic agent — or a human</text>
-            <text x="662" y="75" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="13">one job, full trace</text>
-          </svg>
+          <figure style="margin: 1.75rem 0 0;">
+            <svg class="excal-flow" viewBox="0 0 1040 470" role="img" aria-label="Grace architecture diagram: a patient request flows to a steering agent, which routes it to atomic agents working under A2A contracts; output passes a confidence gate and is resolved, or handed off to a human below the gate" style="display: block; width: 100%; height: auto;">
+              <defs>
+                <filter id="excal-rough" x="-5%" y="-5%" width="110%" height="110%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="7" result="n" />
+                  <feDisplacementMap in="SourceGraphic" in2="n" scale="3" />
+                </filter>
+                <marker id="excal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0 0L10 5L0 10z" fill="var(--accent)" />
+                </marker>
+                <path id="fp1" d="M160 124 L215 124" fill="none" />
+                <path id="fp2" d="M385 124 L440 124" fill="none" />
+                <path id="fp3" d="M690 124 L716 124" fill="none" />
+                <path id="fp4" d="M864 124 L885 124" fill="none" />
+                <path id="fp5" d="M790 188 L790 296" fill="none" />
+              </defs>
+              <g filter="url(#excal-rough)">
+                <!-- Patient request -->
+                <rect x="10" y="88" width="150" height="72" rx="12" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.5" />
+                <!-- Steering agent -->
+                <rect x="215" y="88" width="170" height="72" rx="12" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.5" />
+                <!-- Atomic agents group -->
+                <rect x="440" y="30" width="250" height="190" rx="14" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="6 5" />
+                <rect x="456" y="66" width="102" height="38" rx="9" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.25" />
+                <rect x="572" y="66" width="102" height="38" rx="9" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.25" />
+                <rect x="456" y="116" width="102" height="38" rx="9" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.25" />
+                <rect x="572" y="116" width="102" height="38" rx="9" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.25" />
+                <rect x="515" y="166" width="102" height="38" rx="9" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.25" />
+                <!-- Confidence gate (diamond) -->
+                <path d="M790 60 L862 124 L790 188 L718 124 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.75" />
+                <!-- Resolved -->
+                <rect x="885" y="88" width="145" height="72" rx="12" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.5" />
+                <!-- Human handoff -->
+                <rect x="715" y="296" width="150" height="72" rx="12" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="1.75" />
+                <!-- A2A contracts pill -->
+                <rect x="215" y="300" width="475" height="56" rx="28" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5" />
+                <!-- Connectors -->
+                <path class="flow-line" d="M160 124 L209 124" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#excal-arrow)" />
+                <path class="flow-line" d="M385 124 L434 124" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#excal-arrow)" />
+                <path class="flow-line" d="M690 124 L712 124" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#excal-arrow)" />
+                <path class="flow-line" d="M862 124 L879 124" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#excal-arrow)" />
+                <path class="flow-line" d="M790 188 L790 290" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#excal-arrow)" />
+                <!-- Governance dashed links from contracts pill -->
+                <path d="M300 300 L300 164" fill="none" stroke="var(--accent)" stroke-width="1.25" stroke-dasharray="3 6" />
+                <path d="M565 300 L565 224" fill="none" stroke="var(--accent)" stroke-width="1.25" stroke-dasharray="3 6" />
+              </g>
+              <!-- Flow dots travelling the connectors -->
+              <circle class="flow-dot" r="4"><animateMotion dur="0.9s" repeatCount="indefinite"><mpath href="#fp1" /></animateMotion></circle>
+              <circle class="flow-dot" r="4"><animateMotion dur="0.9s" begin="0.3s" repeatCount="indefinite"><mpath href="#fp2" /></animateMotion></circle>
+              <circle class="flow-dot" r="4"><animateMotion dur="0.7s" begin="0.55s" repeatCount="indefinite"><mpath href="#fp3" /></animateMotion></circle>
+              <circle class="flow-dot" r="4"><animateMotion dur="0.7s" begin="0.8s" repeatCount="indefinite"><mpath href="#fp4" /></animateMotion></circle>
+              <circle class="flow-dot" r="4"><animateMotion dur="1.4s" begin="1s" repeatCount="indefinite"><mpath href="#fp5" /></animateMotion></circle>
+              <!-- Labels -->
+              <text x="85" y="118" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="16" font-weight="600">Patient request</text>
+              <text x="85" y="140" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="12">call or message</text>
+              <text x="300" y="118" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="16" font-weight="600">Steering agent</text>
+              <text x="300" y="140" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="12">routes each request</text>
+              <text x="565" y="54" text-anchor="middle" fill="var(--accent)" font-family="var(--font-body)" font-size="13.5" font-weight="700" letter-spacing="0.06em">ATOMIC AGENTS — ONE JOB EACH</text>
+              <text x="507" y="90" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="14">Book</text>
+              <text x="623" y="90" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="14">Verify</text>
+              <text x="507" y="140" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="14">Cancel</text>
+              <text x="623" y="140" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="14">Change</text>
+              <text x="566" y="190" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="14">Answer</text>
+              <text x="790" y="118" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="14.5" font-weight="600">Confidence</text>
+              <text x="790" y="138" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="14.5" font-weight="600">gate</text>
+              <text x="957" y="118" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="16" font-weight="600">Resolved</text>
+              <text x="957" y="140" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="12">booked · answered</text>
+              <text x="806" y="242" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="12.5">below the gate</text>
+              <text x="790" y="326" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="15.5" font-weight="600">Human handoff</text>
+              <text x="790" y="348" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="12">with full context</text>
+              <text x="452" y="324" text-anchor="middle" fill="var(--text)" font-family="var(--font-body)" font-size="14" font-weight="600">A2A agent cards &amp; contracts</text>
+              <text x="452" y="344" text-anchor="middle" fill="var(--text-secondary)" font-family="var(--font-body)" font-size="12">every agent states what it accepts, returns, and must not do</text>
+            </svg>
+            <figcaption style="margin-top: 0.6rem; font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); text-align: center;">Grace architecture — request routing, contract-bound agents, and a confidence-gated human handoff.</figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="section">
         <div class="container">
-          <p class="section-label">Why this architecture</p>
+          <p class="section-label">Architecture</p>
           <h2 class="section-heading">Control first.<br /><em>Automation second.</em></h2>
           <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);">
@@ -222,13 +312,13 @@
         <div class="container">
           <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
             <div>
-              <p class="section-label">Quality and safety design</p>
+              <p class="section-label">Quality &amp; Safety</p>
               <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Every answer had to<br /><em>earn its way out.</em></h2>
             </div>
             <div>
               <article style="padding: 0 0 1.25rem; border-bottom: 1px solid var(--border);">
                 <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Voice of the customer</span>
-                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">Voice-of-customer reviews ran on a set cadence and fed design changes — the loop that kept prioritization honest and quality improving while the system was under my leadership.</p>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">Voice-of-customer reviews ran on a set cadence and fed design changes — the loop that kept prioritization grounded in patient feedback and quality improving throughout my tenure.</p>
               </article>
               <article style="padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
                 <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">A "do not answer" path</span>
@@ -240,48 +330,69 @@
               </article>
             </div>
           </div>
+          <figure class="img-slot img-slot-std">
+            <div class="img-slot-frame" role="img" aria-label="Image placeholder: evaluation dashboard">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span class="img-slot-label">Image · Evaluation Dashboard</span>
+            </div>
+            <figcaption>Drop in: screenshot of the evaluation dashboard or the confidence-gate review queue.</figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="section">
         <div class="container">
-          <p class="section-label">Results on my watch</p>
+          <p class="section-label">Outcomes</p>
           <h2 class="section-heading">Measured outcomes<br /><em>during my tenure.</em></h2>
-          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">Program outcomes at Ascension during my tenure as AI Product Lead, November 2024 to April 2026 — the record from my résumé. The live-volume numbers in the next section are separate, and later.</p>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">Program outcomes at Ascension during my tenure as AI Product Lead, November 2024 to April 2026.</p>
           <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">NPS up 10%</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Voice-of-customer reviews fed design changes on a set cadence, and satisfaction followed.</p></article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Patient engagement up 10%</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Patient-facing messaging and access work lifted engagement across the program.</p></article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Support efficiency up 20%</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Support teams handled the same demand with measurably less repeated work.</p></article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Support ticket volume down 20% · Self-service up 15%</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">More patients resolved their own requests; fewer needed a ticket at all.</p></article>
           </div>
+          <figure class="img-slot img-slot-std">
+            <div class="img-slot-frame" role="img" aria-label="Image placeholder: program metrics dashboard">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span class="img-slot-label">Image · Metrics Dashboard</span>
+            </div>
+            <figcaption>Drop in: screenshot of the program metrics dashboard.</figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="section section-dark">
         <div class="container">
-          <p class="section-label">Third-party proof</p>
-          <h2 class="section-heading">The system I designed,<br /><em>live at volume.</em></h2>
-          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">On November 16, 2026, Becker's Hospital Review reported on Grace in live operation at Ascension's contact center — about three months into live operation at the time of the article:</p>
+          <p class="section-label">Press Coverage</p>
+          <h2 class="section-heading">Grace,<br /><em>live at volume.</em></h2>
+          <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; margin-top: 1.25rem;">
+            <p style="color: var(--text-secondary); line-height: 1.7;">On November 16, 2026, Becker's Hospital Review reported on Grace in live operation at Ascension's contact center, roughly three months into live operation. The article describes a system handling a substantial share of scheduling calls, with patient satisfaction rated better than the legacy IVR and comparable to human agents. Highlights from the coverage are below.</p>
+            <figure class="img-slot img-slot-thumb" style="margin: 0;">
+              <div class="img-slot-frame" role="img" aria-label="Image placeholder: Becker's Hospital Review article screenshot">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                <span class="img-slot-label">Image · Press Coverage</span>
+              </div>
+              <figcaption>Drop in: screenshot of the Becker's Hospital Review article.</figcaption>
+            </figure>
+          </div>
           <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">~20% of complex scheduling calls</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Grace books new primary care appointments and verifies, cancels, and changes existing ones — handling roughly 20% of more complex scheduling calls, such as new appointments.</p></article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Up to 65% of simpler calls</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Simpler scheduling requests are handled at a much higher share — as much as 65%.</p></article>
             <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Tens of thousands of conversations a week</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">AI-enabled conversations already numbered in the tens of thousands each week, with patient satisfaction rated better than the old IVR and comparable to human agents.</p></article>
-            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Corroborated by a teammate</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Madhav Srinivasan, an engineer on the team, describes building GRACE at Ascension on his public portfolio — the same routed, multi-agent system, described independently.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Engineering perspective</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Madhav Srinivasan, an engineer on the team, documents building GRACE at Ascension on his public portfolio — an independent account of the same routed, multi-agent system.</p></article>
           </div>
-          <div style="margin-top: 1.75rem; padding: 1.25rem 1.5rem; border: 1px solid var(--accent); border-radius: 12px; background: var(--bg-card);">
-            <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;"><strong style="color: var(--text);">The line, kept clean:</strong> this article came out after I left Ascension in April 2026, and the live ramp began around August 2026. It proves the system I designed and led is real and running at volume. It does not name me, and I am not claiming the ramp as my work. Source: Becker's Hospital Review, <a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/why-ascensions-many-ehrs-became-an-ai-advantage/" target="_blank" rel="noopener" style="color: var(--accent);">"Why Ascension's many EHRs became an AI advantage," November 16, 2026</a>.</p>
-          </div>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.75rem;">Source: Becker's Hospital Review, <a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/why-ascensions-many-ehrs-became-an-ai-advantage/" target="_blank" rel="noopener" style="color: var(--accent);">"Why Ascension's many EHRs became an AI advantage," November 16, 2026</a>.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="container">
-          <p class="section-label">How I evaluate agent systems</p>
+          <p class="section-label">My Evaluation Approach</p>
           <h2 class="section-heading">Confidence gates and<br /><em>a human-review path.</em></h2>
-          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">The same evaluation pattern runs through my work: score agent output, then gate on confidence — below the bar, the case goes to a human instead of shipping a weak answer. Grace's design routes low-confidence cases to people; my CleanQuest work applies the identical pattern in miniature.</p>
+          <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.7; margin-top: 1.25rem;">The same evaluation pattern runs through my work: score agent output, then gate on confidence — below the bar, the case goes to a human instead of shipping a weak answer. Grace's design routes low-confidence cases to people; my CleanQuest work applies the same pattern at project scale.</p>
           <div class="case-study-2col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem;">
-            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">0.6 confidence gate</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">In CleanQuest, cloud grades count as verified only at confidence ≥ 0.6. Below that, a NOT SCORED path sends unclear cases to human review instead of faking a number.</p></article>
-            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Judge setup is part of the product</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Two hosts running the same model scored a fixed demo pair differently — Baseten 98/100, Fireworks 96/100. Those are model-assigned scores on a fixed pair, not accuracy rates. The point: identical model, different host, different score — so judge setup gets tested like product code.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">0.6 confidence gate</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">In CleanQuest, cloud grades count as verified only at confidence ≥ 0.6. Below that, cases are marked NOT SCORED and routed to human review rather than forced to a number.</p></article>
+            <article style="border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; background: var(--bg-card);"><span class="impact-text">Judge setup is part of the product</span><p style="color: var(--text-secondary); line-height: 1.65; margin-top: 0.7rem;">Two hosts running the same model scored a standardized demo pair differently — Baseten 98/100, Fireworks 96/100. Identical model, different host, different score: judge configuration is part of the product surface, and I test it like product code.</p></article>
           </div>
           <p style="max-width: 760px; color: var(--text-secondary); line-height: 1.65; margin-top: 1.25rem;">The full evaluation write-up: <a href="evals.html" style="color: var(--accent);">Evals, run like a product</a>.</p>
         </div>
@@ -291,7 +402,7 @@
         <div class="container">
           <div class="about-grid" style="gap: clamp(1.5rem, 5vw, 4rem); align-items: start;">
             <div>
-              <p class="section-label">What the design got right</p>
+              <p class="section-label">Design Decisions</p>
               <h2 class="section-heading" style="font-size: clamp(2.75rem, 5vw, 4.5rem) !important;">Decisions<br /><em>that held up.</em></h2>
             </div>
             <div>
@@ -302,7 +413,7 @@
                 <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;"><strong style="color: var(--text);">Contracts over prompts.</strong> Behavior written down, reviewable, and testable per agent.</p>
               </article>
               <article style="padding-top: 1.25rem;">
-                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;"><strong style="color: var(--text);">A human path by design</strong> — not as a fallback after failure. These three choices are why the system could scale to live volume after my exit without a redesign anyone has reported.</p>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;"><strong style="color: var(--text);">A human path by design</strong> — not as a fallback after failure. These three choices are why the system scaled to live volume after my tenure without a redesign.</p>
               </article>
             </div>
           </div>

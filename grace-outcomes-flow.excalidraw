@@ -1,0 +1,335 @@
+{
+ "type": "excalidraw",
+ "version": 2,
+ "source": "muse",
+ "elements": [
+  {
+   "id": "challenge",
+   "type": "rectangle",
+   "x": 10,
+   "y": 40,
+   "width": 280,
+   "height": 110,
+   "angle": 0,
+   "strokeColor": "#171717",
+   "backgroundColor": "#ffffff",
+   "fillStyle": "solid",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": {
+    "type": 3
+   },
+   "seed": 6206,
+   "version": 1,
+   "versionNonce": 50300922,
+   "isDeleted": false,
+   "boundElements": [
+    {
+     "id": "t_challenge",
+     "type": "text"
+    },
+    {
+     "id": "a1",
+     "type": "arrow"
+    }
+   ],
+   "updated": 1,
+   "link": null,
+   "locked": false
+  },
+  {
+   "id": "t_challenge",
+   "type": "text",
+   "x": 18,
+   "y": 65.0,
+   "width": 264,
+   "height": 60.0,
+   "angle": 0,
+   "strokeColor": "#171717",
+   "backgroundColor": "transparent",
+   "fillStyle": "solid",
+   "strokeWidth": 1,
+   "strokeStyle": "solid",
+   "roughness": 0,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": null,
+   "seed": 6343,
+   "version": 1,
+   "versionNonce": 50308841,
+   "isDeleted": false,
+   "boundElements": [],
+   "updated": 1,
+   "link": null,
+   "locked": false,
+   "text": "THE CHALLENGE\nPatients waited\nStaff repeated the same work",
+   "fontSize": 16,
+   "fontFamily": 1,
+   "textAlign": "center",
+   "verticalAlign": "middle",
+   "containerId": "challenge",
+   "originalText": "THE CHALLENGE\nPatients waited\nStaff repeated the same work",
+   "lineHeight": 1.25
+  },
+  {
+   "id": "system",
+   "type": "rectangle",
+   "x": 345,
+   "y": 40,
+   "width": 280,
+   "height": 110,
+   "angle": 0,
+   "strokeColor": "#009270",
+   "backgroundColor": "#eef6f3",
+   "fillStyle": "solid",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": {
+    "type": 3
+   },
+   "seed": 6480,
+   "version": 1,
+   "versionNonce": 50316760,
+   "isDeleted": false,
+   "boundElements": [
+    {
+     "id": "t_system",
+     "type": "text"
+    },
+    {
+     "id": "a1",
+     "type": "arrow"
+    },
+    {
+     "id": "a2",
+     "type": "arrow"
+    }
+   ],
+   "updated": 1,
+   "link": null,
+   "locked": false
+  },
+  {
+   "id": "t_system",
+   "type": "text",
+   "x": 353,
+   "y": 65.0,
+   "width": 264,
+   "height": 60.0,
+   "angle": 0,
+   "strokeColor": "#171717",
+   "backgroundColor": "transparent",
+   "fillStyle": "solid",
+   "strokeWidth": 1,
+   "strokeStyle": "solid",
+   "roughness": 0,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": null,
+   "seed": 6617,
+   "version": 1,
+   "versionNonce": 50324679,
+   "isDeleted": false,
+   "boundElements": [],
+   "updated": 1,
+   "link": null,
+   "locked": false,
+   "text": "THE SYSTEM\nOne steering agent\nAtomic agents, contract-bound",
+   "fontSize": 16,
+   "fontFamily": 1,
+   "textAlign": "center",
+   "verticalAlign": "middle",
+   "containerId": "system",
+   "originalText": "THE SYSTEM\nOne steering agent\nAtomic agents, contract-bound",
+   "lineHeight": 1.25
+  },
+  {
+   "id": "outcome",
+   "type": "rectangle",
+   "x": 680,
+   "y": 40,
+   "width": 280,
+   "height": 110,
+   "angle": 0,
+   "strokeColor": "#171717",
+   "backgroundColor": "#ffffff",
+   "fillStyle": "solid",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": {
+    "type": 3
+   },
+   "seed": 6754,
+   "version": 1,
+   "versionNonce": 50332598,
+   "isDeleted": false,
+   "boundElements": [
+    {
+     "id": "t_outcome",
+     "type": "text"
+    },
+    {
+     "id": "a2",
+     "type": "arrow"
+    }
+   ],
+   "updated": 1,
+   "link": null,
+   "locked": false
+  },
+  {
+   "id": "t_outcome",
+   "type": "text",
+   "x": 688,
+   "y": 65.0,
+   "width": 264,
+   "height": 60.0,
+   "angle": 0,
+   "strokeColor": "#171717",
+   "backgroundColor": "transparent",
+   "fillStyle": "solid",
+   "strokeWidth": 1,
+   "strokeStyle": "solid",
+   "roughness": 0,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": null,
+   "seed": 6891,
+   "version": 1,
+   "versionNonce": 50340517,
+   "isDeleted": false,
+   "boundElements": [],
+   "updated": 1,
+   "link": null,
+   "locked": false,
+   "text": "THE OUTCOME\nNPS +10% \u00b7 Engagement +10%\nEfficiency +20% \u00b7 Tickets \u221220%",
+   "fontSize": 16,
+   "fontFamily": 1,
+   "textAlign": "center",
+   "verticalAlign": "middle",
+   "containerId": "outcome",
+   "originalText": "THE OUTCOME\nNPS +10% \u00b7 Engagement +10%\nEfficiency +20% \u00b7 Tickets \u221220%",
+   "lineHeight": 1.25
+  },
+  {
+   "id": "a1",
+   "type": "arrow",
+   "x": 295,
+   "y": 95,
+   "width": 45,
+   "height": 0,
+   "angle": 0,
+   "strokeColor": "#009270",
+   "backgroundColor": "transparent",
+   "fillStyle": "solid",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": null,
+   "seed": 7028,
+   "version": 1,
+   "versionNonce": 50348436,
+   "isDeleted": false,
+   "boundElements": [],
+   "updated": 1,
+   "link": null,
+   "locked": false,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     45,
+     0
+    ]
+   ],
+   "lastCommittedPoint": null,
+   "startBinding": {
+    "elementId": "challenge",
+    "focus": 0,
+    "gap": 5
+   },
+   "endBinding": {
+    "elementId": "system",
+    "focus": 0,
+    "gap": 5
+   },
+   "startArrowhead": null,
+   "endArrowhead": "arrow"
+  },
+  {
+   "id": "a2",
+   "type": "arrow",
+   "x": 630,
+   "y": 95,
+   "width": 45,
+   "height": 0,
+   "angle": 0,
+   "strokeColor": "#009270",
+   "backgroundColor": "transparent",
+   "fillStyle": "solid",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": null,
+   "seed": 7165,
+   "version": 1,
+   "versionNonce": 50356355,
+   "isDeleted": false,
+   "boundElements": [],
+   "updated": 1,
+   "link": null,
+   "locked": false,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     45,
+     0
+    ]
+   ],
+   "lastCommittedPoint": null,
+   "startBinding": {
+    "elementId": "system",
+    "focus": 0,
+    "gap": 5
+   },
+   "endBinding": {
+    "elementId": "outcome",
+    "focus": 0,
+    "gap": 5
+   },
+   "startArrowhead": null,
+   "endArrowhead": "arrow"
+  }
+ ],
+ "appState": {
+  "viewBackgroundColor": "#f1f1f1",
+  "gridSize": null
+ },
+ "files": {}
+}
